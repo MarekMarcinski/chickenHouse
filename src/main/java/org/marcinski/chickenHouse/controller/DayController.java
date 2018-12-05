@@ -18,7 +18,7 @@ public class DayController {
     private DayService dayService;
 
     public DayController(DayService dayService) {
-        this.dayService = dayService;;
+        this.dayService = dayService;
     }
 
     @PostMapping("/{cycleId}")

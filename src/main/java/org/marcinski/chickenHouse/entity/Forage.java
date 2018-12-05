@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 
 @Entity
 @Data
@@ -19,5 +18,4 @@ public class Forage {
     private String name;
     private int quantity;
     private double price;
-    private LocalDate deliveryDate;
 }
