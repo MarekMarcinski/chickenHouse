@@ -13,17 +13,11 @@
 	<form th:action="@{/logout}" method="get">
 		<button type="submit" id="button_logout_home" class="button_logout">WYLOGUJ</button><br>
 	</form>
+	<div id="kurnik_powierzchnia" th:text="'Nazwa kurnika: ' + ${house.getName()} + ', pole powierzchni: ' + ${house.getAreaOfHouse()} + 'm²'"></div>
 <div class="container">
-
-    <div>
-        <p id="kurnik_powierzchnia" th:text="'Nazwa kurnika: ' + ${house.getName()} + ', pole powierzchni kurnika: ' + ${house.getAreaOfHouse()} + 'm<sup>2</sup>'"></p>
-    </div>
-
-    <div class="row">
+	<div class="row">
         <div class="col-md-4 dropdown">
-            <a class="btn btn-secondary dropdown-toggle col-md-12" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Utwórz nowy rzut
-            </a>
+            <a class="btn btn-secondary dropdown-toggle col-md-12" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nowy rzut</a>
 
             <form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{'/home/cycle/' + ${house.getId()}}"
                   th:object="${cycleDto}" method="post">
@@ -44,7 +38,7 @@
                     <input type="text" th:field="*{hatchery}" class="form-control" id="hatchery">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Utwórz</button>
+                <button type="submit" class="button" id="button_utworz_rzut">Utwórz</button>
             </form>
         </div>
 
@@ -68,14 +62,9 @@
         </div>
 
         <div class="col-md-4 dropdown">
-            <a class="btn btn-secondary dropdown-toggle col-12" role="button" id="deleteDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Usuń kurnik
-            </a>
-            <form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{'/home/' + ${house.getId()}}"
-                  th:object="${chickenHouseDto}" th:method="delete">
-
-                <button type="submit" class="btn btn-primary">Usuń</button>
-            </form>
+			<form th:action="@{'/home/' + ${house.getId()}}" th:object="${chickenHouseDto}" th:method="delete">
+            	<button type="submit" class="btn btn-secondary">Usuń wybrany kurnik</button>
+			</form>
         </div>
     </div>
 
