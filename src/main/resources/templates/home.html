@@ -10,7 +10,9 @@
 
 <body>
 	<img th:src="@{/images/logo.png}" id="logo_all" alt="LOGO">
-	<button onclick="location.href='login'" type="button" id="button_logout_home" class="button_logout">WYLOGUJ</button><br>
+	<form th:action="@{/logout}" method="get">
+		<button type="submit" id="button_logout_home" class="button_logout">WYLOGUJ</button><br>
+	</form>
 <p id="text_witaj" th:utext="${greeting}"></p><br><br>
 <div class="dropdown">
         <a class="btn btn-secondary dropdown-toggle" role="button" id="newDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utwórz nowy kurnik</a>
