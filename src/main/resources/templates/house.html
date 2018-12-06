@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title th:text="${house.getName()}"></title>
-
+    <title th:text="'KURNIK - ' + ${house.getName()}"></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <th:block th:include="partials/scripts_css" />
 </head>
 
 <body>
-
+	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
+	<form th:action="@{/logout}" method="get">
+		<button type="submit" id="button_logout_home" class="button_logout">WYLOGUJ</button><br>
+	</form>
 <div class="container">
 
-    <th:block th:include="partials/navbar" />
-
-    <br>
-
     <div>
-        <h5 th:text="'Nazwa kurnika: ' + ${house.getName()} + ', pole powierzchni kurnika: ' + ${house.getAreaOfHouse()}
-                    + 'm^2'"></h5>
+        <p id="kurnik_powierzchnia" th:text="'Nazwa kurnika: ' + ${house.getName()} + ', pole powierzchni kurnika: ' + ${house.getAreaOfHouse()} + 'm<sup>2</sup>'"></p>
     </div>
 
     <div class="row">

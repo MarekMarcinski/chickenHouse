@@ -9,7 +9,7 @@
 </head>
 	
 <body>
-	<img th:src="@{/images/logo.png}" id="logo_all" alt="LOGO">
+	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 	<form autocomplete="off" th:action="@{/registration}" th:object="${userDto}" method="post" class="form-horizontal" role="form">
 		<p id="rejestracja">REJESTRACJA</p>
 		<input type="text" th:field="*{name}" placeholder="Nazwa Użytkownika" class="login" />

@@ -8,7 +8,7 @@ body{
     left:20%
 }
 
-#logo_all{
+.logo_all{
 	position: relative;
 	width: 20%;
 	height: 20%;
