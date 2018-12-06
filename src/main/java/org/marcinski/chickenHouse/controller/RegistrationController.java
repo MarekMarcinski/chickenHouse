@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -30,13 +29,14 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String createNewUser(@Valid UserDto userDto, BindingResult bindingResult, Model model){
-        ModelAndView modelAndView = new ModelAndView();
         Optional<UserDto> userInDb = userService.findUserByEmail(userDto.getEmail());
 
         if (!userInDb.equals(Optional.empty())){
             bindingResult.rejectValue("email", "error.user",
                     "Podany e-mail już istnieje!");
-        }else {
+        }if (bindingResult.hasErrors()){
+          return "registration";
+        } else {
             userService.saveUser(userDto);
             model.addAttribute("successMessage", "Zarejestrowano!");
             model.addAttribute("userDto", new UserDto());
