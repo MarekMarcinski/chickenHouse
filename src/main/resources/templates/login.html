@@ -5,18 +5,20 @@
 <head>
     <title>LOGOWANIE</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <th:block th:include="partials/scripts_css">
+    <th:block th:include="partials/scripts_css" />
 </head>
 
 <body>
-	<img src="images/logo.png" id="logo"><br><br><br>
+	<img th:src="@{/images/logo.png}" id="logo"><br><br><br>
     <form th:action="@{/login}" method="post">
 		<input type="text" class="login" id="email" name="email" placeholder="E-MAIL"><br>
 		<input type="password" class="login" id="password" name="password" placeholder="HASŁO"><br>
 		<div id="remember_button"><input type="checkbox" id="remember" name="remember-me" value="true" checked>Zapamiętaj Mnie</div><br>
-		<button type="submit" id="button_login" class="button" name="submit" value="login" th:text="ZALOGUJ">ZALOGUJ</button><br>
+		<button type="submit" id="button_login" class="button" name="submit" value="login" th:text="ZALOGUJ"></button><br>
         <div id="error_login" th:if="${param.error}">Błędny email lub hasło, spróbuj ponownie</div><br>
-		<button onclick="location.href='registration'" type="button" id="button_register" class="button" th:text="REJESTRACJA">REJESTRACJA</button><br>
+    </form>
+    <form th:action="@{/registration}" method="get">
+        <button type="submit" id="button_register" class="button" th:text="REJESTRACJA"></button><br>
     </form>
 </body>
 </html>
