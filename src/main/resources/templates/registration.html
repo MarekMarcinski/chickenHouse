@@ -21,6 +21,8 @@
 		<button type="submit" id="button_register_2" class="button">ZAREJESTRUJ SIĘ</button><br>
 		<p id="success_message_1" th:utext="${successMessage}"></p>
 	</form>
-	<button onclick="location.href='login.html'" type="submit" id="button_back" class="button">WRÓĆ DO LOGOWANIA</button><br>
+    <form th:action="@{/login}" method="get">
+        <button type="submit" id="button_back" class="button">WRÓĆ DO LOGOWANIA</button><br>
+    </form>
 </body>
 </html>
