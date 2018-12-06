@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -39,11 +40,14 @@ public class DayService {
     }
 
     public List<DayDto> getAllDaysByCycleIdSortedByDayNumber(Long cycleId){
-        CycleDto cycleDto = cycleService.getDtoById(cycleId);
-
-        List<DayDto> dayDtos = new ArrayList<>(cycleDto.getDaysDto());
-        dayDtos.sort(Comparator.comparingInt(DayDto::getDayNumber).reversed());
-
+        List<DayDto> dayDtos;
+        try{
+            CycleDto cycleDto = cycleService.getDtoById(cycleId);
+            dayDtos = new ArrayList<>(cycleDto.getDaysDto());
+            dayDtos.sort(Comparator.comparingInt(DayDto::getDayNumber).reversed());
+        }catch (EntityNotFoundException e){
+            dayDtos = Collections.emptyList();
+        }
         return dayDtos;
     }
 

@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.persistence.EntityNotFoundException;
 import java.security.Principal;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,16 +29,16 @@ public class HomeController {
     public String home(Principal principal, Model model){
         ChickenHouseDto chickenHouseDto = new ChickenHouseDto();
 
-        String email = principal.getName();
-        Optional<UserDto> userByEmail = userService.findUserByEmail(email);
+        List<ChickenHouseDto> chickenHouseDtos;
+        try{
+            String email = principal.getName();
+            UserDto userByEmail = userService.findUserByEmail(email);
+            model.addAttribute("greeting", "Cześć " + userByEmail.getName());
+            chickenHouseDtos = chickenHouseService.findChickenHousesDtoByUserEmail(email);
 
-        UserDto userDto;
-        if (userByEmail.isPresent()){
-            userDto = userByEmail.get();
-            model.addAttribute("greeting", "Cześć " + userDto.getName());
+        }catch (EntityNotFoundException e){
+            return "login";
         }
-
-        List<ChickenHouseDto> chickenHouseDtos = chickenHouseService.findChickenHousesDtoByUserEmail(email);
 
         model.addAttribute("chickenHouseDtos", chickenHouseDtos);
         model.addAttribute("chickenHouseDto", chickenHouseDto);

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
@@ -29,13 +30,9 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public Optional<UserDto> findUserByEmail(String email) {
+    public UserDto findUserByEmail(String email) {
         Optional<User> userByEmail = userRepository.findByEmail(email);
-        UserDto userDto = null;
-        if (userByEmail.isPresent()) {
-            userDto = userMapper.mapTo(userByEmail.get());
-        }
-        return Optional.ofNullable(userDto);
+        return userByEmail.map(userMapper::mapTo).orElseThrow(EntityNotFoundException::new);
     }
 
     public void saveUser(UserDto userDto) {

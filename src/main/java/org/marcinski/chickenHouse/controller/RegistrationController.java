@@ -7,10 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 public class RegistrationController {
@@ -30,18 +29,18 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String createNewUser(@Valid UserDto userDto, BindingResult bindingResult, Model model){
-        ModelAndView modelAndView = new ModelAndView();
-        Optional<UserDto> userInDb = userService.findUserByEmail(userDto.getEmail());
 
-        if (!userInDb.equals(Optional.empty())){
-            bindingResult.rejectValue("email", "error.user",
-                    "Istnieje już użytkownik o podanym emailu!");
-        }if (bindingResult.hasErrors()){
-          return "registration";
-        } else {
-            userService.saveUser(userDto);
-            model.addAttribute("successMessage", "Użytkownik został zarejestrowany");
-            model.addAttribute("userDto", new UserDto());
+        if (!bindingResult.hasErrors()) {
+            try {
+                userService.findUserByEmail(userDto.getEmail());
+                bindingResult.rejectValue("email", "error.user",
+                        "Istnieje już użytkownik o podanym emailu!");
+            } catch (EntityNotFoundException e) {
+                userService.saveUser(userDto);
+                model.addAttribute("successMessage", "Użytkownik został zarejestrowany");
+                model.addAttribute("userDto", new UserDto());
+                return "registration";
+            }
         }
         return "registration";
     }

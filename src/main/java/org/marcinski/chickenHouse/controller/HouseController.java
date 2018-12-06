@@ -10,13 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/home")
@@ -34,32 +33,38 @@ public class HouseController {
     }
 
     @GetMapping("/{id}")
-    public ModelAndView house(@PathVariable Long id, Principal principal){
-        ModelAndView modelAndView = new ModelAndView();
+    public String house(@PathVariable Long id, Principal principal, Model model){
         CycleDto cycleDto = new CycleDto();
         ChickenHouseDto chickenHouseDto = new ChickenHouseDto();
         LocalDate now = LocalDate.now();
         cycleDto.setStartDay(now);
 
-        ChickenHouseDto chickenHouseById = chickenHouseService.getChickenHouseById(id);
-            String userEmailFromHouse = chickenHouseById.getUserDto().getEmail();
-            String userEmailFromPrincipal = principal.getName();
-
-        if (userEmailFromHouse.equals(userEmailFromPrincipal)) {
-            chickenHouseDto.setName(chickenHouseById.getName());
-            chickenHouseDto.setAreaOfHouse(chickenHouseById.getAreaOfHouse());
-            List<CycleDto> cycleDtos = cycleService.getAllByChickenHouseIdOrderedByStartDayDesc(id);
-
-            modelAndView.addObject("house", chickenHouseById);
-            modelAndView.addObject("date", now);
-            modelAndView.addObject("cycleDto", cycleDto);
-            modelAndView.addObject("cyclesDto", cycleDtos);
-            modelAndView.addObject("actualChickenHouse", chickenHouseDto);
-            modelAndView.setViewName("house");
+        ChickenHouseDto chickenHouseById;
+        try{
+            chickenHouseById = chickenHouseService.getChickenHouseById(id);
+        }catch (EntityNotFoundException e){
+            return "redirect:/home";
         }
-        modelAndView.addObject("chickenHouseDto", chickenHouseDto);
 
-        return modelAndView;
+        String userEmailFromHouse = chickenHouseById.getUserDto().getEmail();
+        String userEmailFromPrincipal = principal.getName();
+
+        if (!userEmailFromHouse.equals(userEmailFromPrincipal)){
+            return "redirect:/home";
+        }
+
+        chickenHouseDto.setName(chickenHouseById.getName());
+        chickenHouseDto.setAreaOfHouse(chickenHouseById.getAreaOfHouse());
+        List<CycleDto> cycleDtos = cycleService.getAllByChickenHouseIdOrderedByStartDayDesc(id);
+
+        model.addAttribute("house", chickenHouseById);
+        model.addAttribute("date", now);
+        model.addAttribute("cycleDto", cycleDto);
+        model.addAttribute("cyclesDto", cycleDtos);
+        model.addAttribute("actualChickenHouse", chickenHouseDto);
+        model.addAttribute("chickenHouseDto", chickenHouseDto);
+
+        return "house";
     }
 
     @PostMapping("/new_house")
@@ -69,29 +74,35 @@ public class HouseController {
                                     Model model){
         String email = principal.getName();
 
-        Optional<UserDto> userByEmail = userService.findUserByEmail(email);
         if (bindingResult.hasErrors()){
             return "redirect:/home";
         }
-        else {
-            if (userByEmail.isPresent()) {
-                chickenHouseDto.setUserDto(userByEmail.get());
-                chickenHouseService.saveChickenHouse(chickenHouseDto);
-                model.addAttribute("chickenHouseDto", new ChickenHouseDto());
-            }
+        try {
+            UserDto userByEmail = userService.findUserByEmail(email);
+            chickenHouseDto.setUserDto(userByEmail);
+            chickenHouseService.saveChickenHouse(chickenHouseDto);
+            model.addAttribute("chickenHouseDto", new ChickenHouseDto());
+            return "redirect:/home";
+        }catch (EntityNotFoundException e){
+
+            return "redirect:/home";
         }
-        return "redirect:/home";
     }
 
     @PutMapping("/{id}")
     public String editHouse(@Valid ChickenHouseDto chickenHouseDto,
-                                  @PathVariable Long id){
-        ChickenHouseDto chickenHouseById = chickenHouseService.getChickenHouseById(id);
-
-        chickenHouseById.setName(chickenHouseDto.getName());
-        chickenHouseById.setAreaOfHouse(chickenHouseDto.getAreaOfHouse());
-        chickenHouseService.saveChickenHouse(chickenHouseById);
-
+                            @PathVariable Long id,
+                            BindingResult bindingResult){
+        if (!bindingResult.hasErrors()){
+            try {
+                ChickenHouseDto chickenHouseById = chickenHouseService.getChickenHouseById(id);
+                chickenHouseById.setName(chickenHouseDto.getName());
+                chickenHouseById.setAreaOfHouse(chickenHouseDto.getAreaOfHouse());
+                chickenHouseService.saveChickenHouse(chickenHouseById);
+            }catch (EntityNotFoundException e){
+                return "redirect/home";
+            }
+        }
         return "redirect:/home/" + chickenHouseDto.getId();
     }
 
