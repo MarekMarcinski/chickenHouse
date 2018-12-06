@@ -1,5 +1,6 @@
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: black;
 }
 
 #logo{
@@ -181,3 +182,22 @@ body{
 	margin-left: 43.4%;
 	border-radius: 10px;
 }
+
+.button_logout{
+	position: absolute;
+    text-align: center;
+    display:block;
+    width: 120px;
+    height: 40px;
+	margin-left: 5%;
+	margin-top: 30px;
+	border-radius: 15px;
+	opacity: 1;
+	background-color: darkorange;
+	font-weight: 900;	
+}
+	.button_logout:hover{
+		opacity: 0.7;
+	}
+
+
