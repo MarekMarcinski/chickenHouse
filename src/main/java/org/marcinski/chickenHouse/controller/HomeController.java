@@ -33,7 +33,7 @@ public class HomeController {
         UserDto userDto;
         if (userByEmail.isPresent()){
             userDto = userByEmail.get();
-            model.addAttribute("greeting", "Witaj " + userDto.getName());
+            model.addAttribute("greeting", "" + userDto.getName() + ", to Twoje kurniki");
         }
 
         List<ChickenHouseDto> chickenHouseDtos = chickenHouseService.findChickenHousesDtoByUserEmail(email);

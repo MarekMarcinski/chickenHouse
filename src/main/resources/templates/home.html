@@ -1,66 +1,43 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Lista kurników</title>
-
+    <title>Chicken House - Kurniki</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <th:block th:include="partials/scripts_css" />
 </head>
 
 <body>
+	<img th:src="@{/images/logo.png}" id="logo_all" alt="LOGO">
+<p id="text_witaj" th:utext="${greeting}"></p><br><br>
 
-<div class="container">
-
-    <th:block th:include="partials/navbar" />
-
-    <h1 th:utext="${greeting}"></h1>
-
-    <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="newDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Utwórz nowy kurnik
-        </a>
-        <form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{home/new_house}"
-              th:object="${chickenHouseDto}" method="post">
+<div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="newDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utwórz nowy kurnik</a>
+        <form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{home/new_house}" th:object="${chickenHouseDto}" method="post">
             <div class="form-group">
                 <label for="chickenHouseName">Nazwa kurnika</label>
                 <input type="text"  th:field="*{name}" class="form-control" id="chickenHouseName">
             </div>
             <div class="form-group">
-                <label for="chickenHouseArea">Pole powierzchni</label>
+                <label for="chickenHouseArea">Pole kurnika w m<sup>2</sup></label>
                 <input type="number" th:field="*{areaOfHouse}" class="form-control" id="chickenHouseArea">
             </div>
-
-            <button type="submit" class="btn btn-primary">Utwórz</button>
+			<button type="submit" class="button" id="button_utworz_kurnik">Utwórz</button>
         </form>
-    </div>
-
-    <br>
-
-    <div th:if="${chickenHouseDtos.size()!=0}" class="row col-md-4">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">Nazwa</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="house : ${chickenHouseDtos}">
-                    <th scope="row">
-                        <a th:href="@{'/home/' + ${house.getId()}}" th:text="${house.getName()}"></a>
-                    </th>
-                </tr>
-                </tbody>
-            </table>
-
-    </div>
-
-    <div th:if="${chickenHouseDtos.size()==0}">
-        <h5>
-            Nie posiadasz jeszcze żadnych kurników w bazie.
-        </h5>
-    </div>
 </div>
-
+	<div class="container">
+		<div th:if="${chickenHouseDtos.size()!=0}" id="lista_kurnikow">
+			<table class="table table-bordered" id="table-bordered">
+				<thead>
+					<tr><th scope="col">Twoje kurniki:</th><br></tr>
+				</thead>
+				<tbody>
+					<tr th:each="house : ${chickenHouseDtos}"><th scope="row"><a th:href="@{'/home/' + ${house.getId()}}" th:text="${house.getName()}"></a></th></tr>
+				</tbody>
+			</table>
+	  	</div>
+	</div>
+<p id="brak_kurnikow" th:if="${chickenHouseDtos.size()==0}">Nie posiadasz jeszcze żadnych kurników.</p>
 </body>
 </html>
