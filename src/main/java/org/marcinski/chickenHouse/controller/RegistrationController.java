@@ -35,10 +35,10 @@ public class RegistrationController {
 
         if (!userInDb.equals(Optional.empty())){
             bindingResult.rejectValue("email", "error.user",
-                    "Istnieje już użytkownik o podanym emailu!");
+                    "Podany e-mail już istnieje!");
         }else {
             userService.saveUser(userDto);
-            model.addAttribute("successMessage", "Użytkownik został zarejestrowany");
+            model.addAttribute("successMessage", "Zarejestrowano!");
             model.addAttribute("userDto", new UserDto());
         }
         return "registration";

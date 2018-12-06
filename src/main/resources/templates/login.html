@@ -3,13 +3,13 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>LOGOWANIE</title>
+    <title>Chicken House - Logowanie</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <th:block th:include="partials/scripts_css" />
 </head>
 
 <body>
-	<img th:src="@{/images/logo.png}" id="logo"><br><br><br>
+	<img th:src="@{/images/logo.png}" id="logo" alt="LOGO"><br><br><br>
     <form th:action="@{/login}" method="post">
 		<input type="text" class="login" id="email" name="email" placeholder="E-MAIL"><br>
 		<input type="password" class="login" id="password" name="password" placeholder="HASŁO"><br>

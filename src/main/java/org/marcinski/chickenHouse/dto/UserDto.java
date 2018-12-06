@@ -12,15 +12,15 @@ public class UserDto {
 
     private Long id;
 
-    @Email(message = "Wpisz email w poprawnej formie!")
-    @NotEmpty(message = "Wpisz email!")
+    @Email(message = "Wpisz e-mail poprawnie!")
+    @NotEmpty(message = "Wpisz e-mail!")
     private String email;
 
     @NotEmpty(message = "Wpisz hasło!")
-    @Length(min = 5, message = "Hasło musi mieć przynajmniej 5 znaków!")
+    @Length(min = 5, message = "Hasło musi zawierać przynajmniej 5 znaków!")
     private String password;
 
-    @NotEmpty(message ="Wpisz swoje imię!")
+    @NotEmpty(message ="Wpisz nazwę użytkownika!")
     private String name;
 
     private boolean active;

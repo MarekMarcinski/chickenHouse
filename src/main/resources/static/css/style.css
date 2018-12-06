@@ -7,6 +7,12 @@ body{
     left:20%
 }
 
+#logo_all{
+	position: relative;
+	width: 20%;
+	height: 20%;
+}
+
 .login{
     position: relative;
     text-align: center;
@@ -63,3 +69,77 @@ body{
 	#button_register:hover{
 		opacity: 1;
 	}
+
+#button_register_2{
+	position: relative;
+    text-align: center;
+    display:block;
+    width: 300px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 15px;
+	opacity: 0.8;
+	background-color: #007bff;
+	font-weight: 900;
+	color: white;
+}
+	#button_register_2:hover{
+		opacity: 1;
+	}
+
+.validation-message{
+	color: red;
+}
+	#v-m_pass{
+		margin-left: 38%;
+	}
+	#v-m_email{
+		margin-left: 43%;
+	}
+	#v-m_name{
+		margin-left: 43%;
+	}
+
+#success_message_1{
+	position: relative;
+	color: green;
+	font-weight: 900;
+	margin-left: auto;
+    margin-right: auto;
+	width: 145px;
+}
+
+#button_back{
+	position: relative;
+    text-align: center;
+    display:block;
+    width: 150px;
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 15px;
+	opacity: 0.6;
+	background-color: yellow;
+	font-weight: 900;
+}
+	#button_back:hover{
+		opacity: 1;
+	}
+
+#rejestracja{
+	font-size: 25px;
+	font-weight: 900;
+	text-align: center;
+	color:black;
+}
+
+
+
+
+
+
+
+
+
+

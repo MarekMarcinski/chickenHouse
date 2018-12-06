@@ -1,49 +1,26 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+	
 <head>
-    <title>Rejestracja</title>
-
+    <title>Chicken House - Rejestracja</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <th:block th:include="partials/scripts_css" />
 </head>
+	
 <body>
-
-<div class="container">
-    <th:block th:include="partials/navbar"/>
-
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3" style="margin:auto">
-            <form autocomplete="off" th:action="@{/registration}"
-                  th:object="${userDto}" method="post" class="form-horizontal"
-                  role="form">
-                <h2>Formularz rejestracyjny</h2>
-
-                <input type="text" th:field="*{name}" placeholder="Imie"
-                       class="form-control" />
-                <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-                       class="validation-message"></label>
-                <br>
-
-                <input type="text" th:field="*{email}" placeholder="Email"
-                       class="form-control" />
-                <label
-                        th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                        class="validation-message"></label>
-                <br>
-
-                <input type="password" th:field="*{password}"
-                       placeholder="Hasło" class="form-control" />
-                <label
-                        th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-                        class="validation-message"></label>
-                <br>
-
-                <button type="submit" class="btn btn-primary btn-block">Zarejestruj się</button>
-
-                <span th:utext="${successMessage}"></span>
-            </form>
-        </div>
-    </div>
-</div>
+	<img th:src="@{/images/logo.png}" id="logo_all" alt="LOGO">
+	<form autocomplete="off" th:action="@{/registration}" th:object="${userDto}" method="post" class="form-horizontal" role="form">
+		<p id="rejestracja">REJESTRACJA</p>
+		<input type="text" th:field="*{name}" placeholder="Nazwa Użytkownika" class="login" />
+        <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" id="v-m_name" class="validation-message"></label><br>
+        <input type="text" th:field="*{email}" placeholder="E-MAIL" class="login" />
+        <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" id="v-m_email" class="validation-message"></label><br>
+        <input type="password" th:field="*{password}" placeholder="HASŁO" class="login" />
+        <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" id="v-m_pass" class="validation-message"></label><br>
+		<button type="submit" id="button_register_2" class="button">ZAREJESTRUJ SIĘ</button><br>
+		<p id="success_message_1" th:utext="${successMessage}"></p>
+	</form>
+	<button onclick="location.href='login.html'" type="submit" id="button_back" class="button">WRÓĆ DO LOGOWANIA</button><br>
 </body>
 </html>
