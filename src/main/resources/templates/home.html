@@ -13,7 +13,7 @@
 <p id="text_witaj" th:utext="${greeting}"></p><br><br>
 
 <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="newDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utwórz nowy kurnik</a>
+        <a class="btn btn-secondary dropdown-toggle" role="button" id="newDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utwórz nowy kurnik</a>
         <form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{home/new_house}" th:object="${chickenHouseDto}" method="post">
             <div class="form-group">
                 <label for="chickenHouseName">Nazwa kurnika</label>
