@@ -2,6 +2,8 @@ package org.marcinski.chickenHouse.dto;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class ForageDto {
 
@@ -9,4 +11,5 @@ public class ForageDto {
     private String name;
     private int quantity;
     private double price;
+    private LocalDate deliveryDate;
 }
