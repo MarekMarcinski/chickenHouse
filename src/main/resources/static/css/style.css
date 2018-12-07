@@ -108,11 +108,11 @@ body{
 
 #success_message_registration{
 	position: relative;
-	color: green;
+	color: red;
 	font-weight: 900;
 	margin-left: auto;
     margin-right: auto;
-	width: 145px;
+	width: 250px;
 }
 
 #button_back_registration{
@@ -202,7 +202,7 @@ body{
 	}
 
 /*house*/
-.editHouseDropdown{
+#editHouseDropdown,#deleteDropdown,#dropdownMenuLink{
 	display: block;
 	position: relative;
 	width: 250px;
@@ -215,6 +215,28 @@ body{
 	margin-right: auto;
 	border-radius: 10px;	
 }
+	#editHouseDropdown:hover,#deleteDropdown:hover,#dropdownMenuLink:hover{
+		opacity: 0.8;
+	}
+
+/*cycle*/
+#forageDropdown,#medicineDropdown,#dayDropdown{
+	display: block;
+	position: relative;
+	width: 120px;
+    height: 30px;
+	opacity: 1;
+	background-color: #28AF0F;
+	color: white;
+	font-weight: 900;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+	font-size: 10px
+}
+	#forageDropdown:hover,#medicineDropdown:hover,#dayDropdown:hover{
+		opacity: 0.8;
+	}
 
 /*house, cycle*/
 .newDropdown_house{
@@ -323,6 +345,23 @@ body{
 }
 	#delete_dropdown_cycle:hover{
 		opacity: 0.7;
+	}
+
+#button_nowy_cycle{
+	display: block;
+	position: relative;
+	width: 250px;
+    height: 40px;
+	opacity: 1;
+	background-color: #0755AE;
+	color: white;
+	font-weight: 900;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+}	
+	#button_nowy_cycle:hover{
+		opacity: 0.8;
 	}
 
 
