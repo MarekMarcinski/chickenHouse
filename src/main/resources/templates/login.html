@@ -3,38 +3,20 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Strona logowania</title>
-
+    <title>Chicken House - Logowanie</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <th:block th:include="partials/scripts_css" />
 </head>
 
 <body>
-
-<div class="container">
-    <th:block th:include="partials/navbar"/>
-
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3" style="margin: auto">
-            <form th:action="@{/login}" method="POST" class="form-horizontal">
-                <h3 class="form-signin-heading" th:text="Witamy"></h3>
-
-                <input type="text" id="email" name="email"  th:placeholder="Email"
-                       class="form-control" /> <br>
-                <input type="password"  th:placeholder="Hasło"
-                       id="password" name="password" class="form-control" /> <br>
-
-                <div align="center" th:if="${param.error}">
-                    <p style="font-size: 20; color: #FF1C19;">Błędny email lub hasło, spróbuj ponownie</p>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-xs-2" for="remember">Zapamiętać?</label>
-                    <input id="remember" type="checkbox" name="remember-me" value="true"/>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Zaloguj"></button>
-            </form>
-        </div>
-    </div>
-</div>
-
+	<img th:src="@{/images/logo.png}" id="logo_login" alt="LOGO"><br><br><br>
+    <form th:action="@{/login}" method="post">
+		<input type="text" class="login" id="email" name="email" placeholder="E-MAIL"><br>
+		<input type="password" class="login" id="password" name="password" placeholder="HASŁO"><br>
+        <div id="remember_button_login"><label><input type="checkbox" id="remember" name="remember-me" value="true" checked>Zapamiętaj Mnie</label></div><br>
+		<button type="submit" id="button_login_login" class="button" name="submit" value="login" th:text="ZALOGUJ"></button><br>
+        <div id="error_login_login" th:if="${param.error}">Błędny email lub hasło, spróbuj ponownie</div><br>
+    </form>
+    <form th:action="@{/registration}" method="get"><button type="submit" id="button_register_login" class="button" th:text="REJESTRACJA"></button></form><br>
 </body>
 </html>

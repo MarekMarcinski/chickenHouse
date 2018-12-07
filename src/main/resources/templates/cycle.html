@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title th:text="'Rzut z dnia: ' + ${cycle.startDay}"></title>
-
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <th:block th:include="partials/scripts_css" />
 </head>
-
+	
 <body>
-
+	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
+	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_cycle" class="button_logout">WYLOGUJ</button></form><br><br><br>
+	<form th:action="@{/home}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form>
 <div class="container">
 
     <th:block th:include="partials/navbar"/>
@@ -29,7 +31,6 @@
             <div>
                 <ul th:each="forage : ${forages}">
                    <li th:text="${forage.getName()}"></li>
-                   <li th:text="${forage.getDeliveryDate()}"></li>
                 </ul>
             </div>
         </div>

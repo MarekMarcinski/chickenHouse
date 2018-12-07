@@ -1,0 +1,300 @@
+/*all*/
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: black;
+}
+
+#logo_login{
+    position: relative;
+    left:20%
+}
+
+/*registration,home,house,cycle*/
+.logo_all{
+	position: relative;
+	width: 20%;
+	height: 20%;
+}
+
+/*login*/
+.login{
+    position: relative;
+    text-align: center;
+    display:block;
+    width: 300px;
+    height: 30px;
+    border: 3px solid gray;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 15px;
+}
+
+#remember_button_login{
+    position: relative;
+    text-align: center;
+}
+
+#error_login_login{
+	position: relative;
+	color: red;
+	text-align: center;
+}
+
+#button_login_login{
+	position: relative;
+    text-align: center;
+    display:block;
+    width: 160px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 5px;
+	opacity: 0.6;
+	background-color: yellow;
+	font-weight: 900;
+}
+	#button_login_login:hover{
+		opacity: 1;
+	}
+
+#button_register_login{
+	position: relative;
+    text-align: center;
+    display:block;
+    width: 160px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 5px;
+	opacity: 0.6;
+	background-color: yellow;
+	font-weight: 900;
+}
+	#button_register_login:hover{
+		opacity: 1;
+	}
+
+#button_register_registration{
+	position: relative;
+    text-align: center;
+    display:block;
+    width: 300px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 15px;
+	opacity: 0.8;
+	background-color: #007bff;
+	font-weight: 900;
+	color: white;
+}
+	#button_register_registration:hover{
+		opacity: 1;
+	}
+
+/*registration*/
+.validation-message{
+	color: red;
+}
+	#v-m_pass{
+		margin-left: 38%;
+	}
+	#v-m_email{
+		margin-left: 43%;
+	}
+	#v-m_name{
+		margin-left: 43%;
+	}
+
+#success_message_registration{
+	position: relative;
+	color: green;
+	font-weight: 900;
+	margin-left: auto;
+    margin-right: auto;
+	width: 145px;
+}
+
+#button_back_registration{
+	position: relative;
+    text-align: center;
+    display:block;
+    width: 150px;
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 15px;
+	opacity: 0.6;
+	background-color: yellow;
+	font-weight: 900;
+}
+	#button_back_registration:hover{
+		opacity: 1;
+	}
+
+#register_registration{
+	font-size: 25px;
+	font-weight: 900;
+	text-align: center;
+	color:black;
+}
+
+#brak_kurnikow_home{
+	font-size: 25px;
+	font-weight: 900;
+	text-align: center;
+	color: black;
+}
+
+#button_utworz_kurnik_home{
+	position: relative;
+	width: 225px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 10px;
+	opacity: 0.8;
+	background-color: blue;
+	color: white;
+	font-weight: 900;
+}
+	#button_utworz_kurnik_home:hover{
+		opacity: 1;
+	}
+
+#text_witaj_home{
+	font-size: 25px;
+	font-weight: 900;
+	text-align: center;
+	color:black;
+}
+
+#lista_kurnikow_home{
+	text-align: center;
+}
+
+.container_home{
+	width: 200px;
+	height: 70px;
+}
+
+/*home*/
+#table-bordered{
+	border: 2px solid gray;
+}
+
+/*home, house, cycle*/
+.button_logout{
+	position: absolute;
+    text-align: center;
+    display:block;
+    width: 120px;
+    height: 40px;
+	margin-left: 5%;
+	margin-top: 30px;
+	border-radius: 15px;
+	opacity: 1;
+	background-color: darkorange;
+	font-weight: 900;	
+}
+	.button_logout:hover{
+		opacity: 0.7;
+	}
+
+/*house*/
+.editHouseDropdown{
+	display: block;
+	position: relative;
+	width: 250px;
+    height: 40px;
+	opacity: 1;
+	background-color: #28AF0F;
+	color: white;
+	font-weight: 900;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;	
+}
+
+.newDropdown_house{
+	display:block;
+	opacity: 1;
+	background-color: blue;
+	color: white;
+	font-weight: 900;
+	border-radius: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+}
+	.newDropdown_house:hover{
+		opacity: 0.8;
+	}
+
+/*house*/
+.row{
+	display: inline-flex;
+}
+
+#srodek_buttony_house{
+	margin-left: 25%;
+	margin-right: 25%;
+}
+
+#button_kurnik_home{
+	display: block;
+	position: relative;
+	width: 250px;
+    height: 40px;
+	opacity: 1;
+	background-color: #28AF0F;
+	color: white;
+	font-weight: 900;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+}	
+	#button_kurnik_home:hover{
+		opacity: 0.8;
+	}
+
+#kurnik_powierzchnia_house{
+	font-size: 25px;
+	font-weight: 900;
+	text-align: center;
+	color:black;
+}
+
+#nie_ma_rzutow_house{
+	font-size: 25px;
+	font-weight: 900;
+	text-align: center;
+	color:black;
+}
+
+/*house, cycle*/
+.button_back{ 
+	position: absolute;
+    text-align: center;
+    display:block;
+    width: 120px;
+    height: 40px;
+	margin-left: 5%;
+	margin-top: 45px;
+	border-radius: 15px;
+	opacity: 1;
+	background-color: yellowgreen;
+	font-weight: 900;	
+}
+	.button_back:hover{
+		opacity: 0.7;
+	}
+
+
+
+
+
+
+
+
+/*koniec*/
