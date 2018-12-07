@@ -13,10 +13,6 @@
 	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_cycle" class="button_logout">WYLOGUJ</button></form><br><br><br>
 	<form th:action="@{'/home/' + ${chickenHouseId}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form>
 <div class="container">
-
-    <th:block th:include="partials/navbar"/>
-
-    <br>
     <div class="row">
         <div class="col-md-4">
             <p th:text="'Dzień wstawienia: ' + ${cycle.getStartDay()}"></p>
