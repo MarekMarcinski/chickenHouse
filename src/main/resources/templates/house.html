@@ -11,7 +11,7 @@
 <body>
 	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_house" class="button_logout">WYLOGUJ</button></form><br><br><br>
-	<button type="submit" id="button_back_house" class="button_back">WRÓĆ</button>
+	<form th:action="@{/home}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form>
 	<div id="kurnik_powierzchnia_house" th:text="'Nazwa kurnika: ' + ${house.getName()} + ', pole powierzchni: ' + ${house.getAreaOfHouse()} + 'm²'"></div><br><br>
 	<div id="srodek_buttony_house"><div class="row">
         <div class="col-md-4 dropdown">
