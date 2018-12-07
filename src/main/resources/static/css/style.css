@@ -169,18 +169,13 @@ body{
 	text-align: center;
 }
 
-.container{
+.container_home{
 	width: 200px;
 	height: 70px;
 }
 
 #table-bordered{
 	border: 2px solid gray;
-}
-
-#newDropdown{
-	margin-left: 43.4%;
-	border-radius: 10px;
 }
 
 .button_logout{
@@ -215,3 +210,72 @@ body{
 	#button_utworz_rzut:hover{
 		opacity: 1;
 	}
+
+.editHouseDropdown{
+	display: block;
+	position: relative;
+	width: 250px;
+    height: 40px;
+	opacity: 1;
+	background-color: #28AF0F;
+	color: white;
+	font-weight: 900;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;	
+}
+
+.newDropdown{
+	display:block;
+	opacity: 1;
+	background-color: blue;
+	color: white;
+	font-weight: 900;
+	border-radius: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+}
+	.newDropdown:hover{
+		opacity: 0.8;
+	}
+
+.row {
+	display: inline-flex;
+}
+
+#srodek_buttony{
+	margin-left: 25%;
+	margin-right: 25%;
+}
+
+#button_kurnik{
+	display: block;
+	position: relative;
+	width: 250px;
+    height: 40px;
+	opacity: 1;
+	background-color: #28AF0F;
+	color: white;
+	font-weight: 900;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+}	
+	#button_kurnik:hover{
+		opacity: 0.8;
+	}
+
+#kurnik_powierzchnia{
+	font-size: 25px;
+	font-weight: 900;
+	text-align: center;
+	color:black;
+}
+
+#nie_ma_rzutow{
+	font-size: 25px;
+	font-weight: 900;
+	text-align: center;
+	color:black;
+}
