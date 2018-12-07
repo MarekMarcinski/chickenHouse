@@ -216,6 +216,7 @@ body{
 	border-radius: 10px;	
 }
 
+/*house, cycle*/
 .newDropdown_house{
 	display:block;
 	opacity: 1;
@@ -290,8 +291,39 @@ body{
 		opacity: 0.7;
 	}
 
+#table_cycle{
+	border: 2px solid gray;
+	text-align: center;
+}
 
+.table_cycle_right{
+	border-right: 2px solid gray;
+	text-align: center;
+}
 
+.edit_cycle{
+	display: block;
+	position: relative;
+	width: 200px;
+    height: 40px;
+	opacity: 1;
+	background-color: #28AF0F;
+	color: white;
+	font-weight: 900;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;	
+}
+	.edit_cycle:hover{
+		opacity: 0.7;
+	}
+
+#delete_dropdown_cycle{
+	background-color: red;
+}
+	#delete_dropdown_cycle:hover{
+		opacity: 0.7;
+	}
 
 
 
