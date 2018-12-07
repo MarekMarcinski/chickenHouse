@@ -6,12 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/registration")
 public class RegistrationController {
 
     private UserService userService;
@@ -20,14 +23,14 @@ public class RegistrationController {
         this.userService = userService;
     }
 
-    @GetMapping("/registration")
+    @GetMapping
     public String registration(Model model){
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
         return "registration";
     }
 
-    @PostMapping("/registration")
+    @PostMapping
     public String createNewUser(@Valid UserDto userDto, BindingResult bindingResult, Model model){
         if(!userDto.samePassword()){
             model.addAttribute("message", "Hasła nie pasują do siebie");
@@ -47,5 +50,11 @@ public class RegistrationController {
             }
         }
         return "registration";
+    }
+
+    @GetMapping("/{encryptedMail}")
+    public String authorizeUser(@PathVariable String encryptedMail){
+        userService.authorizeUser(encryptedMail);
+        return "login";
     }
 }
