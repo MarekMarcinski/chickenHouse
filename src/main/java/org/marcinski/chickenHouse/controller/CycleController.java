@@ -71,6 +71,7 @@ public class CycleController {
         int actualNumberOfChicken = cycleDto.getNumberOfChickens();
 
         List<DayDto> dayDtos = dayService.getAllDaysByCycleIdSortedByDayNumber(id);
+        Long chickenHouseId = cycleDto.getChickenHouseDto().getId();
 
         int actualDayNumber = 1;
         if (dayDtos.size() > 0){
@@ -86,6 +87,7 @@ public class CycleController {
                 forages.add(dto.getForageDto());
             }
         }
+        model.addAttribute("chickenHouseId", chickenHouseId);
         model.addAttribute("cycle", cycleDto);
         model.addAttribute("dayDto", dayDto);
         model.addAttribute("actualNumberOfChicken", actualNumberOfChicken);
