@@ -14,5 +14,6 @@ public interface UserMapper {
 
     @Mapping(source = "role", target = "roleDto")
     @Mapping(source = "chickenHouses", target = "chickenHouseDtos")
+    @Mapping(target = "confirmedPassword", ignore = true)
     UserDto mapTo(User user);
 }

@@ -20,6 +20,8 @@ public class UserDto {
     @Length(min = 5, message = "Hasło musi zawierać przynajmniej 5 znaków!")
     private String password;
 
+    private String confirmedPassword;
+
     @NotEmpty(message ="Wpisz nazwę użytkownika!")
     private String name;
 
@@ -28,4 +30,8 @@ public class UserDto {
     private RoleDto roleDto;
 
     private Set<ChickenHouseDto> chickenHouseDtos;
+
+    public boolean samePassword(){
+        return confirmedPassword.equals(password);
+    }
 }

@@ -18,8 +18,9 @@
         <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" id="v-m_email" class="validation-message"></label><br>
         <input type="password" th:field="*{password}" placeholder="HASŁO" class="login" />
         <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" id="v-m_pass" class="validation-message"></label><br>
+        <input type="password" th:field="*{confirmedPassword}" placeholder="POTWIERDŹ HASŁO" class="login" />
 		<button type="submit" id="button_register_registration" class="button">ZAREJESTRUJ SIĘ</button><br>
-		<p id="success_message_registration" th:utext="${successMessage}"></p>
+		<p id="success_message_registration" th:utext="${message}"></p>
 	</form>
     <form th:action="@{/login}" method="get">
         <button type="submit" id="button_back_registration" class="button">WRÓĆ DO LOGOWANIA</button><br>

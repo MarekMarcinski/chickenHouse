@@ -29,6 +29,10 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String createNewUser(@Valid UserDto userDto, BindingResult bindingResult, Model model){
+        if(!userDto.samePassword()){
+            model.addAttribute("message", "Hasła nie pasują do siebie");
+            return "registration";
+        }
 
         if (!bindingResult.hasErrors()) {
             try {
@@ -37,7 +41,7 @@ public class RegistrationController {
                         "Istnieje już użytkownik o podanym emailu!");
             } catch (EntityNotFoundException e) {
                 userService.saveUser(userDto);
-                model.addAttribute("successMessage", "Użytkownik został zarejestrowany");
+                model.addAttribute("message", "Użytkownik został zarejestrowany");
                 model.addAttribute("userDto", new UserDto());
                 return "registration";
             }
