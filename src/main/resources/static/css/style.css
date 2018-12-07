@@ -1,19 +1,22 @@
+/*all*/
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 	color: black;
 }
 
-#logo{
+#logo_login{
     position: relative;
     left:20%
 }
 
+/*registration,home,house,cycle*/
 .logo_all{
 	position: relative;
 	width: 20%;
 	height: 20%;
 }
 
+/*login*/
 .login{
     position: relative;
     text-align: center;
@@ -26,18 +29,18 @@ body{
 	border-radius: 15px;
 }
 
-#remember_button{
+#remember_button_login{
     position: relative;
     text-align: center;
 }
 
-#error_login{
+#error_login_login{
 	position: relative;
 	color: red;
 	text-align: center;
 }
 
-#button_login{
+#button_login_login{
 	position: relative;
     text-align: center;
     display:block;
@@ -50,11 +53,11 @@ body{
 	background-color: yellow;
 	font-weight: 900;
 }
-	#button_login:hover{
+	#button_login_login:hover{
 		opacity: 1;
 	}
 
-#button_register{
+#button_register_login{
 	position: relative;
     text-align: center;
     display:block;
@@ -67,11 +70,11 @@ body{
 	background-color: yellow;
 	font-weight: 900;
 }
-	#button_register:hover{
+	#button_register_login:hover{
 		opacity: 1;
 	}
 
-#button_register_2{
+#button_register_registration{
 	position: relative;
     text-align: center;
     display:block;
@@ -85,10 +88,11 @@ body{
 	font-weight: 900;
 	color: white;
 }
-	#button_register_2:hover{
+	#button_register_registration:hover{
 		opacity: 1;
 	}
 
+/*registration*/
 .validation-message{
 	color: red;
 }
@@ -102,7 +106,7 @@ body{
 		margin-left: 43%;
 	}
 
-#success_message_1{
+#success_message_registration{
 	position: relative;
 	color: green;
 	font-weight: 900;
@@ -111,7 +115,7 @@ body{
 	width: 145px;
 }
 
-#button_back{
+#button_back_registration{
 	position: relative;
     text-align: center;
     display:block;
@@ -124,25 +128,25 @@ body{
 	background-color: yellow;
 	font-weight: 900;
 }
-	#button_back:hover{
+	#button_back_registration:hover{
 		opacity: 1;
 	}
 
-#rejestracja{
+#register_registration{
 	font-size: 25px;
 	font-weight: 900;
 	text-align: center;
 	color:black;
 }
 
-#brak_kurnikow{
+#brak_kurnikow_home{
 	font-size: 25px;
 	font-weight: 900;
 	text-align: center;
 	color: black;
 }
 
-#button_utworz_kurnik{
+#button_utworz_kurnik_home{
 	position: relative;
 	width: 225px;
     height: 30px;
@@ -154,18 +158,18 @@ body{
 	color: white;
 	font-weight: 900;
 }
-	#button_utworz_kurnik:hover{
+	#button_utworz_kurnik_home:hover{
 		opacity: 1;
 	}
 
-#text_witaj{
+#text_witaj_home{
 	font-size: 25px;
 	font-weight: 900;
 	text-align: center;
 	color:black;
 }
 
-#lista_kurnikow{
+#lista_kurnikow_home{
 	text-align: center;
 }
 
@@ -174,10 +178,12 @@ body{
 	height: 70px;
 }
 
+/*home*/
 #table-bordered{
 	border: 2px solid gray;
 }
 
+/*home, house, cycle*/
 .button_logout{
 	position: absolute;
     text-align: center;
@@ -195,22 +201,7 @@ body{
 		opacity: 0.7;
 	}
 
-#button_utworz_rzut{
-	position: relative;
-	width: 225px;
-    height: 30px;
-    margin-left: auto;
-    margin-right: auto;
-	border-radius: 10px;
-	opacity: 0.8;
-	background-color: blue;
-	color: white;
-	font-weight: 900;
-}
-	#button_utworz_rzut:hover{
-		opacity: 1;
-	}
-
+/*house*/
 .editHouseDropdown{
 	display: block;
 	position: relative;
@@ -225,7 +216,7 @@ body{
 	border-radius: 10px;	
 }
 
-.newDropdown{
+.newDropdown_house{
 	display:block;
 	opacity: 1;
 	background-color: blue;
@@ -236,20 +227,21 @@ body{
 	margin-right: auto;
 	width: 200px;
 }
-	.newDropdown:hover{
+	.newDropdown_house:hover{
 		opacity: 0.8;
 	}
 
-.row {
+/*house*/
+.row{
 	display: inline-flex;
 }
 
-#srodek_buttony{
+#srodek_buttony_house{
 	margin-left: 25%;
 	margin-right: 25%;
 }
 
-#button_kurnik{
+#button_kurnik_home{
 	display: block;
 	position: relative;
 	width: 250px;
@@ -262,25 +254,26 @@ body{
 	margin-right: auto;
 	border-radius: 10px;
 }	
-	#button_kurnik:hover{
+	#button_kurnik_home:hover{
 		opacity: 0.8;
 	}
 
-#kurnik_powierzchnia{
+#kurnik_powierzchnia_house{
 	font-size: 25px;
 	font-weight: 900;
 	text-align: center;
 	color:black;
 }
 
-#nie_ma_rzutow{
+#nie_ma_rzutow_house{
 	font-size: 25px;
 	font-weight: 900;
 	text-align: center;
 	color:black;
 }
 
-#button_back_house{
+/*house, cycle*/
+.button_back{ 
 	position: absolute;
     text-align: center;
     display:block;
@@ -293,23 +286,15 @@ body{
 	background-color: yellowgreen;
 	font-weight: 900;	
 }
-	#button_back_house:hover{
+	.button_back:hover{
 		opacity: 0.7;
 	}
 
-#button_back_cycle{
-	position: absolute;
-    text-align: center;
-    display:block;
-    width: 120px;
-    height: 40px;
-	margin-left: 5%;
-	margin-top: 45px;
-	border-radius: 15px;
-	opacity: 1;
-	background-color: yellowgreen;
-	font-weight: 900;	
-}
-	#button_back_cycle:hover{
-		opacity: 0.7;
-	}
+
+
+
+
+
+
+
+/*koniec*/

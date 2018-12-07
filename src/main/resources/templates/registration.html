@@ -11,18 +11,18 @@
 <body>
 	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 	<form autocomplete="off" th:action="@{/registration}" th:object="${userDto}" method="post" class="form-horizontal" role="form">
-		<p id="rejestracja">REJESTRACJA</p>
+		<p id="register_registration">REJESTRACJA</p>
 		<input type="text" th:field="*{name}" placeholder="Nazwa Użytkownika" class="login" />
         <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}" id="v-m_name" class="validation-message"></label><br>
         <input type="text" th:field="*{email}" placeholder="E-MAIL" class="login" />
         <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" id="v-m_email" class="validation-message"></label><br>
         <input type="password" th:field="*{password}" placeholder="HASŁO" class="login" />
         <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" id="v-m_pass" class="validation-message"></label><br>
-		<button type="submit" id="button_register_2" class="button">ZAREJESTRUJ SIĘ</button><br>
-		<p id="success_message_1" th:utext="${successMessage}"></p>
+		<button type="submit" id="button_register_registration" class="button">ZAREJESTRUJ SIĘ</button><br>
+		<p id="success_message_registration" th:utext="${successMessage}"></p>
 	</form>
     <form th:action="@{/login}" method="get">
-        <button type="submit" id="button_back" class="button">WRÓĆ DO LOGOWANIA</button><br>
+        <button type="submit" id="button_back_registration" class="button">WRÓĆ DO LOGOWANIA</button><br>
     </form>
 </body>
 </html>

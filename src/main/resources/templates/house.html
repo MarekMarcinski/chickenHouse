@@ -11,9 +11,9 @@
 <body>
 	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_house" class="button_logout">WYLOGUJ</button></form><br><br><br>
-	<button type="submit" id="button_back_house">WRÓĆ</button>
-	<div id="kurnik_powierzchnia" th:text="'Nazwa kurnika: ' + ${house.getName()} + ', pole powierzchni: ' + ${house.getAreaOfHouse()} + 'm²'"></div><br><br>
-	<div id="srodek_buttony"><div class="row">
+	<button type="submit" id="button_back_house" class="button_back">WRÓĆ</button>
+	<div id="kurnik_powierzchnia_house" th:text="'Nazwa kurnika: ' + ${house.getName()} + ', pole powierzchni: ' + ${house.getAreaOfHouse()} + 'm²'"></div><br><br>
+	<div id="srodek_buttony_house"><div class="row">
         <div class="col-md-4 dropdown">
             <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Utwórz nowy rzut</a>
@@ -22,7 +22,7 @@
                 <div class="form-group"><label>Ilość kurczaków<input type="number" th:field="*{numberOfChickens}" class="form-control" id="numberOfChickens"></label></div>
                 <div class="form-group"><label>Hybryd<input type="text" th:field="*{hybrid}" class="form-control" id="hybrid"></label></div>
                 <div class="form-group"><label>Wylęgarnia<input type="text" th:field="*{hatchery}" class="form-control" id="hatchery"></label></div>
-				<button type="submit" class="btn btn-primary newDropdown">Utwórz</button>
+				<button type="submit" class="btn btn-primary newDropdown_house">Utwórz</button>
             </form>
         </div>
         <div class="col-md-4 dropdown">
@@ -31,14 +31,14 @@
             <form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{'/home/' + ${house.getId()}}" th:object="${chickenHouseDto}" th:method="put">
                 <div class="form-group"><label>Nazwa kurnika<input type="text" th:field="*{name}"  th:value="${house.getName()}" class="form-control" id="chickenHouseName"></label></div>
                 <div class="form-group"><label>Pole powierzchni<input type="number" th:field="*{areaOfHouse}" class="form-control" id="chickenHouseArea"></label></div>
-                <button type="submit" class="btn btn-primary newDropdown">Edytuj</button>
+                <button type="submit" class="btn btn-primary newDropdown_house">Edytuj</button>
             </form>
         </div>
         <div class="col-md-4 dropdown">
             <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="deleteDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Usuń kurnik</a>
             <form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{'/home/' + ${house.getId()}}" th:object="${chickenHouseDto}" th:method="delete">
-				<label>Potwierdź usunięcie</label><button type="submit" class="btn btn-primary newDropdown">Usuń</button>
+				<label>Potwierdź usunięcie</label><button type="submit" class="btn btn-primary newDropdown_house">Usuń</button>
             </form>
         </div>
 	</div></div><br><br>
@@ -60,6 +60,6 @@
             </tr></tbody>
         </table>
     </div>
-    <div th:if="${cyclesDto.size() == 0}"><p id="nie_ma_rzutow">Nie posiadasz jeszcze żadnych rzutów dla tego kurnika.</p></div>
+    <div th:if="${cyclesDto.size() == 0}"><p id="nie_ma_rzutow_house">Nie posiadasz jeszcze żadnych rzutów dla tego kurnika.</p></div>
 </body>
 </html>
