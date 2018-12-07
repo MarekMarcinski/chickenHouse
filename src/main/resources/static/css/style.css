@@ -279,3 +279,37 @@ body{
 	text-align: center;
 	color:black;
 }
+
+#button_back_house{
+	position: absolute;
+    text-align: center;
+    display:block;
+    width: 120px;
+    height: 40px;
+	margin-left: 5%;
+	margin-top: 45px;
+	border-radius: 15px;
+	opacity: 1;
+	background-color: yellowgreen;
+	font-weight: 900;	
+}
+	#button_back_house:hover{
+		opacity: 0.7;
+	}
+
+#button_back_cycle{
+	position: absolute;
+    text-align: center;
+    display:block;
+    width: 120px;
+    height: 40px;
+	margin-left: 5%;
+	margin-top: 45px;
+	border-radius: 15px;
+	opacity: 1;
+	background-color: yellowgreen;
+	font-weight: 900;	
+}
+	#button_back_cycle:hover{
+		opacity: 0.7;
+	}
