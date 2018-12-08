@@ -47,7 +47,7 @@ public class UserService {
             if (!userRepository.findByEmail(email).isPresent()) {
                 User user = createNewUser(userDto);
                 userRepository.save(user);
-                emailService.sendEmailWithAuthorizationLink(email);
+                emailService.sendEmailWithAuthorizationLink(email, user.getUuid());
             }
         }
     }
