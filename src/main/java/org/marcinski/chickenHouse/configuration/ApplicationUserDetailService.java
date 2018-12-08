@@ -34,6 +34,7 @@ public class ApplicationUserDetailService implements UserDetailsService {
         return User.builder()
                 .username(userDto.getEmail())
                 .password(userDto.getPassword())
+                .disabled(!userDto.isActive())
 
                 .roles(role)
                 .build();
