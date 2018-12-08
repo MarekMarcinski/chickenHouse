@@ -45,7 +45,7 @@
 			<td class="table_cycle_right"></td>
 			<td align="center"><div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}"><a class="btn btn-secondary dropdown-toggle col-md-12 edit_cycle" role="button" id="delete_dropdown_cycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Zakończ</a>
             <form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{'/home/cycle/complete/' + ${cycle.getId()}}" th:object="${cycle}" th:method="put">
-				<button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button>
+				<label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button>
             </form></div></td>
 		</tr>
 		<tr>
@@ -54,75 +54,26 @@
 			<td class="table_cycle_right"></td>
 			<td class="table_cycle_right"></td>
 		</tr>
-	</table> 
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
+	</table><br><br><br>
 <div class="container">
-
-    <br>
-
     <div>
         <form autocomplete="off" th:action="@{'/home/cycle/day/' + ${cycle.getId()}}"
                 th:object="${dayDto}" th:method="post" th:if="${!cycle.isCompleted()}">
             <div class="form-row">
-                <div class="form-group col-md-2">
-                    <label>Dzień tuczu</label>
-                    <input type="hidden" th:field="*{dayNumber}" th:value="${dayDto.getDayNumber()}">
-                    <p style="alignment: center" th:text="*{dayNumber}"></p>
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="naturalDowns">Upadki</label>
-                    <input type="number" th:field="*{naturalDowns}" class="form-control" id="naturalDowns" min="0">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="selectionDowns">Selekcja</label>
-                    <input type="number" th:field="*{selectionDowns}" class="form-control" id="selectionDowns" min="0">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="waterCounter">Stan licznika wody</label>
-                    <input type="number" th:field="*{waterCounter}" class="form-control" id="waterCounter" min="0">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="averageWeight">Średnia waga kurczaka</label>
-                    <input type="number" th:field="*{averageWeight}" class="form-control" id="averageWeight" min="0">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="comments">Uwagi</label>
-                    <textarea id="comments" th:field="*{comments}"></textarea>
-                </div>
+                <div class="form-group col-md-2"><label>Dzień tuczu</label><input type="hidden" th:field="*{dayNumber}" th:value="${dayDto.getDayNumber()}">
+					<p style="alignment: center" th:text="*{dayNumber}"></p></div>
+                <div class="form-group col-md-2"><label>Upadki<input type="number" th:field="*{naturalDowns}" class="form-control" id="naturalDowns" min="0"></label></div>
+                <div class="form-group col-md-2"><label>Selekcja<input type="number" th:field="*{selectionDowns}" class="form-control" id="selectionDowns" min="0"></label></div>
+                <div class="form-group col-md-2"><label>Stan licznika wody<input type="number" th:field="*{waterCounter}" class="form-control" id="waterCounter" min="0"></label></div>
+                <div class="form-group col-md-2"><label>Średnia waga<input type="number" th:field="*{averageWeight}" class="form-control" id="averageWeight" min="0"></label></div>
+                <div class="form-group col-md-2"><label>Uwagi<textarea rows="1" id="comments" th:field="*{comments}"></textarea></label></div>
             </div>
-            <button type="submit" class="btn btn-primary">Zatwierdź</button>
+            <button type="submit" class="btn btn-primary" id="button_nowy_cycle">ZATWIERDŹ</button>
         </form>
     </div>
-
-    <div>
+	<div><br><br><br>
         <table class="col-md-12 table table-striped">
-            <thead>
-            <tr>
+            <thead><tr>
                 <th scope="col">Dzień tuczu</th>
                 <th scope="col">Upadki</th>
                 <th scope="col">Selekcja</th>
@@ -135,98 +86,51 @@
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="d,i : ${days}">
-                <th scope="row" th:text="${d.getDayNumber()}"></th>
-                <th scope="row" th:text="${d.getNaturalDowns()}"></th>
-                <th scope="row" th:text="${d.getSelectionDowns()}"></th>
-                <th scope="row" th:text="${(d.getNaturalDowns() + d.getSelectionDowns())}"></th>
-                <th scope="row" th:text="${d.getWaterCounter()}"></th>
-                <th scope="row" th:text="${i.index > 0 &&
-                                                        days[(i.index - 1)].getWaterCounter() > days[i.index].getWaterCounter()
-                                                        ? days[(i.index - 1)].getWaterCounter() - days[i.index].getWaterCounter() : 0}"></th>
-                <th scope="row" th:text="${d.getAverageWeight()}"></th>
-                <th scope="row" th:text="${#numbers.formatDecimal(d.getAllDowns() * 100 / actualNumberOfChicken, 1, 3)}"></th>
-                <th scope="row" th:text="${d.getComments()}"></th>
-                <th scope="row">
-                    <a class="btn btn-secondary dropdown-toggle col-md-12" role="button" id="forageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dostawa paszy
-                    </a>
+            </tr></thead>
+            <tbody><tr th:each="d,i : ${days}">
+                <th th:text="${d.getDayNumber()}"></th>
+                <th th:text="${d.getNaturalDowns()}"></th>
+                <th th:text="${d.getSelectionDowns()}"></th>
+                <th th:text="${(d.getNaturalDowns() + d.getSelectionDowns())}"></th>
+                <th th:text="${d.getWaterCounter()}"></th>
+                <th th:text="${i.index > 0 && days[(i.index - 1)].getWaterCounter() > days[i.index].getWaterCounter()
+                ? days[(i.index - 1)].getWaterCounter() - days[i.index].getWaterCounter() : 0}"></th>
+                <th th:text="${d.getAverageWeight()}"></th>
+                <th th:text="${#numbers.formatDecimal(d.getAllDowns() * 100 / actualNumberOfChicken, 1, 3)}"></th>
+                <th th:text="${d.getComments()}"></th>
+                <th>
+                    <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="forageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dostawa paszy</a>
                     <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/forage/' + ${d.getId()}}"
                           th:object="${forageDto}" th:method="put">
-                        <div class="form-group">
-                            <label for="forageName">Rodzaj paszy</label>
-                            <input type="text" th:field="*{name}" class="form-control" id="forageName">
-                        </div>
-                        <div class="form-group">
-                            <label for="quantity">Ilość</label>
-                            <input type="number" th:field="*{quantity}" class="form-control" id="quantity">
-                        </div>
-                        <div class="form-group">
-                            <label for="foragePrice">Cena</label>
-                            <input type="number" th:field="*{price}" class="form-control" id="foragePrice">
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Dodaj dostawę</button>
+                        <div class="form-group"><label>Rodzaj paszy<input type="text" th:field="*{name}" class="form-control" id="forageName"></label></div>
+                        <div class="form-group"><label>Ilość<input type="number" th:field="*{quantity}" class="form-control" id="quantity"></label></div>
+                        <div class="form-group"><label>Cena<input type="number" th:field="*{price}" class="form-control" id="foragePrice"></label></div>
+						<button type="submit" class="btn btn-primary newDropdown_house">Dodaj dostawę</button>
                     </form>
                 </th>
-                <th class="row">
-                    <a class="btn btn-secondary dropdown-toggle col-md-12" role="button" id="medicineDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Lekarstwa
-                    </a>
+                <th>
+                    <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="medicineDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lekarstwa</a>
                     <form class="dropdown-menu p-2" autocomplete="off">
-                        <div class="form-group">
-                            <label for="name">Nazwa lekarstwa</label>
-                            <input type="text" class="form-control" id="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="medicinePrice">Cena</label>
-                            <input type="number" class="form-control" id="medicinePrice">
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Dodaj lekarstwo</button>
+                        <div class="form-group"><label>Nazwa lekarstwa<input type="text" class="form-control" id="name"></label></div>
+                        <div class="form-group"><label>Cena<input type="number" class="form-control" id="medicinePrice"></label></div>
+						<button type="submit" class="btn btn-primary newDropdown_house">Dodaj lekarstwo</button>
                     </form>
                 </th>
-                <th class="row">
-                    <a class="btn btn-secondary dropdown-toggle col-md-12" role="button" id="dayDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Edycja dnia
-                        <!--TODO jak zrobić wstrzykiwanie do każdej edycji inną wartość-->
-                    </a>
-                    <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/' + ${d.getId()}}"
-                                th:method="put" th:object="${dayDto}">
-                        <div class="form-group">
-                            <label for="editNaturalDowns">Upadki</label>
-                            <input type="number" th:field="*{naturalDowns}" class="form-control" id="editNaturalDowns">
-                        </div>
-                        <div class="form-group">
-                            <label for="editSelectionDowns">Selekcja</label>
-                            <input type="number" th:field="*{selectionDowns}" class="form-control" id="editSelectionDowns">
-                        </div>
-                        <div class="form-group">
-                            <label for="editWaterCounter">Stan licznika wody</label>
-                            <input type="number" th:field="*{waterCounter}" class="form-control" id="editWaterCounter">
-                        </div>
-                        <div class="form-group">
-                            <label for="editAverageWeight">Średnia waga kurczaka</label>
-                            <input type="number" th:field="*{averageWeight}" class="form-control" id="editAverageWeight">
-                        </div>
-                        <div class="form-group">
-                            <label for="editComments">Uwagi</label>
-                            <input type="text" th:field="*{comments}" class="form-control" id="editComments">
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Edytuj</button>
+                <th>
+					<!--TODO jak zrobić wstrzykiwanie do każdej edycji inną wartość-->
+                    <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="dayDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja dnia</a>
+                    <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/' + ${d.getId()}}" th:method="put" th:object="${dayDto}">
+                        <div class="form-group"><label>Upadki<input type="number" th:field="*{naturalDowns}" class="form-control" id="editNaturalDowns"></label></div>
+                        <div class="form-group"><label>Selekcja<input type="number" th:field="*{selectionDowns}" class="form-control" id="editSelectionDowns"></label></div>
+                        <div class="form-group"><label>Stan licznika wody<input type="number" th:field="*{waterCounter}" class="form-control" id="editWaterCounter"></label></div>
+                        <div class="form-group"><label>Średnia waga kurczaka<input type="number" th:field="*{averageWeight}" class="form-control" id="editAverageWeight"></label></div>
+                        <div class="form-group"><label>Uwagi<input type="text" th:field="*{comments}" class="form-control" id="editComments"></label></div>
+						<button type="submit" class="btn btn-primary newDropdown_house">Edytuj</button>
                     </form>
                 </th>
-            </tr>
-            </tbody>
+            </tr></tbody>
         </table>
-
     </div>
-
 </div>
-
 </body>
 </html>
