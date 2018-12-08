@@ -15,7 +15,15 @@
 	<table align="center" style="width:72%" id="table_cycle">
 		<tr>
 			<td class="table_cycle_right"><p th:text="'Dzień wstawienia: ' + ${cycle.getStartDay()}"></p></td>
-			<td class="table_cycle_right"><p>Lista dostaw paszy z datami:</p><div><ul th:each="forage : ${forages}"><li th:text="${forage.getName()}"></li></ul></div></td>
+			<td class="table_cycle_right"><p>Lista dostaw paszy z datami:</p><div>
+            <ul th:each="forage : ${forages}">
+                <li th:text="${forage.getName()}"></li>
+                <ul>
+                    <li th:text="${forage.getDeliveryDate()}"></li>
+                    <li th:text="${forage.getQuantity() + ' kg'}"></li>
+                </ul>
+            </ul>
+            </div></td>
 			<td class="table_cycle_right"><p>Lista lekarstw z datami:</p><div><ul th:each="forage : ${forages}"><li th:text="${forage.getName()}"></li></ul></div></td>
 			<td class="table_cycle_right"></td>
 		</tr>
