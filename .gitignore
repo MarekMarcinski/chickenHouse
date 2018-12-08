@@ -24,3 +24,4 @@ db_model
 /dist/
 /nbdist/
 /.nb-gradle/
+/src/main/resources/application-dev.properties
