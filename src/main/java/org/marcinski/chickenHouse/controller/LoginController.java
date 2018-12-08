@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
-    @GetMapping({"/", "/login"})
+    @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, Model model){
         if (error != null) {
             if (error.equals("Bad credentials")) {

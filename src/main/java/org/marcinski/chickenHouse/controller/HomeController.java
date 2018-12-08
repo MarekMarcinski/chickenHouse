@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.EntityNotFoundException;
 import java.security.Principal;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -25,8 +23,11 @@ public class HomeController {
         this.chickenHouseService = chickenHouseService;
     }
 
-    @GetMapping("/home")
+    @GetMapping({"/home", "/"})
     public String home(Principal principal, Model model){
+        if (principal == null){
+            return "login";
+        }
         ChickenHouseDto chickenHouseDto = new ChickenHouseDto();
 
         List<ChickenHouseDto> chickenHouseDtos;
