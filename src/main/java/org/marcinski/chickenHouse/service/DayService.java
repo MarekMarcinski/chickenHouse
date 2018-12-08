@@ -9,6 +9,7 @@ import org.marcinski.chickenHouse.repository.DayRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -66,6 +67,12 @@ public class DayService {
     public long addForageToDay(ForageDto forageDto, Long dayId) {
         long cycleId;
         DayDto dayToEdit = getDayDtoByCycleId(dayId);
+        CycleDto cycleDto = dayToEdit.getCycleDto();
+
+        LocalDate startDay = cycleDto.getStartDay();
+        LocalDate deliveryDate = startDay.plusDays(dayToEdit.getDayNumber()-1);
+
+        forageDto.setDeliveryDate(deliveryDate);
         ForageDto forageToAdd = forageService.createForage(forageDto);
         dayToEdit.setForageDto(forageToAdd);
 
