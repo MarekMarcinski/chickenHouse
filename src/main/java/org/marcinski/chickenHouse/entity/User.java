@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "user")
@@ -34,6 +35,8 @@ public class User {
     private String name;
 
     private boolean active;
+
+    private String uuid;
 
     @ManyToOne
     @JoinColumn(name = "role_id")

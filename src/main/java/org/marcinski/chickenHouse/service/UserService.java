@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -53,6 +54,7 @@ public class UserService {
 
     private User createNewUser(UserDto userDto) {
         User user = userMapper.mapTo(userDto);
+        user.setUuid(UUID.randomUUID().toString());
         user.setPassword(encoder.encode(user.getPassword()));
 
         Role userRole = roleRepository.findByRole("USER");
@@ -60,16 +62,9 @@ public class UserService {
         return user;
     }
 
-    public boolean authorizeUser(String encryptedMail) {
-        String decodedEmail = new String(Base64.decodeBase64(encryptedMail.getBytes()));
-        Optional<User> byEmail = userRepository.findByEmail(decodedEmail);
-        User user;
-        if (byEmail.isPresent()){
-            user = byEmail.get();
-            user.setActive(true);
-            userRepository.save(user);
-            return true;
-        }
-        return false;
+    public void authorizeUser(String uuid) {
+        User user = userRepository.findByUuid(uuid).orElseThrow(EntityNotFoundException::new);
+        user.setActive(true);
+        userRepository.save(user);
     }
 }

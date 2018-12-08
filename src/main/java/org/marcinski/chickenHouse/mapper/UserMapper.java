@@ -10,6 +10,7 @@ public interface UserMapper {
 
     @Mapping(source = "roleDto", target = "role")
     @Mapping(source = "chickenHouseDtos", target = "chickenHouses")
+    @Mapping(target = "uuid", ignore = true)
     User mapTo(UserDto userDto);
 
     @Mapping(source = "role", target = "roleDto")

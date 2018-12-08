@@ -52,13 +52,13 @@ public class RegistrationController {
         return "registration";
     }
 
-    @GetMapping("/{encryptedMail}")
-    public String authorizeUser(@PathVariable(name = "encryptedMail") String encryptedMail, Model model){
-        boolean authorizeSuccess = userService.authorizeUser(encryptedMail);
-        if (authorizeSuccess){
+    @GetMapping("/{uuid}")
+    public String authorizeUser(@PathVariable String uuid, Model model){
+        try{
+            userService.authorizeUser(uuid);
             model.addAttribute("message", "Konto zostało aktywowane");
             return "login";
-        }else {
+        }catch (EntityNotFoundException e){
 
             //TODO 404
             return "login";
