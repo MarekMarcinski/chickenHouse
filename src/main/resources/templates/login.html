@@ -15,7 +15,7 @@
 		<input type="password" class="login" id="password" name="password" placeholder="HASŁO"><br>
         <div id="remember_button_login"><label><input type="checkbox" id="remember" name="remember-me" value="true" checked>Zapamiętaj Mnie</label></div><br>
 		<button type="submit" id="button_login_login" class="button" name="submit" value="login" th:text="ZALOGUJ"></button><br>
-        <div id="error_login_login" th:if="${param.error}">Błędny email lub hasło, spróbuj ponownie</div><br>
+        <div id="error_login_login" th:text="${message}"></div><br>
     </form>
     <form th:action="@{/registration}" method="get"><button type="submit" id="button_register_login" class="button" th:text="REJESTRACJA"></button></form><br>
 </body>

@@ -3,14 +3,13 @@ package org.marcinski.chickenHouse.configuration;
 import org.marcinski.chickenHouse.dto.UserDto;
 import org.marcinski.chickenHouse.mapper.UserMapper;
 import org.marcinski.chickenHouse.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
-
+@Service
 public class ApplicationUserDetailService implements UserDetailsService {
 
     private UserRepository userRepository;
@@ -26,7 +25,7 @@ public class ApplicationUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         org.marcinski.chickenHouse.entity.User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new EntityNotFoundException("User with email: " + email + " not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User with email: " + email + " not found"));
 
         UserDto userDto = userMapper.mapTo(user);
         String role = userDto.getRoleDto().getRole();

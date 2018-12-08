@@ -44,7 +44,7 @@ public class RegistrationController {
                         "Istnieje już użytkownik o podanym emailu!");
             } catch (EntityNotFoundException e) {
                 userService.saveUser(userDto);
-                model.addAttribute("message", "Użytkownik został zarejestrowany");
+                model.addAttribute("message", "Użytkownik został zarejestrowany, sprawdź email i aktywuj swoje konto!");
                 model.addAttribute("userDto", new UserDto());
                 return "registration";
             }
@@ -53,8 +53,15 @@ public class RegistrationController {
     }
 
     @GetMapping("/{encryptedMail}")
-    public String authorizeUser(@PathVariable String encryptedMail){
-        userService.authorizeUser(encryptedMail);
-        return "login";
+    public String authorizeUser(@PathVariable(name = "encryptedMail") String encryptedMail, Model model){
+        boolean authorizeSuccess = userService.authorizeUser(encryptedMail);
+        if (authorizeSuccess){
+            model.addAttribute("message", "Konto zostało aktywowane");
+            return "login";
+        }else {
+
+            //TODO 404
+            return "login";
+        }
     }
 }

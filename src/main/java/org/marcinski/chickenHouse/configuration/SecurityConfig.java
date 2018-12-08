@@ -1,15 +1,15 @@
 package org.marcinski.chickenHouse.configuration;
 
-import org.marcinski.chickenHouse.mapper.UserMapper;
-import org.marcinski.chickenHouse.repository.UserRepository;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -17,20 +17,17 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private BCryptPasswordEncoder encoder;
-    private UserRepository userRepository;
-    private UserMapper userMapper;
 
+    private ApplicationUserDetailService applicationUserDetailService;
 
-    public SecurityConfig(BCryptPasswordEncoder encoder, UserRepository userRepository, UserMapper userMapper) {
+    private AuthenticationFailureHandler failureLoginHandler;
+
+    public SecurityConfig(BCryptPasswordEncoder encoder,
+                          ApplicationUserDetailService applicationUserDetailService,
+                          AuthenticationFailureHandler failureLoginHandler) {
         this.encoder = encoder;
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService())
-                .passwordEncoder(encoder);
+        this.applicationUserDetailService = applicationUserDetailService;
+        this.failureLoginHandler = failureLoginHandler;
     }
 
     @Override
@@ -38,13 +35,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/login**").permitAll()
                 .antMatchers("/registration").permitAll()
+                .antMatchers("/registration/**").permitAll()
                 .antMatchers("home", "new_house").hasAnyAuthority("USER").anyRequest()
                 .authenticated()
                 .and()
                 .rememberMe()
                 .and().csrf().disable().formLogin()
-                .loginPage("/login").failureUrl("/login?error=true")
+                .loginPage("/login")
+                .failureHandler(failureLoginHandler)
                 .defaultSuccessUrl("/home")
                 .usernameParameter("email")
                 .passwordParameter("password")
@@ -60,8 +60,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/webjars/**");
     }
 
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+
+        provider.setPasswordEncoder(encoder);
+        provider.setUserDetailsService(applicationUserDetailService);
+        provider.setHideUserNotFoundExceptions(false) ;
+
+        return provider;
+    }
+
     @Override
-    protected UserDetailsService userDetailsService() {
-        return  new ApplicationUserDetailService(userRepository, userMapper);
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(daoAuthenticationProvider()).userDetailsService(applicationUserDetailService);
     }
 }
