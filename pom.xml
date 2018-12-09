@@ -6,7 +6,7 @@
     <groupId>org.marcinski.chicken-house</groupId>
     <artifactId>chicken-house</artifactId>
     <version>0.1</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>chicken-house</name>
     <description>Web app for chicken houses management</description>
