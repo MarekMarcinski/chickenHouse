@@ -13,19 +13,11 @@
 	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_cycle" class="button_logout">WYLOGUJ</button></form><br><br><br>
 	<form th:action="@{'/home/' + ${chickenHouseId}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form><br><br><br><br><br><br>
 	<table align="center" style="width:72%" id="table_cycle">
-		<tr>
-			<td class="table_cycle_right"><p th:text="'Dzień wstawienia: ' + ${cycle.getStartDay()}"></p></td>
-			<td class="table_cycle_right"><p>Lista dostaw paszy z datami:</p><div>
-            <ul th:each="forage : ${forages}">
-                <li th:text="${forage.getName()}"></li>
-                <ul>
-                    <li th:text="${forage.getDeliveryDate()}"></li>
-                    <li th:text="${forage.getQuantity() + ' kg'}"></li>
-                </ul>
-            </ul>
-            </div></td>
-			<td class="table_cycle_right"><p>Lista lekarstw z datami:</p><div><ul th:each="forage : ${forages}"><li th:text="${forage.getName()}"></li></ul></div></td>
-			<td class="table_cycle_right"></td>
+		<tr align="center">
+			<td align="center" class="table_cycle_right"><p th:text="'Dzień wstawienia: ' + ${cycle.getStartDay()}"></p></td>
+			<td align="center" class="table_cycle_right"><p>Lista dostaw paszy z datami:</p></td>
+			<td align="center" class="table_cycle_right"><p>Lista lekarstw z datami:</p></td>
+			<td align="center" class="table_cycle_right"></td>
 		</tr>
 		<tr>
 			<td class="table_cycle_right"><p th:text="'Hybryd: ' + ${cycle.getHybrid()}"></p></td>
@@ -62,6 +54,26 @@
 			<td class="table_cycle_right"></td>
 			<td class="table_cycle_right"></td>
 		</tr>
+		<tr>
+			<td class="table_cycle_right"></td>
+			<td class="table_cycle_right"><div>
+				<ul type="circle" th:each="forage : ${forages}">
+					<li th:text="${forage.getDeliveryDate()}"></li>
+					<ul type="square">
+						<li th:text="${forage.getName()}"></li>
+						<li th:text="${forage.getQuantity() + ' kg'}"></li>
+					</ul></ul>				
+            </div></td>
+			<td class="table_cycle_right"><div>
+				<ul type="circle" th:each="forage : ${forages}">
+					<li th:text="${forage.getDeliveryDate()}"></li>
+					<ul type="square">
+						<li th:text="${forage.getName()}"></li>
+						<li th:text="${forage.getQuantity() + ' kg'}"></li>
+					</ul></ul>				
+            </div></td>
+			<td class="table_cycle_right"></td>
+		</tr>
 	</table><br><br><br>
 <div class="container">
     <div>
@@ -89,23 +101,23 @@
                 <th scope="col">Stan licznika wody</th>
                 <th scope="col">Dzienne zużycie wody</th>
                 <th scope="col">Średnia waga kurczaka (gram)</th>
-                <th scope="col">WŚD</th>
+                <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;WŚD</th>
                 <th scope="col">Uwagi</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr></thead>
-            <tbody><tr th:each="d,i : ${days}">
-                <th th:text="${d.getDayNumber()}"></th>
-                <th th:text="${d.getNaturalDowns()}"></th>
-                <th th:text="${d.getSelectionDowns()}"></th>
-                <th th:text="${(d.getNaturalDowns() + d.getSelectionDowns())}"></th>
-                <th th:text="${d.getWaterCounter()}"></th>
-                <th th:text="${i.index > 0 && days[(i.index - 1)].getWaterCounter() > days[i.index].getWaterCounter()
+            <tbody><tr align="center" th:each="d,i : ${days}">
+                <th align="center" th:text="${d.getDayNumber()}"></th>
+                <th align="center" th:text="${d.getNaturalDowns()}"></th>
+                <th align="center" th:text="${d.getSelectionDowns()}"></th>
+                <th align="center" th:text="${(d.getNaturalDowns() + d.getSelectionDowns())}"></th>
+                <th align="center" th:text="${d.getWaterCounter()}"></th>
+                <th align="center" th:text="${i.index > 0 && days[(i.index - 1)].getWaterCounter() > days[i.index].getWaterCounter()
                 ? days[(i.index - 1)].getWaterCounter() - days[i.index].getWaterCounter() : 0}"></th>
-                <th th:text="${d.getAverageWeight()}"></th>
-                <th th:text="${#numbers.formatDecimal(d.getAllDowns() * 100 / actualNumberOfChicken, 1, 3)}"></th>
-                <th th:text="${d.getComments()}"></th>
+                <th align="center" th:text="${d.getAverageWeight()}"></th>
+                <th align="center" th:text="${#numbers.formatDecimal(d.getAllDowns() * 100 / actualNumberOfChicken, 1, 3)}"></th>
+                <th align="center" th:text="${d.getComments()}"></th>
                 <th>
                     <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="forageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dostawa paszy</a>
                     <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/forage/' + ${d.getId()}}"
