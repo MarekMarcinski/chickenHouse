@@ -9,34 +9,6 @@ body{
     left:20%
 }
 
-@media (max-width:500px){
-	#logo_login{
-			margin-left: 10%;
-			width: 50%;
-			height: 50%;
-	}
-	
-	.logo_all{
-			left: 20%;
-			margin-left: 10%;
-			width: 50%;
-			height: 50%;
-	}
-	
-	#register_registration{
-			font-size: 16px;
-	}
-	
-	.button_logout{
-			width: 50%;
-			height: 50%;
-			position: absolute;
-			padding-left: 5px;
-			padding-top: 5px;
-	}
-	
-}
-
 /*registration,home,house,cycle*/
 .logo_all{
 	position: relative;
@@ -398,7 +370,35 @@ ul{
 	margin-right:auto
 }
 
-			
+@media (max-width:500px){
+	#logo_login{
+			margin-left: 10%;
+			width: 50%;
+			height: 50%;
+	}
+	
+	.logo_all{
+			left: 20%;
+			margin-left: 10%;
+			width: 50%;
+			height: 50%;
+	}
+	
+	#register_registration{
+			font-size: 16px;
+	}
+	
+	.button_logout{
+			width: 80px;
+			height: 26.6px;
+			border-radius: 6.5px;
+			position: absolute;
+			left: -10px;
+			top: -25px;
+			font-size: 10px;
+	}
+	
+}	
 			
 			
 /*end
