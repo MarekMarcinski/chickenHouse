@@ -419,7 +419,35 @@ ul{
 		padding-top: 20px;
 	}
 	
+	#button_utworz_kurnik_home{
+		width: 180px;
+		height: 30px;
+		border-radius: 6.5px;
+		font-size: 14px;
+	}
+
+	.p-4{
+		font-size: 16px;
+		width: 60%;
+	}
 	
+	.validation-message{
+		font-size: 14px;
+	}
+	#v-m_pass{
+		margin-left: 30%;
+	}
+	#v-m_email{
+		margin-left: 30%;
+	}
+	#v-m_name{
+/*		margin-left: auto;*/
+/*		text-align-last: center;*/
+	}
+	
+	#success_message_registration{
+		font-size: 16px;
+	}
 	
 	
 	
