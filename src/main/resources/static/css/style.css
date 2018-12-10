@@ -8,6 +8,13 @@ body{
     position: relative;
     left:20%
 }
+	@media (max-width:500px){
+		#logo_login{
+			margin-left: 10%;
+			width: 50%;
+			height: 50%;
+		}
+	}
 
 /*registration,home,house,cycle*/
 .logo_all{
