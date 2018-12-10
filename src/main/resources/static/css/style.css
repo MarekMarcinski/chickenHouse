@@ -8,6 +8,13 @@ body{
     position: relative;
     left:20%
 }
+	@media (max-width:500px){
+		#logo_login{
+			margin-left: 10%;
+			width: 50%;
+			height: 50%;
+		}
+	}
 
 /*registration,home,house,cycle*/
 .logo_all{
@@ -15,6 +22,14 @@ body{
 	width: 20%;
 	height: 20%;
 }
+	@media (max-width:500px){
+		.logo_all{
+			left: 20%;
+			margin-left: 10%;
+			width: 50%;
+			height: 50%;
+		}
+	}
 
 /*login*/
 .login{
@@ -138,6 +153,11 @@ body{
 	text-align: center;
 	color:black;
 }
+	@media (max-width:500px){
+		#register_registration{
+			font-size: 16px;
+		}
+	}
 
 #brak_kurnikow_home{
 	font-size: 25px;
