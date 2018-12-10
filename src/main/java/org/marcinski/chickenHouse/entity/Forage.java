@@ -1,15 +1,15 @@
 package org.marcinski.chickenHouse.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = "day")
 public class Forage {
 
     @Id
@@ -20,4 +20,8 @@ public class Forage {
     private int quantity;
     private double price;
     private LocalDate deliveryDate;
+
+    @OneToOne(mappedBy = "forage")
+    @ToString.Exclude
+    private Day day;
 }

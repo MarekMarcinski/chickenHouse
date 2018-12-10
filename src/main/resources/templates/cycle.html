@@ -44,7 +44,7 @@
 			<td class="table_cycle_right"></td>
 			<td class="table_cycle_right"></td>
 			<td align="center"><div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}"><a class="btn btn-secondary dropdown-toggle col-md-12 edit_cycle" role="button" id="delete_dropdown_cycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Zakończ</a>
-            <form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{'/home/cycle/complete/' + ${cycle.getId()}}" th:object="${cycle}" th:method="put">
+            <form class="dropdown-menu p-4" autocomplete="off" th:action="@{'/home/cycle/complete/' + ${cycle.getId()}}" th:object="${cycle}" th:method="put">
 				<label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button>
             </form></div></td>
 		</tr>
@@ -62,7 +62,10 @@
 					<ul type="square">
 						<li th:text="${forage.getName()}"></li>
 						<li th:text="${forage.getQuantity() + ' kg'}"></li>
-					</ul></ul>				
+                        <form th:action="@{'/home/cycle/day/forage/' + ${forage.getId()}}" th:method="delete">
+                            <button type="submit">Usuń dostawę paszy</button>
+                        </form>
+					</ul></ul>
             </div></td>
 			<td class="table_cycle_right"><div>
 				<ul type="circle" th:each="forage : ${forages}">

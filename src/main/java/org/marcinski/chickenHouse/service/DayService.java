@@ -66,7 +66,13 @@ public class DayService {
 
     public long addForageToDay(ForageDto forageDto, Long dayId) {
         long cycleId;
-        DayDto dayToEdit = getDayDtoByCycleId(dayId);
+        DayDto dayToEdit;
+        try {
+            dayToEdit = getDayDtoByCycleId(dayId);
+        }catch (EntityNotFoundException e){
+
+            return -1;
+        }
         CycleDto cycleDto = dayToEdit.getCycleDto();
 
         LocalDate startDay = cycleDto.getStartDay();
