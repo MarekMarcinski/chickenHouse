@@ -397,11 +397,33 @@ ul{
 		top: -25px;
 		font-size: 10px;
 	}
+	
 	#text_witaj_home{
 		font-size: 16px;
 		padding-top: 20px;
 	}
 	
+	#button_kurnik_home{
+		font-size: 12px;
+		width: 170px;
+    	height: 30px;
+	}
+	
+	#table-bordered{
+		font-size: 12px;
+		padding-top: 1px;
+	}
+
+	#brak_kurnikow_home{
+		font-size: 16px;
+		padding-top: 20px;
+	}
+	
+	
+	
+	
+	
+/*	end media 1024px*/
 }	
 			
 			
