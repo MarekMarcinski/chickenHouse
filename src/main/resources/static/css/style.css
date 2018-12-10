@@ -8,13 +8,34 @@ body{
     position: relative;
     left:20%
 }
-	@media (max-width:500px){
-		#logo_login{
+
+@media (max-width:500px){
+	#logo_login{
 			margin-left: 10%;
 			width: 50%;
 			height: 50%;
-		}
 	}
+	
+	.logo_all{
+			left: 20%;
+			margin-left: 10%;
+			width: 50%;
+			height: 50%;
+	}
+	
+	#register_registration{
+			font-size: 16px;
+	}
+	
+	.button_logout{
+			width: 50%;
+			height: 50%;
+			position: absolute;
+			padding-left: 5px;
+			padding-top: 5px;
+	}
+	
+}
 
 /*registration,home,house,cycle*/
 .logo_all{
@@ -22,14 +43,6 @@ body{
 	width: 20%;
 	height: 20%;
 }
-	@media (max-width:500px){
-		.logo_all{
-			left: 20%;
-			margin-left: 10%;
-			width: 50%;
-			height: 50%;
-		}
-	}
 
 /*login*/
 .login{
@@ -153,11 +166,6 @@ body{
 	text-align: center;
 	color:black;
 }
-	@media (max-width:500px){
-		#register_registration{
-			font-size: 16px;
-		}
-	}
 
 #brak_kurnikow_home{
 	font-size: 25px;
@@ -390,13 +398,7 @@ ul{
 	margin-right:auto
 }
 
-
-
-
-
-
-
-
-
-
-/*end*/
+			
+			
+			
+/*end
