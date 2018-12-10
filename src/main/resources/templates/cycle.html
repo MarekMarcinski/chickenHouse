@@ -68,12 +68,12 @@
 					</ul></ul>
             </div></td>
 			<td class="table_cycle_right"><div>
-				<ul type="circle" th:each="forage : ${forages}">
-					<li th:text="${forage.getDeliveryDate()}"></li>
-					<ul type="square">
-						<li th:text="${forage.getName()}"></li>
-						<li th:text="${forage.getQuantity() + ' kg'}"></li>
-					</ul></ul>				
+				<ul type="circle" th:each="medicines : ${medicinesList}">
+                    <li>Lista z dnia: </li>
+					<ul th:each="medicine : ${medicines}">
+                        <li th:text="${medicine.getName()}"></li>
+                    </ul>
+					</ul>
             </div></td>
 			<td class="table_cycle_right"></td>
 		</tr>
@@ -133,9 +133,10 @@
                 </th>
                 <th>
                     <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="medicineDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lekarstwa</a>
-                    <form class="dropdown-menu p-2" autocomplete="off">
-                        <div class="form-group"><label>Nazwa lekarstwa<input type="text" class="form-control" id="name"></label></div>
-                        <div class="form-group"><label>Cena<input type="number" class="form-control" id="medicinePrice"></label></div>
+                    <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/medicine/' + ${d.getId()}}"
+                          th:object="${medicineDto}" th:method="put">
+                        <div class="form-group"><label>Nazwa lekarstwa<input type="text" th:field="*{name}" class="form-control" id="name"></label></div>
+                        <div class="form-group"><label>Cena<input type="number" th:field="*{price}" class="form-control" id="medicinePrice"></label></div>
 						<button type="submit" class="btn btn-primary newDropdown_house">Dodaj lekarstwo</button>
                     </form>
                 </th>

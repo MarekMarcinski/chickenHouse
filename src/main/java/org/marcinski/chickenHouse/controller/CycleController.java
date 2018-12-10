@@ -3,6 +3,7 @@ package org.marcinski.chickenHouse.controller;
 import org.marcinski.chickenHouse.dto.CycleDto;
 import org.marcinski.chickenHouse.dto.DayDto;
 import org.marcinski.chickenHouse.dto.ForageDto;
+import org.marcinski.chickenHouse.dto.MedicineDto;
 import org.marcinski.chickenHouse.service.CycleService;
 import org.marcinski.chickenHouse.service.DayService;
 import org.springframework.stereotype.Controller;
@@ -59,6 +60,7 @@ public class CycleController {
     public String getCycle(@PathVariable Long id, Model model){
         DayDto dayDto = new DayDto();
         ForageDto forageDto = new ForageDto();
+        MedicineDto medicineDto = new MedicineDto();
         CycleDto cycleDto;
 
         try {
@@ -80,20 +82,29 @@ public class CycleController {
         dayDto.setDayNumber(actualDayNumber);
 
         List<ForageDto> forages = new ArrayList<>();
+        List<List<MedicineDto>> medicinesList = new ArrayList<>();
+
         for (DayDto dto : dayDtos) {
             int allDowns = dto.getNaturalDowns() + dto.getSelectionDowns();
             actualNumberOfChicken -= allDowns;
             if (dto.getForageDto() != null){
                 forages.add(dto.getForageDto());
+            }if (dto.getMedicineDtos() != null){
+                List<MedicineDto> medicineDtos = new ArrayList<>(dto.getMedicineDtos());
+                medicinesList.add(medicineDtos);
             }
         }
+
+
         model.addAttribute("chickenHouseId", chickenHouseId);
         model.addAttribute("cycle", cycleDto);
         model.addAttribute("dayDto", dayDto);
         model.addAttribute("actualNumberOfChicken", actualNumberOfChicken);
         model.addAttribute("days", dayDtos);
         model.addAttribute("forageDto", forageDto);
+        model.addAttribute("medicineDto", medicineDto);
         model.addAttribute("forages", forages);
+        model.addAttribute("medicinesList", medicinesList);
 
         return "cycle";
     }

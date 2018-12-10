@@ -40,7 +40,6 @@ public class ForageService {
         dayRepository.save(day);
 
         forageRepository.deleteById(id);
-        long cycleId = toRemove.getDay().getCycle().getId();
-        return cycleId;
+        return toRemove.getDay().getCycle().getId();
     }
 }

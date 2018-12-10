@@ -1,13 +1,21 @@
 package org.marcinski.chickenHouse.dto;
 
 import lombok.Data;
-import org.marcinski.chickenHouse.entity.Day;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+import javax.validation.constraints.NotNull;
 
 @Data
+@EqualsAndHashCode(exclude = "dayDto")
 public class MedicineDto {
 
     private Long id;
+
+    @NotNull
     private String name;
     private String price;
-    private Day day;
+
+    @ToString.Exclude
+    private DayDto dayDto;
 }

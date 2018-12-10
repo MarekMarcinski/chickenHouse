@@ -3,17 +3,16 @@ package org.marcinski.chickenHouse.service;
 import org.marcinski.chickenHouse.dto.CycleDto;
 import org.marcinski.chickenHouse.dto.DayDto;
 import org.marcinski.chickenHouse.dto.ForageDto;
+import org.marcinski.chickenHouse.dto.MedicineDto;
 import org.marcinski.chickenHouse.entity.Day;
 import org.marcinski.chickenHouse.mapper.DayMapper;
 import org.marcinski.chickenHouse.repository.DayRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class DayService {
@@ -21,13 +20,19 @@ public class DayService {
     private DayRepository dayRepository;
     private CycleService cycleService;
     private ForageService forageService;
+    private MedicineService medicineService;
     private DayMapper dayMapper;
 
-    public DayService(DayRepository dayRepository, CycleService cycleService, ForageService forageService, DayMapper dayMapper) {
+    public DayService(DayRepository dayRepository,
+                      CycleService cycleService,
+                      ForageService forageService,
+                      DayMapper dayMapper,
+                      MedicineService medicineService) {
         this.dayRepository = dayRepository;
         this.cycleService = cycleService;
         this.forageService = forageService;
         this.dayMapper = dayMapper;
+        this.medicineService = medicineService;
     }
 
     public void createDay(DayDto dayDto, Long cycleId) {
@@ -92,5 +97,30 @@ public class DayService {
         return dayRepository.findById(dayId)
                 .map(dayMapper::mapTo)
                 .orElseThrow(EntityNotFoundException::new);
+    }
+
+    public long addMedicineToDay(MedicineDto medicineDto, Long dayId) {
+        long cycleId;
+        DayDto dayToEdit;
+        try {
+            dayToEdit = getDayDtoByCycleId(dayId);
+        }catch (EntityNotFoundException e){
+
+            return -1;
+        }
+        Set<MedicineDto> medicineDtos = dayToEdit.getMedicineDtos();
+        if (medicineDtos == null){
+            medicineDtos = new HashSet<>();
+        }
+
+        medicineDto.setDayDto(dayToEdit);
+        MedicineDto medicineToAdd = medicineService.createMedicine(medicineDto);
+        medicineDtos.add(medicineToAdd);
+        dayToEdit.setMedicineDtos(medicineDtos);
+
+        cycleId = dayToEdit.getCycleDto().getId();
+        dayRepository.save(dayMapper.mapTo(dayToEdit));
+
+        return cycleId;
     }
 }

@@ -1,11 +1,14 @@
 package org.marcinski.chickenHouse.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = "day")
 public class Medicine {
 
     @Id
@@ -18,5 +21,6 @@ public class Medicine {
 
     @ManyToOne
     @JoinColumn(name = "day_id")
+    @ToString.Exclude
     private Day day;
 }
