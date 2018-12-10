@@ -370,7 +370,7 @@ ul{
 	margin-right:auto
 }
 
-@media (max-width:1000px){
+@media (max-width:900px){
 	#logo_login{
 		margin-left: 10%;
 		width: 50%;
