@@ -1,8 +1,10 @@
 package org.marcinski.chickenHouse.controller;
 
 import org.marcinski.chickenHouse.dto.*;
+import org.marcinski.chickenHouse.service.ChickenHouseService;
 import org.marcinski.chickenHouse.service.CycleService;
 import org.marcinski.chickenHouse.service.DayService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,9 @@ public class CycleController {
 
     private CycleService cycleService;
     private DayService dayService;
+
+    @Autowired
+    private ChickenHouseService chickenHouseService;
 
     public CycleController(CycleService cycleService, DayService dayService) {
         this.cycleService = cycleService;
@@ -70,6 +75,10 @@ public class CycleController {
             return "redirect/home";
         }
 
+        if (isUserCycle(principal, cycleDto)){
+            return "redirect:/home";
+        }
+
         int actualNumberOfChicken = cycleDto.getNumberOfChickens();
 
         List<DayDto> dayDtos = dayService.getAllDaysByCycleIdSortedByDayNumber(id);
@@ -105,5 +114,16 @@ public class CycleController {
         model.addAttribute("medicineListDtos", medicineListDtos);
 
         return "cycle";
+    }
+
+    private boolean isUserCycle(Principal principal, CycleDto cycleDto) {
+        ChickenHouseDto chickenHouseById = chickenHouseService.getChickenHouseById(cycleDto.getChickenHouseDto().getId());
+        String emailFromPrincipal = principal.getName();
+        String emailFromCycle = chickenHouseById.getUserDto().getEmail();
+
+        if (!emailFromCycle.equals(emailFromPrincipal)){
+            return true;
+        }
+        return false;
     }
 }
