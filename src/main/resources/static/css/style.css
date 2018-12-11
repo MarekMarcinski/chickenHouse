@@ -370,7 +370,7 @@ ul{
 	margin-right:auto
 }
 
-@media (max-width:900px){
+@media (max-width:1024px){
 	#logo_login{
 		margin-left: 10%;
 		width: 50%;
@@ -397,11 +397,61 @@ ul{
 		top: -25px;
 		font-size: 10px;
 	}
+	
 	#text_witaj_home{
 		font-size: 16px;
 		padding-top: 20px;
 	}
 	
+	#button_kurnik_home{
+		font-size: 12px;
+		width: 170px;
+    	height: 30px;
+	}
+	
+	#table-bordered{
+		font-size: 12px;
+		padding-top: 1px;
+	}
+
+	#brak_kurnikow_home{
+		font-size: 16px;
+		padding-top: 20px;
+	}
+	
+	#button_utworz_kurnik_home{
+		width: 180px;
+		height: 30px;
+		border-radius: 6.5px;
+		font-size: 14px;
+	}
+
+	.p-4{
+		font-size: 16px;
+		width: 60%;
+	}
+	
+	.validation-message{
+		font-size: 14px;
+	}
+	#v-m_pass{
+		margin-left: 30%;
+	}
+	#v-m_email{
+		margin-left: 30%;
+	}
+	#v-m_name{
+/*		margin-left: auto;*/
+/*		text-align-last: center;*/
+	}
+	
+	#success_message_registration{
+		font-size: 16px;
+	}
+	
+	
+	
+/*	end media 1024px*/
 }	
 			
 			
