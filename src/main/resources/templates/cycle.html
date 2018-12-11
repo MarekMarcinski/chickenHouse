@@ -65,12 +65,12 @@
 					</ul></ul>
             </div></td>
 			<td class="table_cycle_right"><div>
-				<!--<ul type="circle" th:each="medicines : ${medicinesList}">-->
-                    <!--<li>Lista z dnia: </li>-->
-					<!--<ul th:each="medicineList : ${medicines}">-->
-                        <!--<li th:text="${medicineList.getName()}"></li>-->
-                    <!--</ul>-->
-					<!--</ul>-->
+				<ul type="circle" th:each="medicineList : ${medicineListDtos}">
+                    <li th:text="'Lista lekarstw z dnia: ' + ${medicineList.getApplicationDate()}"></li>
+					<ul th:each="medicine : ${medicineList.getMedicineDtos()}">
+                        <li th:text="${medicine.getName()}"></li>
+                    </ul>
+					</ul>
             </div></td>
 			<td class="table_cycle_right"></td>
 		</tr>

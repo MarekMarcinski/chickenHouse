@@ -1,9 +1,6 @@
 package org.marcinski.chickenHouse.controller;
 
-import org.marcinski.chickenHouse.dto.CycleDto;
-import org.marcinski.chickenHouse.dto.DayDto;
-import org.marcinski.chickenHouse.dto.ForageDto;
-import org.marcinski.chickenHouse.dto.MedicineDto;
+import org.marcinski.chickenHouse.dto.*;
 import org.marcinski.chickenHouse.service.CycleService;
 import org.marcinski.chickenHouse.service.DayService;
 import org.springframework.stereotype.Controller;
@@ -82,12 +79,15 @@ public class CycleController {
         dayDto.setDayNumber(actualDayNumber);
 
         List<ForageDto> forages = new ArrayList<>();
+        List<MedicineListDto> medicineListDtos = new ArrayList<>();
 
         for (DayDto dto : dayDtos) {
             int allDowns = dto.getNaturalDowns() + dto.getSelectionDowns();
             actualNumberOfChicken -= allDowns;
             if (dto.getForageDto() != null){
                 forages.add(dto.getForageDto());
+            }if (dto.getMedicineListDto() != null){
+                medicineListDtos.add(dto.getMedicineListDto());
             }
         }
 
@@ -99,6 +99,7 @@ public class CycleController {
         model.addAttribute("forageDto", forageDto);
         model.addAttribute("medicineDto", medicineDto);
         model.addAttribute("forages", forages);
+        model.addAttribute("medicineListDtos", medicineListDtos);
 
         return "cycle";
     }
