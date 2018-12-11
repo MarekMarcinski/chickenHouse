@@ -29,6 +29,10 @@ body{
 	border-radius: 15px;
 }
 
+#register_2,#register_3,#register_4{
+	margin-top: 4px;
+}
+
 #remember_button_login{
     position: relative;
     text-align: center;
@@ -97,13 +101,13 @@ body{
 	color: red;
 }
 	#v-m_pass{
-		margin-left: 38%;
+		text-align: center;
 	}
 	#v-m_email{
-		margin-left: 43%;
+		text-align: center;
 	}
 	#v-m_name{
-		margin-left: 43%;
+		text-align: center;
 	}
 
 #success_message_registration{
@@ -377,7 +381,12 @@ ul{
 	font-size: 20px;
 }
 
+.cycles_center_house{
+	text-align: center;
+}
+
 @media (max-width:1024px){
+	
 	#logo_login{
 		margin-left: 10%;
 		width: 50%;
@@ -396,13 +405,23 @@ ul{
 	}
 	
 	.button_logout{
-		width: 80px;
-		height: 26.6px;
-		border-radius: 6.5px;
 		position: absolute;
-		left: -10px;
-		top: -25px;
-		font-size: 10px;
+		width: 70px;
+		height: 22px;
+		border-radius: 5px;
+		margin-left: 80%;
+		top: -15px;
+		font-size: 8px;
+	}
+	
+	.button_back{
+		position: absolute;
+		width: 70px;
+		height: 22px;
+		border-radius: 5px;
+		margin-right: 80%;
+		top: -30px;
+		font-size: 8px;
 	}
 	
 	#text_witaj_home{
@@ -427,39 +446,51 @@ ul{
 	}
 	
 	#button_utworz_kurnik_home{
-		width: 180px;
-		height: 30px;
-		border-radius: 6.5px;
-		font-size: 14px;
-	}
-
-	.p-4{
-		font-size: 16px;
-		width: 60%;
+		width: 75%;
+		font-size: 12px;
 	}
 	
 	.validation-message{
 		font-size: 14px;
 	}
-	#v-m_pass{
-		margin-left: 30%;
-	}
-	#v-m_email{
-		margin-left: 30%;
-	}
-	#v-m_name{
-/*		margin-left: auto;*/
-/*		text-align-last: center;*/
-	}
-	
+
 	#success_message_registration{
 		font-size: 16px;
 	}
 	
+	#kurnik_powierzchnia_house{
+		font-size: 16px;
+	}
 	
 	
-/*	end media 1024px*/
+	#cycles_house{
+		font-size: 8px;
+	}
+
+	#editHouseDropdown,#deleteDropdown,#dropdownMenuLink{
+		font-size: 12px;
+		width: 170px;
+    	height: 30px;
+		margin-top: 5px;
+	}
+	
+	.p-4{
+		width: 90%;
+	}
+	
+	.newDropdown_house{
+		width: 75%;
+		font-size: 12px;
+	}
+	
+
+	
+	
+	
+/*	end @media 1024px*/	
 }	
+
+	
 			
 			
 /*end

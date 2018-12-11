@@ -43,21 +43,21 @@
             </form>
         </div>
 	</div></div><br><br>
-	<div th:if="${cyclesDto.size()!=0}">
+	<div id="cycles_house" th:if="${cyclesDto.size()!=0}">
         <table class="table table-striped">
             <thead><tr>
-                <th scope="col">Data wstawienia</th>
-                <th scope="col">Ilość kurczaków</th>
-                <th scope="col">Wylęgarnia</th>
-                <th scope="col">Hybryd</th>
-                <th scope="col">Zakończony</th>
+                <th class="cycles_center_house" scope="col">Data wstawienia</th>
+                <th class="cycles_center_house" scope="col">Ilość kurczaków</th>
+                <th class="cycles_center_house" scope="col">Wylęgarnia</th>
+                <th class="cycles_center_house" scope="col">Hybryd</th>
+                <th class="cycles_center_house" scope="col">Zakończony</th>
             </tr></thead>
             <tbody><tr th:each="c : ${cyclesDto}">
-                <th scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.startDay}"></a></th>
-                <th scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.getNumberOfChickens()}"></a></th>
-                <th scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.getHatchery()}"></a></th>
-                <th scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.getHybrid()}"></a></th>
-                <th scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.isCompleted() == true} ? Tak : Nie"></a></th>
+                <th class="cycles_center_house" scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.startDay}"></a></th>
+                <th class="cycles_center_house" scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.getNumberOfChickens()}"></a></th>
+                <th class="cycles_center_house" scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.getHatchery()}"></a></th>
+                <th class="cycles_center_house" scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.getHybrid()}"></a></th>
+                <th class="cycles_center_house" scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.isCompleted() == true} ? Tak : Nie"></a></th>
             </tr></tbody>
         </table>
     </div>
