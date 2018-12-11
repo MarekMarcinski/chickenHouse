@@ -112,11 +112,9 @@ body{
 
 #success_message_registration{
 	position: relative;
+	text-align: center;
 	color: red;
 	font-weight: 900;
-	margin-left: auto;
-    margin-right: auto;
-	width: 250px;
 }
 
 #button_back_registration{
