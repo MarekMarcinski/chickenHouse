@@ -3,8 +3,11 @@ package org.marcinski.chickenHouse.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Set;
@@ -21,6 +24,8 @@ public class Cycle {
     private Long id;
 
     @NotNull(message = "Please provide number of chickens!")
+    @Min(0)
+    @Max(2147483646)
     @Column(name = "number_of_chickens")
     private int numberOfChickens;
 
@@ -28,8 +33,15 @@ public class Cycle {
     @Column(name = "start_day")
     private LocalDate startDay;
 
+    @Nullable
     private String hybrid;
+    @Nullable
     private String hatchery;
+
+    @Min(0)
+    @Max(2147483646)
+    private double price;
+
     private boolean completed;
 
     @OneToMany(mappedBy = "cycle", cascade = CascadeType.REMOVE)

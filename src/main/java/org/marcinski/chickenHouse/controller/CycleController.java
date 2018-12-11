@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +27,9 @@ public class CycleController {
     }
 
     @PostMapping("/{chickenHouseId}")
-    public String createCycle(@Valid CycleDto cycleDto,
-                               @PathVariable Long chickenHouseId,
-                               BindingResult bindingResult){
+    public String createCycle(@PathVariable Long chickenHouseId,
+                              @Valid CycleDto cycleDto,
+                              BindingResult bindingResult){
         if (!bindingResult.hasErrors()){
             cycleService.createCycle(cycleDto, chickenHouseId);
         }
@@ -36,8 +37,8 @@ public class CycleController {
     }
 
     @PutMapping("/{id}")
-    public String updateCycle(@Valid CycleDto cycleDto,
-                              @PathVariable Long id,
+    public String updateCycle(@PathVariable Long id,
+                              @Valid CycleDto cycleDto,
                               BindingResult bindingResult){
         if (!bindingResult.hasErrors()){
             cycleService.updateCycle(cycleDto, id);
@@ -54,7 +55,9 @@ public class CycleController {
     }
 
     @GetMapping("/{id}")
-    public String getCycle(@PathVariable Long id, Model model){
+    public String getCycle(@PathVariable Long id,
+                           Model model,
+                           Principal principal){
         DayDto dayDto = new DayDto();
         ForageDto forageDto = new ForageDto();
         CycleDto cycleDto;

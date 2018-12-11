@@ -6,8 +6,7 @@ import lombok.ToString;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 import java.util.Set;
 
 @Entity
@@ -20,26 +19,33 @@ public class Day {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @Min(0)
+    @Max(2147483646)
     @Column(name = "day_number")
     private int dayNumber;
 
-    @Nullable
+    @Min(0)
+    @Max(2147483646)
     @Column(name = "natural_downs")
     private int naturalDowns;
 
-    @Nullable
+    @Min(0)
+    @Max(2147483646)
     @Column(name = "selection_downs")
     private int selectionDowns;
 
-    @Nullable
+    @Min(0)
+    @Max(2147483646)
     @Column(name = "water_counter")
     private long waterCounter;
 
-    @Nullable
+    @Min(0)
+    @Max(15000)
     private int averageWeight;
 
     @Nullable
+    @Size(max = 240)
     private String comments;
 
     @ManyToOne

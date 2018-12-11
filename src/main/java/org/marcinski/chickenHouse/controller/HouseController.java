@@ -90,8 +90,8 @@ public class HouseController {
     }
 
     @PutMapping("/{id}")
-    public String editHouse(@Valid ChickenHouseDto chickenHouseDto,
-                            @PathVariable Long id,
+    public String editHouse(@PathVariable Long id,
+                            @Valid ChickenHouseDto chickenHouseDto,
                             BindingResult bindingResult){
         if (!bindingResult.hasErrors()){
             try {

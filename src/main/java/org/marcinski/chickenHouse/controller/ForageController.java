@@ -4,6 +4,7 @@ import org.marcinski.chickenHouse.dto.ForageDto;
 import org.marcinski.chickenHouse.service.DayService;
 import org.marcinski.chickenHouse.service.ForageService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,8 +26,13 @@ public class ForageController {
     }
 
     @PutMapping("/{dayId}")
-    public String addForageToDay(@Valid ForageDto forageDto, @PathVariable Long dayId){
+    public String addForageToDay(@PathVariable Long dayId,
+                                 @Valid ForageDto forageDto,
+                                 BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
 
+            return "redirect:/home";
+        }
         long cycleId = dayService.addForageToDay(forageDto, dayId);
 
         if (cycleId == -1){

@@ -22,8 +22,8 @@ public class DayController {
     }
 
     @PostMapping("/{cycleId}")
-    public String createDay(@Valid DayDto dayDto,
-                            @PathVariable Long cycleId,
+    public String createDay(@PathVariable Long cycleId,
+                            @Valid DayDto dayDto,
                             BindingResult bindingResult){
         if (!bindingResult.hasErrors()){
             dayService.createDay(dayDto, cycleId);
@@ -32,8 +32,8 @@ public class DayController {
     }
 
     @PutMapping("/{dayId}")
-    public String editDay(@Valid DayDto dayDto,
-                          @PathVariable Long dayId,
+    public String editDay(@PathVariable Long dayId,
+                          @Valid DayDto dayDto,
                           BindingResult bindingResult){
         long cycleId;
         if (!bindingResult.hasErrors()){

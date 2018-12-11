@@ -3,7 +3,10 @@ package org.marcinski.chickenHouse.dto;
 import lombok.Data;
 import org.springframework.lang.Nullable;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Data
@@ -11,22 +14,29 @@ public class DayDto {
 
     private Long id;
 
+    @NotNull
     @Min(0)
+    @Max(240)
     private int dayNumber;
 
-    @Nullable
+    @Min(0)
+    @Max(2147483646)
     private int naturalDowns;
 
-    @Nullable
+    @Min(0)
+    @Max(2147483646)
     private int selectionDowns;
 
-    @Nullable
+    @Min(0)
+    @Max(2147483646)
     private long waterCounter;
 
-    @Nullable
+    @Min(0)
+    @Max(value = 15000, message = "Daj spokój, przecież to tylko kurczak. Na pewno tyle nie waży ;)")
     private int averageWeight;
 
     @Nullable
+    @Size(max = 240)
     private String comments;
 
     private CycleDto cycleDto;

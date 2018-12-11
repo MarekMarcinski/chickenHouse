@@ -31,7 +31,9 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String createNewUser(@Valid UserDto userDto, BindingResult bindingResult, Model model){
+    public String createNewUser(@Valid UserDto userDto,
+                                BindingResult bindingResult,
+                                Model model){
         if(!userDto.samePassword()){
             model.addAttribute("message", "Hasła nie pasują do siebie");
             return "registration";
