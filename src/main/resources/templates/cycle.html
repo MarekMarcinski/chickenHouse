@@ -58,13 +58,11 @@
 			<td class="table_cycle_right"></td>
 			<td class="table_cycle_right"><div>
 				<ul type="circle" th:each="forage : ${forages}">
+					<form th:action="@{'/home/cycle/day/forage/' + ${forage.getId()}}" th:method="delete"><button id="pasza_delete_cycle" type="submit">X</button></form>
 					<li th:text="${forage.getDeliveryDate()}"></li>
 					<ul type="square">
 						<li th:text="${forage.getName()}"></li>
 						<li th:text="${forage.getQuantity() + ' kg'}"></li>
-                        <form th:action="@{'/home/cycle/day/forage/' + ${forage.getId()}}" th:method="delete">
-                            <button type="submit">Usuń dostawę paszy</button>
-                        </form>
 					</ul></ul>
             </div></td>
 			<td class="table_cycle_right"><div>
