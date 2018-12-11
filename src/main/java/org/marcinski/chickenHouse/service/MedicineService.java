@@ -18,7 +18,7 @@ public class MedicineService {
     }
 
     public MedicineDto createMedicine(MedicineDto medicineDto) {
-        Medicine medicine = medicineRepository.save(medicineMapper.mapTo(medicineDto));
-        return medicineMapper.mapTo(medicine);
+        Medicine savedMedicine = medicineRepository.save(medicineMapper.mapTo(medicineDto));
+        return medicineMapper.mapTo(savedMedicine);
     }
 }

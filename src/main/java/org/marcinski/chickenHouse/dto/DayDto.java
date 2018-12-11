@@ -4,7 +4,6 @@ import lombok.Data;
 import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Data
@@ -34,7 +33,7 @@ public class DayDto {
 
     private ForageDto forageDto;
 
-    private Set<MedicineDto> medicineDtos;
+    private MedicineListDto medicineListDto;
 
     public double getAllDowns(){
         return naturalDowns + selectionDowns;

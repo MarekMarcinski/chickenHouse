@@ -8,9 +8,9 @@ import org.marcinski.chickenHouse.entity.Medicine;
 @Mapper(componentModel = "spring")
 public interface MedicineMapper {
 
-    @Mapping(source = "dayDto", target = "day")
-    Medicine mapTo (MedicineDto medicineDto);
+    @Mapping(source = "medicineListDto", target = "medicineList")
+    Medicine mapTo(MedicineDto medicineDto);
 
-    @Mapping(source = "day", target = "dayDto")
-    MedicineDto mapTo (Medicine medicine);
+    @Mapping(source = "medicineList", target = "medicineListDto")
+    MedicineDto mapTo(Medicine medicine);
 }

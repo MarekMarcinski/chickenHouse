@@ -60,8 +60,8 @@ public class CycleController {
     public String getCycle(@PathVariable Long id, Model model){
         DayDto dayDto = new DayDto();
         ForageDto forageDto = new ForageDto();
-        MedicineDto medicineDto = new MedicineDto();
         CycleDto cycleDto;
+        MedicineDto medicineDto = new MedicineDto();
 
         try {
             cycleDto = cycleService.getDtoById(id);
@@ -82,19 +82,14 @@ public class CycleController {
         dayDto.setDayNumber(actualDayNumber);
 
         List<ForageDto> forages = new ArrayList<>();
-        List<List<MedicineDto>> medicinesList = new ArrayList<>();
 
         for (DayDto dto : dayDtos) {
             int allDowns = dto.getNaturalDowns() + dto.getSelectionDowns();
             actualNumberOfChicken -= allDowns;
             if (dto.getForageDto() != null){
                 forages.add(dto.getForageDto());
-            }if (dto.getMedicineDtos() != null){
-                List<MedicineDto> medicineDtos = new ArrayList<>(dto.getMedicineDtos());
-                medicinesList.add(medicineDtos);
             }
         }
-
 
         model.addAttribute("chickenHouseId", chickenHouseId);
         model.addAttribute("cycle", cycleDto);
@@ -104,7 +99,6 @@ public class CycleController {
         model.addAttribute("forageDto", forageDto);
         model.addAttribute("medicineDto", medicineDto);
         model.addAttribute("forages", forages);
-        model.addAttribute("medicinesList", medicinesList);
 
         return "cycle";
     }

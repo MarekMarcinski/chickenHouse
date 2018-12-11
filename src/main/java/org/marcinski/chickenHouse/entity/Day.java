@@ -51,6 +51,7 @@ public class Day {
     @JoinColumn(name = "forage_id")
     private Forage forage;
 
-    @OneToMany(mappedBy = "day", fetch = FetchType.EAGER)
-    private Set<Medicine> medicines;
+    @OneToOne
+    @JoinColumn(name = "medicine_list_id")
+    private MedicineList medicineList;
 }

@@ -5,16 +5,16 @@ import org.mapstruct.Mapping;
 import org.marcinski.chickenHouse.dto.DayDto;
 import org.marcinski.chickenHouse.entity.Day;
 
-@Mapper(componentModel = "spring", uses = {ForageMapper.class, MedicineMapper.class})
+@Mapper(componentModel = "spring", uses = {ForageMapper.class, MedicineListMapper.class})
 public interface DayMapper {
 
     @Mapping(source = "cycleDto", target = "cycle")
     @Mapping(source = "forageDto", target = "forage")
-    @Mapping(source = "medicineDtos", target = "medicines")
+    @Mapping(source = "medicineListDto", target = "medicineList")
     Day mapTo(DayDto dayDto);
 
     @Mapping(source = "cycle", target = "cycleDto")
     @Mapping(source = "forage", target = "forageDto")
-    @Mapping(source = "medicines", target = "medicineDtos")
+    @Mapping(source = "medicineList", target = "medicineListDto")
     DayDto mapTo(Day day);
 }

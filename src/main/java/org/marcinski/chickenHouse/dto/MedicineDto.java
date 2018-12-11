@@ -4,18 +4,15 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.validation.constraints.NotNull;
-
 @Data
-@EqualsAndHashCode(exclude = "dayDto")
+@EqualsAndHashCode(exclude = "medicineListDto")
 public class MedicineDto {
 
     private Long id;
 
-    @NotNull
     private String name;
-    private String price;
+    private double price;
 
     @ToString.Exclude
-    private DayDto dayDto;
+    private MedicineListDto medicineListDto;
 }

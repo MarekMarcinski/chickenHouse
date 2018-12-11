@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude = "day")
+@EqualsAndHashCode(exclude = "medicineList")
 public class Medicine {
 
     @Id
@@ -16,11 +16,10 @@ public class Medicine {
     private Long id;
 
     private String name;
-    private String price;
+    private double price;
 
-
-    @ManyToOne
-    @JoinColumn(name = "day_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "medicine_list_id")
     @ToString.Exclude
-    private Day day;
+    private MedicineList medicineList;
 }
