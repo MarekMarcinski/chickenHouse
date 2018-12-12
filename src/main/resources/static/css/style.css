@@ -488,7 +488,12 @@ ul{
 /*	end @media 1024px*/	
 }	
 
-	
+@media (max-width:400px){
+	#button_kurnik_home{
+		margin-left: 10%;
+		font-size: 12px;
+	}
+}
 			
 			
 /*end
