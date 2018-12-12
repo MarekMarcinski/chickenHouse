@@ -48,7 +48,7 @@
             </div></td>
 			<td align="center" class="table_cycle_right"><div>
 				<ul type="circle" th:each="medicineList : ${medicineListDtos}">
-                    <li th:text="${medicineList.getApplicationDate()}"></li>
+                    <li th:if="${medicineList.getMedicineDtos().size() > 0}" th:text="${medicineList.getApplicationDate()}"></li>
 					<ul type="square" th:each="medicine : ${medicineList.getMedicineDtos()}">
                         <form th:action="@{'/home/cycle/day/medicine/' + ${medicine.getId()}}" th:method="delete">
                             <button id="leki_delete_cycle" type="submit">X</button>

@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -20,10 +19,10 @@ public class MedicineList {
 
     private LocalDate applicationDate;
 
-    @OneToMany(mappedBy = "medicineList", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "medicineList", cascade = CascadeType.REMOVE)
     private Set<Medicine> medicines;
 
-    @OneToOne(mappedBy = "medicineList", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "medicineList", cascade = {CascadeType.PERSIST})
     @ToString.Exclude
     private Day day;
 }

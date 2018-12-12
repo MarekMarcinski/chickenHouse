@@ -3,6 +3,7 @@ package org.marcinski.chickenHouse.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -27,7 +28,7 @@ public class Medicine {
     @Max(2147483646)
     private double price;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "medicine_list_id")
     @ToString.Exclude
     private MedicineList medicineList;

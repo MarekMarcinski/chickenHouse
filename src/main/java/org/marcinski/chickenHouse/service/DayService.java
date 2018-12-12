@@ -4,11 +4,16 @@ import org.marcinski.chickenHouse.dto.*;
 import org.marcinski.chickenHouse.entity.Day;
 import org.marcinski.chickenHouse.mapper.DayMapper;
 import org.marcinski.chickenHouse.repository.DayRepository;
+import org.marcinski.chickenHouse.repository.MedicineRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Service
 public class DayService {
@@ -19,6 +24,9 @@ public class DayService {
     private MedicineListService medicineListService;
     private MedicineService medicineService;
     private DayMapper dayMapper;
+
+    @Autowired
+    private MedicineRepository medicineRepository;
 
     public DayService(DayRepository dayRepository,
                       CycleService cycleService,
