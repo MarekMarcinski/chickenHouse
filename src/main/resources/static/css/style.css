@@ -203,8 +203,8 @@ body{
 		opacity: 0.7;
 	}
 
-/*house*/
-#editHouseDropdown,#deleteDropdown,#dropdownMenuLink{
+/*house, cycle*/
+#editHouseDropdown,#deleteDropdown,#dropdownMenuLink,#editDropdownCycle,#delete_dropdown_cycle{
 	display: block;
 	position: relative;
 	width: 250px;
@@ -217,9 +217,13 @@ body{
 	margin-right: auto;
 	border-radius: 10px;	
 }
-	#editHouseDropdown:hover,#deleteDropdown:hover,#dropdownMenuLink:hover{
+	#editHouseDropdown:hover,#deleteDropdown:hover,#dropdownMenuLink:hover,#editDropdownCycle:hover,#delete_dropdown_cycle:hover{
 		opacity: 0.8;
 	}
+
+#delete_dropdown_cycle{
+	background-color:red;
+}
 
 /*cycle*/
 #forageDropdown,#medicineDropdown,#dayDropdown{
@@ -259,6 +263,10 @@ body{
 /*house*/
 .row{
 	display: inline-flex;
+}
+
+.rowek{
+	display: block;
 }
 
 #srodek_buttony_house{
@@ -315,39 +323,16 @@ body{
 		opacity: 0.7;
 	}
 
-#table_cycle{
+.table_cycle{
 	border: 2px solid gray;
 	text-align: center;
+	width: 70%;
 }
 
 .table_cycle_right{
 	border-right: 2px solid gray;
 	text-align: center;
 }
-
-.edit_cycle{
-	display: block;
-	position: relative;
-	width: 200px;
-    height: 40px;
-	opacity: 1;
-	background-color: #28AF0F;
-	color: white;
-	font-weight: 900;
-	margin-left: auto;
-	margin-right: auto;
-	border-radius: 10px;	
-}
-	.edit_cycle:hover{
-		opacity: 0.7;
-	}
-
-#delete_dropdown_cycle{
-	background-color: red;
-}
-	#delete_dropdown_cycle:hover{
-		opacity: 0.7;
-	}
 
 #button_nowy_cycle{
 	display: block;
@@ -379,11 +364,23 @@ ul{
 	font-size: 20px;
 }
 
+#leki_delete_cycle{
+	background-color: red;
+	color: white;
+	font-weight: 900;
+	font-size: 20px;
+}
+
 .cycles_center_house{
 	text-align: center;
 }
 
-@media (max-width:1024px){
+.p_pogrubienie{
+	font-weight: 900;
+}
+
+
+@media (max-width:727px){
 	
 	#logo_login{
 		margin-left: 10%;
@@ -465,7 +462,7 @@ ul{
 		font-size: 8px;
 	}
 
-	#editHouseDropdown,#deleteDropdown,#dropdownMenuLink{
+	#editHouseDropdown,#deleteDropdown,#dropdownMenuLink,#editDropdownCycle,#delete_dropdown_cycle{
 		font-size: 12px;
 		width: 170px;
     	height: 30px;
@@ -485,14 +482,22 @@ ul{
 	
 	
 	
-/*end @media 1024px*/	
+/*end @media 767px*/	
 }	
 
 @media (max-width:400px){
 	#button_kurnik_home{
-		margin-left: 10%;
+		margin-left: 9%;
 		font-size: 12px;
 	}
 }
-/*end @media 400px*/				
+/*end @media 400px*/
+
+@media (min-width:800px){
+	#srodek_buttony_cycle{
+		margin-left: 33%;
+		margin-right: auto;
+	}
+}
+				
 /*end

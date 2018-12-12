@@ -10,52 +10,34 @@
 <body>
 	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_cycle" class="button_logout">WYLOGUJ</button></form><br><br><br>
-	<form th:action="@{'/home/' + ${chickenHouseId}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form><br><br><br><br><br><br>
-	<table align="center" style="width:72%" id="table_cycle">
-		<tr align="center">
-			<td align="center" class="table_cycle_right"><p th:text="'Dzień wstawienia: ' + ${cycle.getStartDay()}"></p></td>
-			<td align="center" class="table_cycle_right"><p>Lista dostaw paszy z datami:</p></td>
-			<td align="center" class="table_cycle_right"><p>Lista lekarstw z datami:</p></td>
-			<td align="center" class="table_cycle_right"></td>
-		</tr>
-		<tr>
-			<td class="table_cycle_right"><p th:text="'Hybryd: ' + ${cycle.getHybrid()}"></p></td>
-			<td class="table_cycle_right"></td>
-			<td class="table_cycle_right"></td>
-			<td align="center"><div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}">
-            <a class="btn btn-secondary dropdown-toggle col-md-12 edit_cycle" role="button" id="editDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja</a>
+	<form th:action="@{'/home/' + ${chickenHouseId}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form>
+	<div id="srodek_buttony_cycle"><div class="rowek">
+		<div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}">
+            <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="editDropdownCycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja</a>
             <form class="dropdown-menu p-2" autocomplete="off" about="#" th:action="@{'/home/cycle/' + ${cycle.getId()}}" th:object="${cycle}" th:method="put">
                 <div class="form-group"><label>Data wstawienia<input type="date" th:field="*{startDay}" class="form-control" id="startDay"></label></div>
                 <div class="form-group"><label>Liczba wstawionych kurczaków<input type="number" th:field="*{numberOfChickens}" class="form-control" id="numberOfChickens"></label></div>
                 <div class="form-group"><label>Wylęgarnia<input type="text"  th:field="*{hatchery}" class="form-control" id="hatchery"></label></div>
                 <div class="form-group"><label>Hybryd<input type="text"  th:field="*{hybrid}" class="form-control" id="hybrid"></label></div>
-				<button type="submit" class="btn btn-primary newDropdown_house">Edytuj</button>
-            </form></div></td>
+				<button type="submit" class="btn btn-primary newDropdown_house">Edytuj</button></form></div>
+		<div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}">
+			<a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="delete_dropdown_cycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Zakończ</a>
+        <form class="dropdown-menu p-4" autocomplete="off" th:action="@{'/home/cycle/complete/' + ${cycle.getId()}}" th:object="${cycle}" th:method="put">
+			<label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button></form></div></div></div>
+	<table align="center" class="table_cycle">
+		<tr align="center"><td align="center"><p class="p_pogrubienie" th:text="'Dzień wstawienia: ' + ${cycle.getStartDay()}"></p></td></tr>
+		<tr align="center"><td align="center"><p th:text="'Hybryd: ' + ${cycle.getHybrid()}"></p></td></tr>
+		<tr align="center"><td align="center"><p th:text="'Wylęgarnia: ' + ${cycle.getHatchery()}"></p></td></tr>
+		<tr align="center"><td align="center"><p th:text="'Początkowa liczba stada: ' + ${cycle.getNumberOfChickens()}"></p></td></tr>
+		<tr align="center"><td align="center"><p th:text="'Aktualna liczba stada: ' + ${actualNumberOfChicken}"></p></td></tr>
+	</table>
+	<table align="center" class="table_cycle">
+		<tr align="center">
+			<td width="50%" align="center" class="table_cycle_right"><p class="p_pogrubienie">Lista dostaw paszy z datami:</p></td>
+			<td width="50%" align="center" class="table_cycle_right"><p class="p_pogrubienie">Lista lekarstw z datami:</p></td>
 		</tr>
 		<tr>
-			<td class="table_cycle_right"><p th:text="'Wylęgarnia: ' + ${cycle.getHatchery()}"></p></td>
-			<td class="table_cycle_right"></td>
-			<td class="table_cycle_right"></td>
-			<td class="table_cycle_right"></td>
-		</tr>
-		<tr>
-			<td class="table_cycle_right"><p th:text="'Początkowa liczba stada: ' + ${cycle.getNumberOfChickens()}"></p></td>
-			<td class="table_cycle_right"></td>
-			<td class="table_cycle_right"></td>
-			<td align="center"><div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}"><a class="btn btn-secondary dropdown-toggle col-md-12 edit_cycle" role="button" id="delete_dropdown_cycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Zakończ</a>
-            <form class="dropdown-menu p-4" autocomplete="off" th:action="@{'/home/cycle/complete/' + ${cycle.getId()}}" th:object="${cycle}" th:method="put">
-				<label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button>
-            </form></div></td>
-		</tr>
-		<tr>
-			<td class="table_cycle_right"><p th:text="'Aktualna liczba stada: ' + ${actualNumberOfChicken}"></p></td>
-			<td class="table_cycle_right"></td>
-			<td class="table_cycle_right"></td>
-			<td class="table_cycle_right"></td>
-		</tr>
-		<tr>
-			<td class="table_cycle_right"></td>
-			<td class="table_cycle_right"><div>
+			<td align="center" class="table_cycle_right"><div>
 				<ul type="circle" th:each="forage : ${forages}">
 					<form th:action="@{'/home/cycle/day/forage/' + ${forage.getId()}}" th:method="delete"><button id="pasza_delete_cycle" type="submit">X</button></form>
 					<li th:text="${forage.getDeliveryDate()}"></li>
@@ -64,15 +46,16 @@
 						<li th:text="${forage.getQuantity() + ' kg'}"></li>
 					</ul></ul>
             </div></td>
-			<td class="table_cycle_right"><div>
+			<td align="center" class="table_cycle_right"><div>
 				<ul type="circle" th:each="medicineList : ${medicineListDtos}">
-                    <li th:text="'Lista lekarstw z dnia: ' + ${medicineList.getApplicationDate()}"></li>
-					<ul th:each="medicine : ${medicineList.getMedicineDtos()}">
+<!--					<form th:action="@{'/home/cycle/day/forage/' + ${forage.getId()}}" th:method="delete">-->
+						<button id="leki_delete_cycle" type="submit">X</button>
+<!--					</form>-->
+                    <li th:text="${medicineList.getApplicationDate()}"></li>
+					<ul type="square" th:each="medicine : ${medicineList.getMedicineDtos()}">
                         <li th:text="${medicine.getName()}"></li>
-                    </ul>
-					</ul>
+                    </ul></ul>
             </div></td>
-			<td class="table_cycle_right"></td>
 		</tr>
 	</table><br><br><br>
 <div class="container">
@@ -138,7 +121,6 @@
                     </form>
                 </th>
                 <th>
-					<!--TODO jak zrobić wstrzykiwanie do każdej edycji inną wartość-->
                     <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="dayDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja dnia</a>
                     <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/' + ${d.getId()}}" th:method="put" th:object="${dayDto}">
                         <div class="form-group"><label>Upadki<input type="number" th:field="*{naturalDowns}" class="form-control" id="editNaturalDowns"></label></div>
