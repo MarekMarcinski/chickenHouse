@@ -48,11 +48,11 @@
             </div></td>
 			<td align="center" class="table_cycle_right"><div>
 				<ul type="circle" th:each="medicineList : ${medicineListDtos}">
-<!--					<form th:action="@{'/home/cycle/day/forage/' + ${forage.getId()}}" th:method="delete">-->
-						<button id="leki_delete_cycle" type="submit">X</button>
-<!--					</form>-->
                     <li th:text="${medicineList.getApplicationDate()}"></li>
 					<ul type="square" th:each="medicine : ${medicineList.getMedicineDtos()}">
+                        <form th:action="@{'/home/cycle/day/medicine/' + ${medicine.getId()}}" th:method="delete">
+                            <button id="leki_delete_cycle" type="submit">X</button>
+                        </form>
                         <li th:text="${medicine.getName()}"></li>
                     </ul></ul>
             </div></td>
@@ -121,6 +121,7 @@
                     </form>
                 </th>
                 <th>
+					<!--TODO jak zrobić wstrzykiwanie do każdej edycji inną wartość-->
                     <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="dayDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja dnia</a>
                     <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/' + ${d.getId()}}" th:method="put" th:object="${dayDto}">
                         <div class="form-group"><label>Upadki<input type="number" th:field="*{naturalDowns}" class="form-control" id="editNaturalDowns"></label></div>
