@@ -38,54 +38,49 @@
 		</tr>
 		<tr>
 			<td align="center" class="table_cycle_right"><div>
-				<ul type="circle" th:each="forage : ${forages}">
+				<ul type="circle" class="p_pogrubienie" th:each="forage : ${forages}">
 					<form th:action="@{'/home/cycle/day/forage/' + ${forage.getId()}}" th:method="delete"><button id="pasza_delete_cycle" type="submit">X</button></form>
 					<li th:text="${forage.getDeliveryDate()}"></li>
-					<ul type="square">
+					<ul type="square" class="p_normal">
 						<li th:text="${forage.getName()}"></li>
 						<li th:text="${forage.getQuantity() + ' kg'}"></li>
 					</ul></ul>
             </div></td>
 			<td align="center" class="table_cycle_right"><div>
-				<ul type="circle" th:each="medicineList : ${medicineListDtos}">
+				<ul type="circle" class="p_pogrubienie" th:each="medicineList : ${medicineListDtos}">
                     <li th:if="${medicineList.getMedicineDtos().size() > 0}" th:text="${medicineList.getApplicationDate()}"></li>
-					<ul type="square" th:each="medicine : ${medicineList.getMedicineDtos()}">
-                        <form th:action="@{'/home/cycle/day/medicine/' + ${medicine.getId()}}" th:method="delete">
-                            <button id="leki_delete_cycle" type="submit">X</button>
-                        </form>
+					<ul type="square" class="p_normal" th:each="medicine : ${medicineList.getMedicineDtos()}">
+                        <form th:action="@{'/home/cycle/day/medicine/' + ${medicine.getId()}}" th:method="delete"><button id="leki_delete_cycle" type="submit">X</button></form>
                         <li th:text="${medicine.getName()}"></li>
                     </ul></ul>
             </div></td>
 		</tr>
 	</table><br><br><br>
-<div class="container">
-    <div>
+	<div class="container">
         <form autocomplete="off" th:action="@{'/home/cycle/day/' + ${cycle.getId()}}"
                 th:object="${dayDto}" th:method="post" th:if="${!cycle.isCompleted()}">
             <div class="form-row">
-                <div class="form-group col-md-2"><label>Dzień tuczu</label><input type="hidden" th:field="*{dayNumber}" th:value="${dayDto.getDayNumber()}">
-					<p class="cycle_srodkowanie" th:text="*{dayNumber}"></p></div>
-                <div class="form-group col-md-2"><label>Upadki<input type="number" th:field="*{naturalDowns}" class="form-control" id="naturalDowns" min="0"></label></div>
-                <div class="form-group col-md-2"><label>Selekcja<input type="number" th:field="*{selectionDowns}" class="form-control" id="selectionDowns" min="0"></label></div>
-                <div class="form-group col-md-2"><label>Stan licznika wody<input type="number" th:field="*{waterCounter}" class="form-control" id="waterCounter" min="0"></label></div>
-                <div class="form-group col-md-2"><label>Średnia waga<input type="number" th:field="*{averageWeight}" class="form-control" id="averageWeight" min="0"></label></div>
-                <div class="form-group col-md-2"><label>Uwagi<textarea rows="1" id="comments" th:field="*{comments}"></textarea></label></div>
-            </div>
+                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Dzień tuczu</label><br><input type="hidden" th:field="*{dayNumber}" th:value="${dayDto.getDayNumber()}"  th:text="*{dayNumber}"></p></div>
+                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Upadki<input type="number" th:field="*{naturalDowns}" class="form-control" id="naturalDowns" min="0"></label></p></div>
+                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Selekcja<input type="number" th:field="*{selectionDowns}" class="form-control" id="selectionDowns" min="0"></label></p></div>
+                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Stan licznika wody<input type="number" th:field="*{waterCounter}" class="form-control" id="waterCounter" min="0"></label></p></div>
+                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Średnia waga<input type="number" th:field="*{averageWeight}" class="form-control" id="averageWeight" min="0"></label></p></div>
+                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Uwagi</label><br><textarea rows="1" id="comments" th:field="*{comments}"></textarea></p></div>
             <button type="submit" class="btn btn-primary" id="button_nowy_cycle">ZATWIERDŹ</button>
-        </form>
-    </div>
-	<div><br><br><br>
+		</div></form>
+    </div><br><br><br>
+	<div id="sizer_cycle">
         <table class="col-md-12 table table-striped">
             <thead><tr>
-                <th scope="col">Dzień tuczu</th>
-                <th scope="col">Upadki</th>
-                <th scope="col">Selekcja</th>
-                <th scope="col">Razem</th>
-                <th scope="col">Stan licznika wody</th>
-                <th scope="col">Dzienne zużycie wody</th>
-                <th scope="col">Średnia waga kurczaka (gram)</th>
-                <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;WŚD</th>
-                <th scope="col">Uwagi</th>
+                <th align="center" scope="col">Dzień tuczu</th>
+                <th align="center" scope="col">Upadki</th>
+                <th align="center" scope="col">Selekcja</th>
+                <th align="center" scope="col">Razem</th>
+                <th align="center" scope="col">Stan licznika wody</th>
+                <th align="center" scope="col">Dzienne zużycie wody</th>
+                <th align="center" scope="col">Średnia waga kurczaka (gram)</th>
+                <th align="center" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;WŚD</th>
+                <th align="center" scope="col">Uwagi</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -135,6 +130,5 @@
             </tr></tbody>
         </table>
     </div>
-</div>
 </body>
 </html>

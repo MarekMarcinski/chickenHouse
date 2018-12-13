@@ -368,7 +368,7 @@ ul{
 	background-color: red;
 	color: white;
 	font-weight: 900;
-	font-size: 20px;
+	font-size: 10px;
 }
 
 .cycles_center_house{
@@ -379,6 +379,32 @@ ul{
 	font-weight: 900;
 }
 
+.p_normal{
+	font-weight: 400;
+}
+
+.cycle_srodkowanie{
+	text-align: center;
+	font-weight: 900;
+}
+
+#comments{
+	height: 30px;
+	width: 140px;
+}
+
+#sizer_cycle{
+	width: 100%;
+	font-size: 12px;
+}
+
+.not_strong{
+	font-weight: 400;
+}
+
+.cycle_stronger{
+	font-weight: 900;
+}
 
 @media (max-width:727px){
 	
@@ -478,9 +504,14 @@ ul{
 		font-size: 12px;
 	}
 	
-
+	#comments{
+		width: 220px;
+	}
 	
-	
+	#sizer_cycle{
+		width: 50%;
+		font-size: 5px;
+	}
 	
 /*end @media 767px*/	
 }	
