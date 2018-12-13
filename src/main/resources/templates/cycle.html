@@ -69,54 +69,54 @@
             <button type="submit" class="btn btn-primary" id="button_nowy_cycle">ZATWIERDŹ</button>
 		</div></form>
     </div><br><br><br>
-	<div id="sizer_cycle">
-        <table class="col-md-12 table table-striped">
-            <thead><tr>
-                <th align="center" scope="col">Dzień tuczu</th>
-                <th align="center" scope="col">Upadki</th>
-                <th align="center" scope="col">Selekcja</th>
-                <th align="center" scope="col">Razem</th>
-                <th align="center" scope="col">Stan licznika wody</th>
-                <th align="center" scope="col">Dzienne zużycie wody</th>
-                <th align="center" scope="col">Średnia waga kurczaka (gram)</th>
-                <th align="center" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;WŚD</th>
-                <th align="center" scope="col">Uwagi</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr></thead>
-            <tbody><tr align="center" th:each="d,i : ${days}">
-                <th align="center" th:text="${d.getDayNumber()}"></th>
-                <th align="center" th:text="${d.getNaturalDowns()}"></th>
-                <th align="center" th:text="${d.getSelectionDowns()}"></th>
-                <th align="center" th:text="${(d.getNaturalDowns() + d.getSelectionDowns())}"></th>
-                <th align="center" th:text="${d.getWaterCounter()}"></th>
-                <th align="center" th:text="${i.index > 0 && days[(i.index - 1)].getWaterCounter() > days[i.index].getWaterCounter() ? days[(i.index - 1)].getWaterCounter() - days[i.index].getWaterCounter() : 0}"></th>
-                <th align="center" th:text="${d.getAverageWeight()}"></th>
-                <th align="center" th:text="${#numbers.formatDecimal(d.getAllDowns() * 100 / actualNumberOfChicken, 1, 3)}"></th>
-                <th align="center" th:text="${d.getComments()}"></th>
-                <th>
-                    <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="forageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dostawa paszy</a>
+	<div>
+        <table th:each="d,i : ${days}" id="sizer_cycle">
+            <tr class="border_cycle table_cycle_strong">
+                <td class="border_cycle" align="center">Dzień tuczu</td>
+                <td class="border_cycle" align="center">Upadki</td>
+                <td class="border_cycle" align="center">Selekcja</td>
+                <td class="border_cycle" align="center">Razem</td>
+				</tr><tr class="border_cycle table_cycle_strong">
+                <td class="border_cycle" align="center">Stan licznika wody</td>
+                <td class="border_cycle" align="center">Dzienne zużycie wody</td>
+                <td class="border_cycle" align="center">Średnia waga kurczaka(g)</td>
+                <td class="border_cycle" align="center">WŚD</td>
+			</tr><tr class="border_cycle table_cycle_strong">
+                <td class="border_cycle" align="center">Uwagi</td>
+                <td class="border_cycle" align="center">Pasza</td>
+                <td class="border_cycle" align="center">Lekarstwa</td>
+				<td class="border_cycle" align="center">Edytuj</td>
+			</tr><tr>
+                <td class="border_cycle" align="center" th:text="${d.getDayNumber()}"></td>
+                <td class="border_cycle" align="center" th:text="${d.getNaturalDowns()}"></td>
+                <td class="border_cycle" align="center" th:text="${d.getSelectionDowns()}"></td>
+                <td class="border_cycle" align="center" th:text="${(d.getNaturalDowns() + d.getSelectionDowns())}"></td>
+			</tr><tr>
+                <td class="border_cycle" align="center" th:text="${d.getWaterCounter()}"></td>
+                <td class="border_cycle" align="center" th:text="${i.index > 0 && days[(i.index - 1)].getWaterCounter() > days[i.index].getWaterCounter() ? days[(i.index - 1)].getWaterCounter() - days[i.index].getWaterCounter() : 0}"></td>
+				<td class="border_cycle" align="center" th:text="${d.getAverageWeight()}"></td>
+                <td class="border_cycle" align="center" th:text="${#numbers.formatDecimal(d.getAllDowns() * 100 / actualNumberOfChicken, 1, 3)}"></td>
+			</tr><tr>
+                <td class="border_cycle" align="center" th:text="${d.getComments()}"></td>
+                <td class="border_cycle" align="center">
+					<a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown zmniejszenie_buttonow_cycle" role="button" id="forageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dostawa paszy</a>
                     <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/forage/' + ${d.getId()}}"
                           th:object="${forageDto}" th:method="put">
                         <div class="form-group"><label>Rodzaj paszy<input type="text" th:field="*{name}" class="form-control" id="forageName"></label></div>
                         <div class="form-group"><label>Ilość<input type="number" th:field="*{quantity}" class="form-control" id="quantity"></label></div>
                         <div class="form-group"><label>Cena<input type="number" th:field="*{price}" class="form-control" id="foragePrice"></label></div>
 						<button type="submit" class="btn btn-primary newDropdown_house">Dodaj dostawę</button>
-                    </form>
-                </th>
-                <th>
-                    <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="medicineDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lekarstwa</a>
+                    </form></td>
+                <td class="border_cycle" align="center">
+					<a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown zmniejszenie_buttonow_cycle" role="button" id="medicineDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lekarstwa</a>
                     <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/medicine/' + ${d.getId()}}"
                           th:object="${medicineDto}" th:method="put">
                         <div class="form-group"><label>Nazwa lekarstwa<input type="text" th:field="*{name}" class="form-control" id="name"></label></div>
                         <div class="form-group"><label>Cena<input type="number" th:field="*{price}" class="form-control" id="medicinePrice"></label></div>
 						<button type="submit" class="btn btn-primary newDropdown_house">Dodaj lekarstwo</button>
-                    </form>
-                </th>
-                <th>
-					<!--TODO jak zrobić wstrzykiwanie do każdej edycji inną wartość-->
-                    <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="dayDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja dnia</a>
+                    </form></td>
+				<td class="border_cycle" align="center">
+                    <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown zmniejszenie_buttonow_cycle" role="button" id="dayDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja dnia</a>
                     <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/' + ${d.getId()}}" th:method="put" th:object="${dayDto}">
                         <div class="form-group"><label>Upadki<input type="number" th:field="*{naturalDowns}" class="form-control" id="editNaturalDowns"></label></div>
                         <div class="form-group"><label>Selekcja<input type="number" th:field="*{selectionDowns}" class="form-control" id="editSelectionDowns"></label></div>
@@ -124,9 +124,8 @@
                         <div class="form-group"><label>Średnia waga kurczaka<input type="number" th:field="*{averageWeight}" class="form-control" id="editAverageWeight"></label></div>
                         <div class="form-group"><label>Uwagi<input type="text" th:field="*{comments}" class="form-control" id="editComments"></label></div>
 						<button type="submit" class="btn btn-primary newDropdown_house">Edytuj</button>
-                    </form>
-                </th>
-            </tr></tbody>
+                    </form></td>
+            </tr>
         </table>
     </div>
 </body>
