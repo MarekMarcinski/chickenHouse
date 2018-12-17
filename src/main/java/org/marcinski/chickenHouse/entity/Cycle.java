@@ -51,4 +51,7 @@ public class Cycle {
     @JoinColumn(name = "house_id")
     @ToString.Exclude
     private ChickenHouse chickenHouse;
+
+    @OneToMany(mappedBy = "cycle")
+    private Set<Slaughter> slaughters;
 }

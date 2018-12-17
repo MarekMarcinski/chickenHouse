@@ -10,7 +10,8 @@
 <body>
 	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_cycle" class="button_logout">WYLOGUJ</button></form><br><br><br>
-	<form th:action="@{'/home/' + ${chickenHouseId}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form>
+	<form th:action="@{'/home/' + ${chickenHouseId}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form><br><br><br>
+    <form th:action="@{'/home/cycle/slaughter/' + ${cycle.getId()}}" method="get"><button type="submit" id="button_back_house" class="button_back">UBÓJ</button></form>
 	<div id="srodek_buttony_cycle"><div class="rowek">
 		<div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}">
             <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="editDropdownCycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja</a>
@@ -23,7 +24,7 @@
 		<div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}">
 			<a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="delete_dropdown_cycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Zakończ</a>
         <form class="dropdown-menu p-4" autocomplete="off" th:action="@{'/home/cycle/complete/' + ${cycle.getId()}}" th:object="${cycle}" th:method="put">
-			<label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button></form></div></div></div>
+            <label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button></form></div></div></div>
 	<table align="center" class="table_cycle">
 		<tr align="center"><td align="center"><p class="p_pogrubienie" th:text="'Dzień wstawienia: ' + ${cycle.getStartDay()}"></p></td></tr>
 		<tr align="center"><td align="center"><p th:text="'Hybryd: ' + ${cycle.getHybrid()}"></p></td></tr>

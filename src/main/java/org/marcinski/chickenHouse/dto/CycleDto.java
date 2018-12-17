@@ -35,4 +35,6 @@ public class CycleDto {
     private Set<DayDto> daysDto;
 
     private ChickenHouseDto chickenHouseDto;
+
+    private Set<SlaughterDto> slaughterDtos;
 }
