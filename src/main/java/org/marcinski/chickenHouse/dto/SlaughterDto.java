@@ -3,8 +3,10 @@ package org.marcinski.chickenHouse.dto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
@@ -13,6 +15,8 @@ public class SlaughterDto {
 
     private Long id;
 
+    @NotNull(message = "Wprowadź datę!")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfSlaughter;
 
     @Min(0)
