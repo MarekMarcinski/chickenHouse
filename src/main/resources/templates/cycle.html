@@ -75,8 +75,8 @@
 		<div th:each="d,i : ${days}" id="sizer_cycle">
             <div id="accordion">
                 <div class="card">
-                    <div class="card-header"><button class="accordion-toggle black_strong" id="button_cycle_rozwin" data-toggle="collapse" data-parent="#accordion" th:href="'#collapseOne' + ${d.getId()}" th:text="'Dzień tuczu: ' + ${d.getDayNumber()}"></button></div>
-                    <div th:id="'collapseOne' + ${d.getId()}" class="panel-collapse collapse in"><div class="card-block">
+                    <div class="card-header"><button class="accordion-toggle black_strong" id="button_cycle_rozwin" data-toggle="collapse" data-parent="#accordion" th:href="'#collapse' + ${d.getId()}" th:text="${d.getDayDate()} + ' Dzień tuczu: ' + ${d.getDayNumber()}"></button></div>
+                    <div th:id="'collapse' + ${d.getId()}" class="panel-collapse collapse in"><div class="card-block">
 <table class="table_cycle_big">
 	<tr class="border_cycle table_cycle_strong color_trzeci_wiersz gray_strong">
 		<td class="border_cycle" align="center">Dzień tuczu</td>

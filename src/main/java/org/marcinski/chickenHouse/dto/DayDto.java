@@ -7,7 +7,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Set;
+import java.time.LocalDate;
 
 @Data
 public class DayDto {
@@ -38,6 +38,8 @@ public class DayDto {
     @Nullable
     @Size(max = 240)
     private String comments;
+
+    private LocalDate dayDate;
 
     private CycleDto cycleDto;
 

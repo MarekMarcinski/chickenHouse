@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,7 +56,9 @@ public class DayService {
         List<DayDto> dayDtos;
         try{
             CycleDto cycleDto = cycleService.getDtoById(cycleId);
+            LocalDate startDay = cycleDto.getStartDay();
             dayDtos = new ArrayList<>(cycleDto.getDaysDto());
+            setDateForDayDto(dayDtos, startDay);
             dayDtos.sort(Comparator.comparingInt(DayDto::getDayNumber).reversed());
         }catch (EntityNotFoundException e){
             dayDtos = Collections.emptyList();
@@ -134,5 +137,13 @@ public class DayService {
         return dayRepository.findById(dayId)
                 .map(dayMapper::mapTo)
                 .orElseThrow(EntityNotFoundException::new);
+    }
+
+    private void setDateForDayDto(List<DayDto> dayDtos, LocalDate startDay) {
+        for (DayDto dayDto : dayDtos) {
+            LocalDate date = startDay.plusDays(dayDto.getDayNumber() - 1);
+            dayDto.setDayDate(date);
+        }
+
     }
 }

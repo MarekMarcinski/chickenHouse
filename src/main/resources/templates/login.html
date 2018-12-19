@@ -10,7 +10,7 @@
 <body>
 	<img th:src="@{/images/logo.png}" id="logo_login" alt="LOGO"><br><br><br>
     <form th:action="@{/login}" method="post">
-		<input type="text" class="login" id="email" name="email" placeholder="E-MAIL"><br>
+		<input type="email" class="login" id="email" name="email" placeholder="E-MAIL"><br>
 		<input type="password" class="login" id="password" name="password" placeholder="HASŁO"><br>
         <div id="remember_button_login"><label><input type="checkbox" id="remember" name="remember-me">&nbsp;&nbsp;Zapamiętaj mnie</label></div><br>
 		<button type="submit" id="button_login_login" class="button" name="submit" value="login" th:text="ZALOGUJ"></button><br>

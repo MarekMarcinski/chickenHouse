@@ -16,5 +16,6 @@ public interface DayMapper {
     @Mapping(source = "cycle", target = "cycleDto")
     @Mapping(source = "forage", target = "forageDto")
     @Mapping(source = "medicineList", target = "medicineListDto")
+    @Mapping(target = "dayDate", ignore = true)
     DayDto mapTo(Day day);
 }
