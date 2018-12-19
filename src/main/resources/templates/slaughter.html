@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Ubój</title>
+    <title>Chicken House - Ubój</title>
     <th:block th:include="partials/scripts_css" />
 </head>
 
@@ -11,63 +11,49 @@
 <img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 <form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_cycle" class="button_logout">WYLOGUJ</button></form><br><br><br>
 <form th:action="@{'/home/cycle/' + ${cycleDtoById.getId()}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form>
-<div class="container">
-    <p th:text="'Dodaj ubój dla rzutu z dnia: ' + ${cycleDtoById.getStartDay()}"></p>
-
-    <div class="row col-md-6">
-        <form autocomplete="off" th:action="@{'/home/cycle/slaughter/new_slaughter/' + ${cycleDtoById.getId()}}" th:object="${newSlaughter}" method="post">
-            <div class="form-group">
-                <label for="dateOfSlaughter">Data uboju</label>
-                <input type="date" class="form-control" id="dateOfSlaughter" th:value="${now}" th:field="*{dateOfSlaughter}">
-            </div>
-            <div class="form-group">
-                <label for="quantityOfChickens">Ilość kurczaków</label>
-                <input type="number" class="form-control" id="quantityOfChickens" placeholder="0" min="0" th:field="*{quantityOfChickens}">
-            </div>
-            <div class="form-group">
-                <label for="weightOfChickens">Masa żywca</label>
-                <input type="number" class="form-control" id="weightOfChickens" placeholder="0.00" min="0" step="0.01" th:field="*{weightOfChickens}">
-            </div>
-            <div class="form-group">
-                <label for="sellingPrice">Cena za kg (netto)</label>
-                <input type="number" class="form-control" id="sellingPrice" placeholder="0.00" min="0" step="0.01" th:field="*{sellingPrice}">
-            </div>
+<div class="container" align="center">
+    <p class="p_pogrubienie" align="center" th:text="'Dodaj ubój dla rzutu z dnia: ' + ${cycleDtoById.getStartDay()}"></p>
+    <div class="row col-md-6 slaughter_first" align="center">
+        <form  class="slaughter_first" autocomplete="off" th:action="@{'/home/cycle/slaughter/new_slaughter/' + ${cycleDtoById.getId()}}" th:object="${newSlaughter}" method="post">
+            <div class="form-group"><label>Data uboju<input type="date" class="form-control" id="dateOfSlaughter" th:value="${now}" th:field="*{dateOfSlaughter}"></label></div>
+            <div class="form-group"><label>Ilość kurczaków<input type="number" class="form-control" id="quantityOfChickens" placeholder="0" min="0" th:field="*{quantityOfChickens}"></label></div>
+            <div class="form-group"><label>Masa żywca<input type="number" class="form-control" id="weightOfChickens" placeholder="0.00" min="0" step="0.01" th:field="*{weightOfChickens}"></label></div>
+            <div class="form-group"><label>Cena za kg (netto)<input type="number" class="form-control" id="sellingPrice" placeholder="0.00" min="0" step="0.01" th:field="*{sellingPrice}"></label></div>
             <p id="success_message_registration" th:utext="${message}"></p>
             <button type="submit" class="btn btn-primary">Zatwierdź</button>
         </form>
-    </div>
-
-    <div class="row col-md-12" th:if="${slaughterDtos.size() > 0}">
-        <p>Lista ubojów:</p>
-        <table class="table">
+    </div><br><br><br>
+	<div><p class="p_pogrubienie slaughter_first" align="center">Lista ubojów:</p></div><br>
+    <div class="row col-md-12 slaughter_first" align="center" th:if="${slaughterDtos.size() > 0}">
+		
+        <table class="table border_cycle slaughter_mini slaughter_first">
             <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Data</th>
-                <th scope="col">Doba tuczu</th>
-                <th scope="col">Ilość</th>
-                <th scope="col">Masa żywca [kg]</th>
-                <th scope="col">Średnia waga [kg]</th>
-                <th scope="col">Cena / kg (netto)</th>
-                <th scope="col"></th>
+            <tr class="border_cycle slaughter_mini_padding">
+                <td class="border_cycle slaughter_mini_padding" align="center">#</td>
+                <td class="border_cycle slaughter_mini_padding" align="center">Data</td>
+                <td class="border_cycle slaughter_mini_padding" align="center">Doba tuczu</td>
+                <td class="border_cycle slaughter_mini_padding" align="center">Ilość</td>
+                <td class="border_cycle slaughter_mini_padding" align="center">Masa żywca [kg]</td>
+                <td class="border_cycle slaughter_mini_padding" align="center">Średnia waga [kg]</td>
+                <td class="border_cycle slaughter_mini_padding" align="center">Cena / kg (netto)</td>
+                <td class="border_cycle slaughter_mini_padding" align="center">Edycja</td>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="slaughter, i : ${slaughterDtos}">
-                <th scope="row" th:text="${i.index + 1}"></th>
-                <td th:text="${slaughter.getDateOfSlaughter()}">Data</td>
-                <td th:text="${slaughter.getFatteningDay()}">Doba tuczu</td>
-                <td th:text="${slaughter.getQuantityOfChickens()}">Ilość</td>
-                <td th:text="${slaughter.getWeightOfChickens()}">Masa żywca</td>
-                <td th:text="${slaughter.getAverageWeight()}">Średnia waga</td>
-                <td th:text="${slaughter.getSellingPrice()}">Cena</td>
-                <td>
-                    <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown zmniejszenie_buttonow_cycle" role="button" id="dayDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja</a>
+            <tr class="border_cycle slaughter_mini_padding" th:each="slaughter, i : ${slaughterDtos}">
+                <td class="border_cycle slaughter_mini_padding" align="center" scope="row" th:text="${i.index + 1}"></td>
+                <td class="border_cycle slaughter_mini_padding" align="center" th:text="${slaughter.getDateOfSlaughter()}">Data</td>
+                <td class="border_cycle slaughter_mini_padding" align="center" th:text="${slaughter.getFatteningDay()}">Doba tuczu</td>
+                <td class="border_cycle slaughter_mini_padding" align="center" th:text="${slaughter.getQuantityOfChickens()}">Ilość</td>
+                <td class="border_cycle slaughter_mini_padding" align="center" th:text="${slaughter.getWeightOfChickens()}">Masa żywca</td>
+                <td class="border_cycle slaughter_mini_padding" align="center" th:text="${slaughter.getAverageWeight()}">Średnia waga</td>
+                <td class="border_cycle slaughter_mini_padding" align="center" th:text="${slaughter.getSellingPrice()}">Cena</td>
+                <td class="border_cycle slaughter_mini_padding" align="center"><a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown zmniejszenie_buttonow_cycle button_slaughter_edit" role="button" id="dayDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja</a>
                     <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/slaughter/' + ${slaughter.getId()}}" th:method="put" th:object="${slaughter}">
-                        <div class="form-group"><label>Data<input type="date" class="form-control" th:value="${slaughter.getFatteningDay()}"></label></div>
-                        <div class="form-group"><label>Ilość kurczaków<input type="number" min="0" class="form-control"></label></div>
-                        <div class="form-group"><label>Masa żywca<input type="number" min="0" step="0.01" class="form-control"></label></div>
-                        <div class="form-group"><label>Cena za kg (netto)<input type="number" min="0" step="0.01" class="form-control"></label></div>
+                        <div class="form-group" align="center"><label>Data<input type="date" class="form-control" th:value="${slaughter.getFatteningDay()}"></label></div>
+                        <div class="form-group" align="center"><label>Ilość kurczaków<input type="number" min="0" class="form-control"></label></div>
+                        <div class="form-group" align="center"><label>Masa żywca<input type="number" min="0" step="0.01" class="form-control"></label></div>
+                        <div class="form-group" align="center"><label>Cena za kg (netto)<input type="number" min="0" step="0.01" class="form-control"></label></div>
                         <button type="submit" class="btn btn-primary newDropdown_house">Edytuj</button>
                     </form>
                 </td>
