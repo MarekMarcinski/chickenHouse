@@ -24,7 +24,7 @@
 		<div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}">
 			<a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="delete_dropdown_cycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Zakończ</a>
         <form class="dropdown-menu p-4" autocomplete="off" th:action="@{'/home/cycle/complete/' + ${cycle.getId()}}" th:object="${cycle}" th:method="put">
-            <label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button></form></div></div></div>
+            <label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button></form></div></div></div><br>
 	<table align="center" class="table_cycle">
 		<tr align="center"><td align="center"><p class="p_pogrubienie" th:text="'Dzień wstawienia: ' + ${cycle.getStartDay()}"></p></td></tr>
 		<tr align="center"><td align="center"><p th:text="'Hybryd: ' + ${cycle.getHybrid()}"></p></td></tr>
@@ -118,12 +118,13 @@
                     </form></td>
 				<td class="border_cycle" align="center">
                     <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown zmniejszenie_buttonow_cycle" role="button" id="dayDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja dnia</a>
-                    <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/' + ${d.getId()}}" th:method="put" th:object="${dayDto}">
-                        <div class="form-group"><label>Upadki<input type="number" th:field="*{naturalDowns}" class="form-control" id="editNaturalDowns"></label></div>
-                        <div class="form-group"><label>Selekcja<input type="number" th:field="*{selectionDowns}" class="form-control" id="editSelectionDowns"></label></div>
-                        <div class="form-group"><label>Stan licznika wody<input type="number" th:field="*{waterCounter}" class="form-control" id="editWaterCounter"></label></div>
-                        <div class="form-group"><label>Średnia waga kurczaka<input type="number" th:field="*{averageWeight}" class="form-control" id="editAverageWeight"></label></div>
-                        <div class="form-group"><label>Uwagi<input type="text" th:field="*{comments}" class="form-control" id="editComments"></label></div>
+                    <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/' + ${d.getId()}}" th:method="put" th:object="${d}">
+                        <input type="hidden" th:value="*{id}" name="id"/>
+                        <div class="form-group"><label>Upadki<input type="number" th:value="*{naturalDowns}" name="naturalDowns" class="form-control" id="editNaturalDowns"></label></div>
+                        <div class="form-group"><label>Selekcja<input type="number" th:value="*{selectionDowns}" name="selectionDowns" class="form-control" id="editSelectionDowns"></label></div>
+                        <div class="form-group"><label>Stan licznika wody<input type="number" th:value="*{waterCounter}" name="waterCounter" class="form-control" id="editWaterCounter"></label></div>
+                        <div class="form-group"><label>Średnia waga kurczaka<input type="number" th:value="*{averageWeight}" name="averageWeight" class="form-control" id="editAverageWeight"></label></div>
+                        <div class="form-group"><label>Uwagi<input type="text" th:value="*{comments}" name="comments" class="form-control" id="editComments"></label></div>
 						<button type="submit" class="btn btn-primary newDropdown_house">Edytuj</button>
                     </form></td>
             </tr>
