@@ -19,13 +19,13 @@ public class SlaughterDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfSlaughter;
 
-    @Min(0)
+    @Min(value = 0, message = "Ilość kurczaków nie może być mniejsza niż 0.")
     private int quantityOfChickens;
 
-    @Min(0)
+    @Min(value = 0, message = "Waga nie może być mniejsza niż 0.")
     private double weightOfChickens;
 
-    @Min(0)
+    @Min(value = 0, message = "Cena nie może być mniejsza niż 0.")
     private double sellingPrice;
 
     @ToString.Exclude
