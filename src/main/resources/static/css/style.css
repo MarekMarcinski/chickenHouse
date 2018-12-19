@@ -457,6 +457,23 @@ ul{
 	width: 100%;
 }
 
+.uboj_save{
+	color: green !important;
+	font-weight: 900 !important;
+}
+
+#button_cycle_rozwin{
+	width: 100%;
+	height: 35px;
+	opacity: 1;
+	border: none;
+	background-color: transparent;
+}
+	#button_cycle_rozwin:hover{
+		opacity: 0.5;
+		color: black;
+}
+
 @media (max-width:727px){
 	
 	#logo_login{
