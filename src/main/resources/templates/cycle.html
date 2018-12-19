@@ -20,6 +20,7 @@
                 <div class="form-group"><label>Liczba wstawionych kurczaków<input type="number" th:field="*{numberOfChickens}" class="form-control" id="numberOfChickens"></label></div>
                 <div class="form-group"><label>Wylęgarnia<input type="text"  th:field="*{hatchery}" class="form-control" id="hatchery"></label></div>
                 <div class="form-group"><label>Hybryd<input type="text"  th:field="*{hybrid}" class="form-control" id="hybrid"></label></div>
+                <div class="form-group"><label>Cena za kg (netto)<input type="number" min="0" step="0.01" th:field="*{price}" class="form-control" id="price"></label></div>
 				<button type="submit" class="btn btn-primary newDropdown_house">Edytuj</button></form></div>
 		<div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}">
 			<a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="delete_dropdown_cycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Zakończ</a>
@@ -104,8 +105,8 @@
                     <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/forage/' + ${d.getId()}}"
                           th:object="${forageDto}" th:method="put">
                         <div class="form-group"><label>Rodzaj paszy<input type="text" th:field="*{name}" class="form-control" id="forageName"></label></div>
-                        <div class="form-group"><label>Ilość<input type="number" th:field="*{quantity}" class="form-control" id="quantity"></label></div>
-                        <div class="form-group"><label>Cena<input type="number" th:field="*{price}" class="form-control" id="foragePrice"></label></div>
+                        <div class="form-group"><label>Ilość kg<input type="number" th:field="*{quantity}" class="form-control" id="quantity"></label></div>
+                        <div class="form-group"><label>Cena netto<input type="number" th:field="*{price}" class="form-control" id="foragePrice"></label></div>
 						<button type="submit" class="btn btn-primary newDropdown_house">Dodaj dostawę</button>
                     </form></td>
                 <td class="border_cycle" align="center">
@@ -113,7 +114,7 @@
                     <form class="dropdown-menu p-2" autocomplete="off" th:action="@{'/home/cycle/day/medicine/' + ${d.getId()}}"
                           th:object="${medicineDto}" th:method="put">
                         <div class="form-group"><label>Nazwa lekarstwa<input type="text" th:field="*{name}" class="form-control" id="name"></label></div>
-                        <div class="form-group"><label>Cena<input type="number" th:field="*{price}" class="form-control" id="medicinePrice"></label></div>
+                        <div class="form-group"><label>Cena netto<input type="number" th:field="*{price}" class="form-control" id="medicinePrice"></label></div>
 						<button type="submit" class="btn btn-primary newDropdown_house">Dodaj lekarstwo</button>
                     </form></td>
 				<td class="border_cycle" align="center">
