@@ -436,6 +436,22 @@ ul{
 	margin-left: auto;
 }
 
+.color_trzeci_wiersz{
+	background-color: #cfb1ff;
+}
+
+.black_strong{
+	color: black;
+	weight: 900;
+}
+
+.gray_strong{
+	color: #2C2C2C;
+	weight: 900;
+}
+
+
+
 @media (max-width:727px){
 	
 	#logo_login{
