@@ -21,6 +21,7 @@
                 <div class="form-group"><label>Ilość kurczaków<input type="number" th:field="*{numberOfChickens}" class="form-control" id="numberOfChickens"></label></div>
                 <div class="form-group"><label>Hybryd<input type="text" th:field="*{hybrid}" class="form-control" id="hybrid"></label></div>
                 <div class="form-group"><label>Wylęgarnia<input type="text" th:field="*{hatchery}" class="form-control" id="hatchery"></label></div>
+                <div class="form-group"><label>Cena zł/szt netto<input type="number" min="0" step="0.01" th:field="*{price}" class="form-control" id="price"></label></div>
 				<button type="submit" class="btn btn-primary newDropdown_house">Utwórz</button>
             </form>
         </div>
