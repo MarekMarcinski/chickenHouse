@@ -2,7 +2,6 @@ package org.marcinski.chickenHouse.controller;
 
 import org.marcinski.chickenHouse.dto.CycleDto;
 import org.marcinski.chickenHouse.dto.SlaughterDto;
-import org.marcinski.chickenHouse.mapper.SlaughterMapper;
 import org.marcinski.chickenHouse.service.CycleService;
 import org.marcinski.chickenHouse.service.SlaughterService;
 import org.springframework.stereotype.Controller;
@@ -23,14 +22,11 @@ import java.util.List;
 public class SlaughterController {
 
     private CycleService cycleService;
-    private SlaughterMapper slaughterMapper;
     private SlaughterService slaughterService;
 
     public SlaughterController(CycleService cycleService,
-                               SlaughterMapper slaughterMapper,
                                SlaughterService slaughterService) {
         this.cycleService = cycleService;
-        this.slaughterMapper = slaughterMapper;
         this.slaughterService = slaughterService;
     }
 
