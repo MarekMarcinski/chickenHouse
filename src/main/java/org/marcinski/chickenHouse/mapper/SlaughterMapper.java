@@ -12,5 +12,6 @@ public interface SlaughterMapper {
     Slaughter mapTo(SlaughterDto slaughterDto);
 
     @Mapping(source = "cycle", target = "cycleDto")
+    @Mapping(target = "fatteningDay", ignore = true)
     SlaughterDto mapTo(Slaughter slaughter);
 }

@@ -43,6 +43,7 @@ public class SlaughterController {
         LocalDate now = LocalDate.now();
         SlaughterDto newSlaughter = new SlaughterDto();
         newSlaughter.setDateOfSlaughter(now);
+        List<SlaughterDto> slaughterDtos = slaughterService.getAllSlaughterDtosByCycleId(id);
 
         if (message.length() != 0) {
             model.addAttribute("message", message);
@@ -51,6 +52,7 @@ public class SlaughterController {
         model.addAttribute("cycleDtoById", cycleDtoById);
         model.addAttribute("newSlaughter", newSlaughter);
         model.addAttribute("now", now);
+        model.addAttribute("slaughterDtos", slaughterDtos);
         return "slaughter";
     }
 

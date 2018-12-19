@@ -30,4 +30,10 @@ public class SlaughterDto {
 
     @ToString.Exclude
     private CycleDto cycleDto;
+
+    private int fatteningDay;
+
+    public double getAverageWeight(){
+        return weightOfChickens/quantityOfChickens;
+    }
 }

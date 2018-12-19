@@ -8,6 +8,11 @@ import org.marcinski.chickenHouse.repository.SlaughterRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SlaughterService {
@@ -22,16 +27,34 @@ public class SlaughterService {
         this.cycleService = cycleService;
     }
 
-    public void createNewSlaughter(SlaughterDto slaughterDto, Long cycleId) {
-        CycleDto cycleDto = null;
-        try {
-            cycleDto = cycleService.getDtoById(cycleId);
-        }catch (EntityNotFoundException e){
+    public void createNewSlaughter(SlaughterDto slaughterDto, Long cycleId) throws EntityNotFoundException {
+        CycleDto cycleDto = cycleService.getDtoById(cycleId);
 
-        }
         slaughterDto.setCycleDto(cycleDto);
 
         Slaughter slaughter = slaughterMapper.mapTo(slaughterDto);
         slaughterRepository.save(slaughter);
+    }
+
+    public List<SlaughterDto> getAllSlaughterDtosByCycleId(Long id) {
+        CycleDto cycleDto = cycleService.getDtoById(id);
+        LocalDate startDay = cycleDto.getStartDay();
+
+        List<Slaughter> allByCycleId = slaughterRepository.findAllByCycleId(id);
+        List<SlaughterDto> slaughterDtos = allByCycleId
+                .stream()
+                .map(slaughter -> slaughterMapper.mapTo(slaughter))
+                .collect(Collectors.toList());
+
+        for (SlaughterDto slaughterDto : slaughterDtos) {
+            int fatteningDay = setFatteningDay(slaughterDto, startDay);
+            slaughterDto.setFatteningDay(fatteningDay);
+        }
+        return slaughterDtos;
+    }
+
+    private int setFatteningDay(SlaughterDto slaughterDto, LocalDate startDay){
+        LocalDate slaughterDate = slaughterDto.getDateOfSlaughter();
+        return Period.between(startDay, slaughterDate).getDays();
     }
 }
