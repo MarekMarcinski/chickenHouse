@@ -442,12 +442,11 @@ ul{
 
 .black_strong{
 	color: black;
-	weight: 900;
+	font-weight: 900;
 }
 
 .gray_strong{
 	color: #2C2C2C;
-	weight: 900;
 }
 
 
@@ -558,10 +557,12 @@ ul{
 		width: 220px;
 	}
 	
+/*
 	#sizer_cycle{
 		width: 20%;
 		font-size: 10px;
 	}
+*/
 	
 	
 	.zmniejszenie_buttonow_cycle{
