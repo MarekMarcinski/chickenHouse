@@ -336,6 +336,13 @@ body{
 .table_cycle_right{
 	border-right: 2px solid gray;
 	text-align: center;
+	left: -30%;
+}
+
+ul,li{
+	list-style: none outside;
+	margin:0;
+	padding:0;
 }
 
 #button_nowy_cycle{
