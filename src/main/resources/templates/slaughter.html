@@ -21,16 +21,17 @@
         </div>
         <div class="form-group">
             <label for="quantityOfChickens">Ilość kurczaków</label>
-            <input type="number" class="form-control" id="quantityOfChickens" placeholder="0" min="0" th:field="*{quantityOfChickens}">
+            <input type="number" class="form-control" id="quantityOfChickens" placeholder="0" th:field="*{quantityOfChickens}">
         </div>
         <div class="form-group">
             <label for="weightOfChickens">Masa żywca</label>
-            <input type="number" class="form-control" id="weightOfChickens" placeholder="0.00" min="0" step="0.01" th:field="*{weightOfChickens}">
+            <input type="number" class="form-control" id="weightOfChickens" placeholder="0.00" step="0.01" th:field="*{weightOfChickens}">
         </div>
         <div class="form-group">
             <label for="sellingPrice">Cena za kg (netto)</label>
-            <input type="number" class="form-control" id="sellingPrice" placeholder="0.00" min="0" step="0.01" th:field="*{sellingPrice}">
+            <input type="number" class="form-control" id="sellingPrice" placeholder="0.00" step="0.01" th:field="*{sellingPrice}">
         </div>
+        <p id="success_message_registration" th:utext="${message}"></p>
         <button type="submit" class="btn btn-primary">Zatwierdź</button>
     </form>
 
