@@ -53,7 +53,7 @@ public class CycleController {
     }
 
     @PutMapping("complete/{id}")
-    public String updateCycle(@PathVariable Long id){
+    public String completeCycle(@PathVariable Long id){
         long chickenHouseId = cycleService.completeCycle(id);
 
         return "redirect:/home/" + chickenHouseId;
