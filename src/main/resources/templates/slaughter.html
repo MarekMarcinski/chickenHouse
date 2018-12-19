@@ -24,7 +24,7 @@
         </form>
     </div><br><br><br>
 	<div th:if="${slaughterDtos.size() > 0}"><p class="p_pogrubienie slaughter_first" align="center">Lista ubojów:</p></div><br>
-    <div class="row col-md-12 slaughter_first" align="center">
+    <div class="row col-md-12 slaughter_first" align="center" th:if="${slaughterDtos.size() > 0}">
 
         <table class="table border_cycle slaughter_mini slaughter_first">
             <thead>
