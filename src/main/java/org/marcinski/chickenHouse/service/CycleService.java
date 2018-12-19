@@ -51,6 +51,7 @@ public class CycleService {
             cycleToEdit.setNumberOfChickens(cycleDto.getNumberOfChickens());
             cycleToEdit.setHatchery(cycleDto.getHatchery());
             cycleToEdit.setHybrid(cycleDto.getHybrid());
+            cycleToEdit.setPrice(cycleDto.getPrice());
             cycleRepository.save(cycleToEdit);
             chickenHouseId = cycleToEdit.getChickenHouse().getId();
         }
