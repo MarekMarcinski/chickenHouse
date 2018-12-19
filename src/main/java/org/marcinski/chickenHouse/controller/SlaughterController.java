@@ -1,5 +1,6 @@
 package org.marcinski.chickenHouse.controller;
 
+import org.marcinski.chickenHouse.dto.ChickenHouseDto;
 import org.marcinski.chickenHouse.dto.CycleDto;
 import org.marcinski.chickenHouse.dto.SlaughterDto;
 import org.marcinski.chickenHouse.service.CycleService;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -31,11 +33,22 @@ public class SlaughterController {
     }
 
     @GetMapping("/{cycleId}")
-    public String getSlaughter(@PathVariable(name = "cycleId")Long id,
+    public String getSlaughter(@PathVariable(name = "cycleId") Long id,
                                Model model,
-                               @ModelAttribute("message") String message){
+                               @ModelAttribute("message") String message,
+                               Principal principal) {
+        CycleDto cycleDtoById;
+        try{
+           cycleDtoById = cycleService.getDtoById(id);
+        }catch (EntityNotFoundException e){
+            //TODO 404
+            return "redirect:/home";
+        }
 
-        CycleDto cycleDtoById = cycleService.getDtoById(id);
+        if (!cycleService.isUserCycle(principal, cycleDtoById)){
+            return "redirect:/home";
+        }
+
         LocalDate now = LocalDate.now();
         SlaughterDto newSlaughter = new SlaughterDto();
         newSlaughter.setDateOfSlaughter(now);
@@ -56,20 +69,45 @@ public class SlaughterController {
     public RedirectView createNewSlaughter(@PathVariable(name = "cycleDtoId") Long cycleId,
                                            @Valid SlaughterDto slaughterDto,
                                            BindingResult bindingResult,
-                                           RedirectAttributes attributes){
+                                           RedirectAttributes attributes) {
         String message;
-        if(!bindingResult.hasErrors()) {
+        if (!bindingResult.hasErrors()) {
             try {
                 slaughterService.createNewSlaughter(slaughterDto, cycleId);
                 message = "Ubój został zapisany.";
-            }catch (EntityNotFoundException e){
+            } catch (EntityNotFoundException e) {
                 message = "Coś poszło nie tak.";
+            }
+        } else {
+            message = getErrorMsg(bindingResult);
+        }
+        attributes.addAttribute("message", message);
+        return new RedirectView("/home/cycle/slaughter/" + cycleId);
+    }
+
+    @PutMapping("/{slaughterId}")
+    public RedirectView editSlaughter(@PathVariable(name = "slaughterId") Long id,
+                                      @Valid SlaughterDto slaughterDto,
+                                      BindingResult bindingResult,
+                                      RedirectAttributes attributes) {
+        SlaughterDto slaughterDtoById;
+        CycleDto cycleDto = null;
+        String message;
+        if (!bindingResult.hasErrors()) {
+            try {
+                slaughterDtoById = slaughterService.getSlaughterDtoById(id);
+                cycleDto = slaughterDtoById.getCycleDto();
+                slaughterDto.setCycleDto(cycleDto);
+                slaughterService.updateSlaughter(slaughterDto);
+                message = "Ubój został zaktualizowany.";
+            } catch (Exception e) {
+                message = "Coś poszło nie tak";
             }
         }else {
             message = getErrorMsg(bindingResult);
         }
         attributes.addAttribute("message", message);
-        return new RedirectView("/home/cycle/slaughter/" + cycleId);
+        return new RedirectView("/home/cycle/slaughter/" + cycleDto.getId());
     }
 
     private String getErrorMsg(BindingResult bindingResult) {

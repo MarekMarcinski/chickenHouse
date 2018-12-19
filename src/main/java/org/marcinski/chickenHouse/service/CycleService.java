@@ -8,6 +8,7 @@ import org.marcinski.chickenHouse.repository.CycleRepository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,17 +17,17 @@ import java.util.stream.Collectors;
 public class CycleService {
 
     private CycleRepository cycleRepository;
-    private ChickenHouseService chickenHouseServiceService;
+    private ChickenHouseService chickenHouseService;
     private CycleMapper cycleMapper;
 
     public CycleService(CycleRepository cycleRepository, ChickenHouseService chickenHouseService, CycleMapper cycleMapper) {
         this.cycleRepository = cycleRepository;
-        this.chickenHouseServiceService = chickenHouseService;
+        this.chickenHouseService = chickenHouseService;
         this.cycleMapper = cycleMapper;
     }
 
     public void createCycle(CycleDto cycleDto, Long id) {
-        ChickenHouseDto chickenHouseById = chickenHouseServiceService.getChickenHouseById(id);
+        ChickenHouseDto chickenHouseById = chickenHouseService.getChickenHouseById(id);
 
         cycleDto.setChickenHouseDto(chickenHouseById);
 
@@ -72,5 +73,16 @@ public class CycleService {
         return cycleRepository.findById(id)
                 .map(cycleMapper::mapTo)
                 .orElseThrow(EntityNotFoundException::new);
+    }
+
+    public boolean isUserCycle(Principal principal, CycleDto cycleDto) {
+        ChickenHouseDto chickenHouseById = chickenHouseService.getChickenHouseById(cycleDto.getChickenHouseDto().getId());
+        String emailFromPrincipal = principal.getName();
+        String emailFromCycle = chickenHouseById.getUserDto().getEmail();
+
+        if (!emailFromCycle.equals(emailFromPrincipal)){
+            return false;
+        }
+        return true;
     }
 }

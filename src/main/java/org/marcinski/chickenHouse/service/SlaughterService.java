@@ -53,6 +53,16 @@ public class SlaughterService {
         return slaughterDtos;
     }
 
+    public void updateSlaughter(SlaughterDto slaughterDto) {
+        Slaughter slaughter = slaughterMapper.mapTo(slaughterDto);
+        slaughterRepository.save(slaughter);
+    }
+
+    public SlaughterDto getSlaughterDtoById(Long id) {
+        Slaughter slaughterById = slaughterRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return slaughterMapper.mapTo(slaughterById);
+    }
+
     private int setFatteningDay(SlaughterDto slaughterDto, LocalDate startDay){
         LocalDate slaughterDate = slaughterDto.getDateOfSlaughter();
         return Period.between(startDay, slaughterDate).getDays();

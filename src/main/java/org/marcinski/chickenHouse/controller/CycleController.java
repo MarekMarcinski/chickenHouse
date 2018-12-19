@@ -75,7 +75,7 @@ public class CycleController {
             return "redirect/home";
         }
 
-        if (isUserCycle(principal, cycleDto)){
+        if (!cycleService.isUserCycle(principal, cycleDto)){
             return "redirect:/home";
         }
 
@@ -114,16 +114,5 @@ public class CycleController {
         model.addAttribute("medicineListDtos", medicineListDtos);
 
         return "cycle";
-    }
-
-    private boolean isUserCycle(Principal principal, CycleDto cycleDto) {
-        ChickenHouseDto chickenHouseById = chickenHouseService.getChickenHouseById(cycleDto.getChickenHouseDto().getId());
-        String emailFromPrincipal = principal.getName();
-        String emailFromCycle = chickenHouseById.getUserDto().getEmail();
-
-        if (!emailFromCycle.equals(emailFromPrincipal)){
-            return true;
-        }
-        return false;
     }
 }
