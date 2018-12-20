@@ -13,7 +13,7 @@
 		<p id="register_registration">REJESTRACJA</p>
 		<input type="text" th:field="*{name}" placeholder="Nazwa Użytkownika" class="login" id="register_1">
         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" id="v-m_name" class="validation-message"></p>
-        <input type="text" th:field="*{email}" placeholder="E-MAIL" class="login" id="register_2">
+        <input type="email" th:field="*{email}" placeholder="E-MAIL" class="login" id="register_2">
         <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" id="v-m_email" class="validation-message"></p>
         <input type="password" th:field="*{password}" placeholder="HASŁO" class="login" id="register_3">
         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" id="v-m_pass" class="validation-message"></p>
