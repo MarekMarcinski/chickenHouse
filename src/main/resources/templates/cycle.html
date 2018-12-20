@@ -41,19 +41,22 @@
 		<tr>
 			<td align="center" class="table_cycle_right"><div>
 				<ul type="circle" class="p_pogrubienie" th:each="forage : ${forages}">
-					<form th:action="@{'/home/cycle/day/forage/' + ${forage.getId()}}" th:method="delete"><button id="pasza_delete_cycle" type="submit">X</button></form>
 					<li th:text="${forage.getDeliveryDate()}"></li>
-					<ul type="square" class="p_normal">
-						<li th:text="${forage.getName()}"></li>
-						<li th:text="${forage.getQuantity() + ' kg'}"></li>
-					</ul></ul>
+                    <ul type="square" class="p_normal">
+						<li th:text="${'Nazwa: ' + forage.getName()}"></li>
+						<li th:text="${'Ilość: ' + forage.getQuantity() + ' kg'}"></li>
+						<li th:text="${'Cena: ' + forage.getPrice() + ' zł'}"></li>
+                        <form th:action="@{'/home/cycle/day/forage/' + ${forage.getId()}}" th:method="delete"><button id="pasza_delete_cycle" type="submit">usuń dostawę</button></form>
+					</ul>
+                </ul>
             </div></td>
 			<td align="center" class="table_cycle_right"><div>
 				<ul type="circle" class="p_pogrubienie" th:each="medicineList : ${medicineListDtos}">
                     <li th:if="${medicineList.getMedicineDtos().size() > 0}" th:text="${medicineList.getApplicationDate()}"></li>
 					<ul type="square" class="p_normal" th:each="medicine : ${medicineList.getMedicineDtos()}">
-                        <form th:action="@{'/home/cycle/day/medicine/' + ${medicine.getId()}}" th:method="delete"><button id="leki_delete_cycle" type="submit">X</button></form>
-                        <li th:text="${medicine.getName()}"></li>
+                        <li th:text="${'Nazwa: ' + medicine.getName()}"></li>
+                        <li th:text="${'Cena: ' + medicine.getPrice() + ' zł'}"></li>
+                        <form th:action="@{'/home/cycle/day/medicine/' + ${medicine.getId()}}" th:method="delete"><button id="leki_delete_cycle" type="submit">usuń lekarstwo</button></form>
                     </ul></ul>
             </div></td>
 		</tr>
