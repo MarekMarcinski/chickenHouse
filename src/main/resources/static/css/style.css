@@ -286,6 +286,11 @@ body{
 	display: block;
 }
 
+/*cycle*/
+.col-md-6{
+	max-width: 100%
+}
+
 /*house*/
 #srodek_buttony_house{
 	margin-left: 25%;
