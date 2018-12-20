@@ -4,6 +4,7 @@ body{
 	color: black;
 }
 
+/*login*/
 #logo_login{
     position: relative;
     left:20%
@@ -29,21 +30,25 @@ body{
 	border-radius: 15px;
 }
 
+/*registration*/
 #register_2,#register_3,#register_4{
 	margin-top: 4px;
 }
 
+/*login*/
 #remember_button_login{
     position: relative;
     text-align: center;
 }
 
+/*login*/
 #error_login_login{
 	position: relative;
 	color: red;
 	text-align: center;
 }
 
+/*login*/
 #button_login_login{
 	position: relative;
     text-align: center;
@@ -61,6 +66,7 @@ body{
 		opacity: 1;
 	}
 
+/*login*/
 #button_register_login{
 	position: relative;
     text-align: center;
@@ -78,6 +84,7 @@ body{
 		opacity: 1;
 	}
 
+/*registration*/
 #button_register_registration{
 	position: relative;
     text-align: center;
@@ -110,6 +117,7 @@ body{
 		text-align: center;
 	}
 
+/*registration*/
 #success_message_registration{
 	position: relative;
 	text-align: center;
@@ -117,6 +125,7 @@ body{
 	font-weight: 900;
 }
 
+/*registration*/
 #button_back_registration{
 	position: relative;
     text-align: center;
@@ -134,6 +143,7 @@ body{
 		opacity: 1;
 	}
 
+/*registration*/
 #register_registration{
 	font-size: 25px;
 	font-weight: 900;
@@ -141,6 +151,7 @@ body{
 	color:black;
 }
 
+/*home*/
 #brak_kurnikow_home{
 	font-size: 25px;
 	font-weight: 900;
@@ -148,6 +159,7 @@ body{
 	color: black;
 }
 
+/*home*/
 #button_utworz_kurnik_home{
 	position: relative;
 	width: 225px;
@@ -164,6 +176,7 @@ body{
 		opacity: 1;
 	}
 
+/*home*/
 #text_witaj_home{
 	font-size: 25px;
 	font-weight: 900;
@@ -171,10 +184,12 @@ body{
 	color:black;
 }
 
+/*home*/
 #lista_kurnikow_home{
 	text-align: center;
 }
 
+/*home*/
 .container_home{
 	width: 200px;
 	height: 70px;
@@ -221,6 +236,7 @@ body{
 		opacity: 0.8;
 	}
 
+/*cycle*/
 #delete_dropdown_cycle{
 	background-color:red;
 }
@@ -265,15 +281,18 @@ body{
 	display: inline-flex;
 }
 
+/*cycle*/
 .rowek{
 	display: block;
 }
 
+/*house*/
 #srodek_buttony_house{
 	margin-left: 25%;
 	margin-right: 25%;
 }
 
+/*home*/
 #button_kurnik_home{
 	display: block;
 	position: relative;
@@ -291,6 +310,7 @@ body{
 		opacity: 0.8;
 	}
 
+/*house*/
 #kurnik_powierzchnia_house{
 	font-size: 25px;
 	font-weight: 900;
@@ -298,6 +318,7 @@ body{
 	color:black;
 }
 
+/*house*/
 #nie_ma_rzutow_house{
 	font-size: 25px;
 	font-weight: 900;
@@ -323,28 +344,33 @@ body{
 		opacity: 0.7;
 	}
 
+/*cycle*/
 #button_uboj_house{
 	background-color: blueviolet;
 }
 
+/*cycle*/
 .table_cycle{
 	border: 2px solid gray;
 	text-align: center;
 	width: 70%;
 }
 
+/*cycle*/
 .table_cycle_right{
 	border-right: 2px solid gray;
 	text-align: center;
 	left: -30%;
 }
 
+/*cycle*/
 ul,li{
 	list-style: none outside;
 	margin:0;
 	padding:0;
 }
 
+/*cycle*/
 #button_nowy_cycle{
 	display: block;
 	position: relative;
@@ -362,12 +388,14 @@ ul,li{
 		opacity: 0.8;
 	}
 
-ul{ 
+/*cycle*/
+ul{
 	text-align:center;
 	margin-left:auto;
 	margin-right:auto
 }
 
+/*cycle*/
 #pasza_delete_cycle{
 	background-color: red;
 	color: white;
@@ -375,6 +403,7 @@ ul{
 	font-size: 10px;
 }
 
+/*cycle*/
 #leki_delete_cycle{
 	background-color: red;
 	color: white;
@@ -382,28 +411,34 @@ ul{
 	font-size: 10px;
 }
 
+/*cycle*/
 .cycles_center_house{
 	text-align: center;
 }
 
+/*all*/
 .p_pogrubienie{
 	font-weight: 900;
 }
 
+/*all*/
 .p_normal{
 	font-weight: 400;
 }
 
+/*cycle*/
 .cycle_srodkowanie{
 	text-align: center;
 	font-weight: 900;
 }
 
+/*cycle*/
 #comments{
 	height: 30px;
 	width: 140px;
 }
 
+/*cycle*/
 #sizer_cycle{
 	margin-left: auto;
 	margin-right: auto;
@@ -412,56 +447,70 @@ ul{
 	margin-bottom: 15px;
 }
 
+/*all*/
 .not_strong{
 	font-weight: 400;
 }
 
+/*cycle*/
 .cycle_stronger{
 	font-weight: 900;
 }
 
+/*cycle*/
 .border_cycle{
 	border: 1px solid black;
 }
 
+/*cycle*/
 .table_cycle_strong{	
 	font-weight: 900;
 }
+
+/*cycle*/
 .table td{	
 	vertical-align: middle;
 }
 
+/*slaughter*/
 .slaughter_first{
 	margin-right: auto;
 	margin-left: auto;
 }
 
+/*cycle*/
 .color_trzeci_wiersz{
 	background-color: #cfb1ff;
 }
 
+/*all*/
 .black_strong{
 	color: black;
 	font-weight: 900;
 }
 
+/*all*/
 .gray_strong{
 	color: #2C2C2C;
 }
 
+/*cycle*/
 .card{
 	border: none;
 }
 
+/*cycle*/
 .table_cycle_big{
 	width: 100%;
 }
 
+/*slaughter*/
 .uboj_save{
 	color: green !important;
 	font-weight: 900 !important;
 }
 
+/*cycle*/
 #button_cycle_rozwin{
 	width: 100%;
 	height: 35px;
@@ -472,21 +521,33 @@ ul{
 	#button_cycle_rozwin:hover{
 		opacity: 0.5;
 		color: black;
-}
+	}
 
+/*slaughter*/
 .border_gora_uboj{
 	border: 2px solid black;
 	font-weight: 900;
 }
 
+/*cycle*/
+.inline_cycle{
+	display: inline-flex;
+}
+
+
+/*end normal-view*/
+
+
+
 @media (max-width:727px){
-	
+/*login*/
 	#logo_login{
 		margin-left: 10%;
 		width: 50%;
 		height: 50%;
 	}
 	
+/*all*/
 	.logo_all{
 		left: 20%;
 		margin-left: 10%;
@@ -494,10 +555,12 @@ ul{
 		height: 50%;
 	}
 	
+/*registration*/
 	#register_registration{
 		font-size: 16px;
 	}
-	
+
+/*all*/
 	.button_logout{
 		position: absolute;
 		width: 70px;
@@ -507,7 +570,8 @@ ul{
 		top: -15px;
 		font-size: 8px;
 	}
-	
+
+/*all*/
 	.button_back{
 		position: absolute;
 		width: 70px;
@@ -518,79 +582,93 @@ ul{
 		font-size: 8px;
 	}
 	
+/*house*/
 	#button_uboj_house{
 		top: 35px;
 	}
 	
+/*home*/
 	#text_witaj_home{
 		font-size: 16px;
 		padding-top: 20px;
 	}
 	
+/*home*/
 	#button_kurnik_home{
 		font-size: 12px;
 		width: 170px;
     	height: 30px;
 	}
 	
+/*home*/
 	#table-bordered{
 		font-size: 12px;
 		padding-top: 1px;
 	}
 
+/*home*/
 	#brak_kurnikow_home{
 		font-size: 16px;
 		padding-top: 20px;
 	}
 	
+/*home*/
 	#button_utworz_kurnik_home{
 		width: 75%;
 		font-size: 12px;
 	}
-	
+
+/*registration*/
 	.validation-message{
 		font-size: 14px;
 	}
-
+	
+/*registration*/
 	#success_message_registration{
 		font-size: 16px;
 	}
-	
+
+/*house*/
 	#kurnik_powierzchnia_house{
 		font-size: 16px;
 	}
 	
-	
+/*house*/
 	#cycles_house{
 		font-size: 8px;
 	}
 
+/*house,cycle*/
 	#editHouseDropdown,#deleteDropdown,#dropdownMenuLink,#editDropdownCycle,#delete_dropdown_cycle{
 		font-size: 12px;
 		width: 170px;
     	height: 30px;
 		margin-top: 5px;
 	}
-	
+
+/*all*/
 	.p-4{
 		width: 90%;
 	}
 	
+/*house*/
 	.newDropdown_house{
 		width: 75%;
 		font-size: 12px;
 	}
 	
+/*cycle*/
 	#comments{
 		width: 220px;
 	}
 	
+/*cycle*/
 	#sizer_cycle{
 		width: 100%;
 		font-size: 11px;
 	}
 	
-	
+/*cycle*/
 	.zmniejszenie_buttonow_cycle{
 		font-size: 8px !important;
 		width: 100px !important;
@@ -599,12 +677,13 @@ ul{
 		text-align: center !important;
 	}
 	
-	.slaughter_mini{
-		
+/*slaughter*/
+	.slaughter_mini{		
 		width: 50%;
 		height: 75%;
 	}
 	
+/*slaughter*/
 	.slaughter_mini_padding{
 		font-size: 8px !important;
 		font-weight: 600;
@@ -614,26 +693,34 @@ ul{
 		padding-right: 2px !important;
 	}
 	
+/*slaughter*/
 	.button_slaughter_edit{
 		width: 80px !important;
 	}
+
+
 	
-/*end @media 767px*/	
+/*end @media max727px*/	
 }	
 
-@media (max-width:400px){
-	#button_kurnik_home{
-		margin-left: 9%;
-		font-size: 12px;
-	}
-}
-/*end @media 400px*/
+
 
 @media (min-width:800px){
-	#srodek_buttony_cycle{
-		margin-left: 33%;
-		margin-right: auto;
+/*all*/
+	#button_back_house{
+		top: 180px;
 	}
+	
+/*house*/
+	#button_uboj_house{
+		top: 230px;
+	}
+	
+	
+	
+/*end @media min800px*/	
 }
-				
+
+
+
 /*end

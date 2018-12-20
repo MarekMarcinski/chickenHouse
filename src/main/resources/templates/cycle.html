@@ -9,9 +9,9 @@
 	
 <body>
 	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
-	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_cycle" class="button_logout">WYLOGUJ</button></form><br><br><br>
-	<form th:action="@{'/home/' + ${chickenHouseId}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form><br><br><br>
-    <form th:action="@{'/home/cycle/slaughter/' + ${cycle.getId()}}" method="get"><button type="submit" id="button_uboj_house" class="button_back">UBÓJ</button></form>
+	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_cycle" class="button_logout">WYLOGUJ</button></form>
+	<form th:action="@{'/home/' + ${chickenHouseId}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form><br>
+    <form th:action="@{'/home/cycle/slaughter/' + ${cycle.getId()}}" method="get"><button type="submit" id="button_uboj_house" class="button_back">UBÓJ</button></form><br>
 	<div id="srodek_buttony_cycle"><div class="rowek">
 		<div class="col-md-6 dropdown" th:if="${!cycle.isCompleted()}">
             <a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="editDropdownCycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Edycja</a>
@@ -28,7 +28,7 @@
             <label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button></form></div></div></div><br>
 	<table align="center" class="table_cycle">
 		<tr align="center"><td align="center"><p class="p_pogrubienie" th:text="'Dzień wstawienia: ' + ${cycle.getStartDay()}"></p></td></tr>
-        <tr align="center"><td align="center"><p th:text="'Aktualna liczba stada: ' + ${actualNumberOfChicken}"></p></td></tr>
+        <tr align="center"><td align="center"><div class="inline_cycle">Aktualna liczba stada:&nbsp;<p class="p_pogrubienie" th:text="${actualNumberOfChicken}"></p></div></td></tr>
         <tr align="center"><td align="center"><p th:text="'Początkowa liczba stada: ' + ${cycle.getNumberOfChickens()}"></p></td></tr>
         <tr align="center"><td align="center"><p th:text="'Hybryd: ' + ${cycle.getHybrid()}"></p></td></tr>
         <tr align="center"><td align="center"><p th:text="'Wylęgarnia: ' + ${cycle.getHatchery()}"></p></td></tr>

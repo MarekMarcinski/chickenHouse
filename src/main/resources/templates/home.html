@@ -11,7 +11,7 @@
 	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_home" class="button_logout">WYLOGUJ</button></form><br>
 	<p id="text_witaj_home" th:utext="${greeting}"></p>
-	<div id="srodek_buttony_house">
+<!--	<div id="srodek_buttony_house">-->
 		<div class="dropdown">
 			<a class="btn btn-secondary dropdown-toggle" role="button" id="button_kurnik_home" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utwórz nowy kurnik</a>
 			<form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{home/new_house}" th:object="${chickenHouseDto}" method="post">
@@ -29,7 +29,7 @@
 				</table>
 			</div>
 		</div>
-	</div><br><br>
+<!--	</div><br><br>-->
 	<p id="brak_kurnikow_home" th:if="${chickenHouseDtos.size()==0}">Nie posiadasz jeszcze żadnych kurników.</p>
 </body>
 </html>
