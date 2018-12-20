@@ -540,6 +540,10 @@ ul{
 	display: inline-flex;
 }
 
+/*cycle*/
+.uwagi_cycle{
+	height: 30px;
+}
 
 /*end normal-view*/
 
