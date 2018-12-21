@@ -344,7 +344,8 @@ body{
 	border-radius: 15px;
 	opacity: 1;
 	background-color: yellowgreen;
-	font-weight: 900;	
+	font-weight: 900;
+	z-index: 999;
 }
 	.button_back:hover{
 		opacity: 0.7;
