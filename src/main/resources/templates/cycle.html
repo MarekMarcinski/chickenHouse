@@ -9,7 +9,7 @@
 	
 <body>
 	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
-	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_cycle" class="button_logout">WYLOGUJ</button></form>
+	<form th:action="@{/logout}" method="get"><button type="submit" class="button_logout">WYLOGUJ</button></form>
 	<form th:action="@{'/home/' + ${chickenHouseId}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form><br>
     <form th:action="@{'/home/cycle/slaughter/' + ${cycle.getId()}}" method="get"><button type="submit" id="button_uboj_house" class="button_back">UBÓJ</button></form><br>
 	<div id="srodek_buttony_cycle"><div class="rowek">
