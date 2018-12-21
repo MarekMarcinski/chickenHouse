@@ -52,7 +52,7 @@
                 <th class="cycles_center_house" scope="col">Zakończony</th>
             </tr></thead>
             <tbody><tr th:each="c : ${cyclesDto}">
-                <th class="cycles_center_house" scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.startDay}"></a></th>
+                <th class="cycles_center_house" scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${#temporals.format(c.getStartDay(), 'dd-MM-yyyy')}"></a></th>
                 <th class="cycles_center_house" scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.getNumberOfChickens()}"></a></th>
                 <th class="cycles_center_house" scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.getHatchery()}"></a></th>
                 <th class="cycles_center_house" scope="row"><a th:href="@{'/home/cycle/' + ${c.getId()}}" th:text="${c.getHybrid()}"></a></th>

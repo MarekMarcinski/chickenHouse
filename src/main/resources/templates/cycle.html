@@ -27,7 +27,7 @@
         <form class="dropdown-menu p-4" autocomplete="off" th:action="@{'/home/cycle/complete/' + ${cycle.getId()}}" th:object="${cycle}" th:method="put">
             <label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button></form></div></div></div><br>
 	<table align="center" class="table_cycle">
-		<tr align="center"><td align="center"><p class="p_pogrubienie" th:text="'Dzień wstawienia: ' + ${cycle.getStartDay()}"></p></td></tr>
+		<tr align="center"><td align="center"><p class="p_pogrubienie" th:text="'Dzień wstawienia: ' + ${#temporals.format(cycle.getStartDay(), 'dd-MM-yyyy')}"></p></td></tr>
         <tr align="center"><td align="center"><div class="inline_cycle">Aktualna liczba stada:&nbsp;<p class="p_pogrubienie" th:text="${actualNumberOfChicken}"></p></div></td></tr>
         <tr align="center"><td align="center"><p th:text="'Początkowa liczba stada: ' + ${cycle.getNumberOfChickens()}"></p></td></tr>
         <tr align="center"><td align="center"><p th:text="'Hybryd: ' + ${cycle.getHybrid()}"></p></td></tr>
@@ -41,7 +41,7 @@
 		<tr>
 			<td align="center" class="table_cycle_right"><div>
 				<ul type="circle" class="p_pogrubienie" th:each="forage : ${forages}">
-					<li th:text="${forage.getDeliveryDate()}"></li>
+					<li th:text="${#temporals.format(forage.getDeliveryDate(), 'dd-MM-yyyy')}"></li>
                     <ul type="square" class="p_normal">
 						<li th:text="${'Nazwa: ' + forage.getName()}"></li>
 						<li th:text="${'Ilość: ' + forage.getQuantity() + ' kg'}"></li>
@@ -52,7 +52,7 @@
             </div></td>
 			<td align="center" class="table_cycle_right"><div>
 				<ul type="circle" class="p_pogrubienie" th:each="medicineList : ${medicineListDtos}">
-                    <li th:if="${medicineList.getMedicineDtos().size() > 0}" th:text="${medicineList.getApplicationDate()}"></li>
+                    <li th:if="${medicineList.getMedicineDtos().size() > 0}" th:text="${#temporals.format(medicineList.getApplicationDate(), 'dd-MM-yyyy')}"></li>
 					<ul type="square" class="p_normal" th:each="medicine : ${medicineList.getMedicineDtos()}">
                         <li th:text="${'Nazwa: ' + medicine.getName()}"></li>
                         <li th:text="${'Cena: ' + medicine.getPrice() + ' zł'}"></li>
@@ -78,7 +78,7 @@
 		<div th:each="d,i : ${days}" id="sizer_cycle">
             <div id="accordion">
                 <div class="card">
-                    <div class="card-header"><button class="accordion-toggle black_strong" id="button_cycle_rozwin" data-toggle="collapse" data-parent="#accordion" th:href="'#collapse' + ${d.getId()}" th:text="${d.getDayDate()} + ' Dzień tuczu: ' + ${d.getDayNumber()}"></button></div>
+                    <div class="card-header"><button class="accordion-toggle black_strong" id="button_cycle_rozwin" data-toggle="collapse" data-parent="#accordion" th:href="'#collapse' + ${d.getId()}" th:text="${#temporals.format(d.getDayDate(), 'dd-MM-yyyy')} + ' Dzień tuczu: ' + ${d.getDayNumber()}"></button></div>
                     <div th:id="'collapse' + ${d.getId()}" class="panel-collapse collapse in"><div class="card-block">
 <table class="table_cycle_big">
 	<tr class="border_cycle table_cycle_strong color_trzeci_wiersz gray_strong">

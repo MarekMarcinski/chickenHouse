@@ -12,7 +12,7 @@
 <form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_cycle" class="button_logout">WYLOGUJ</button></form><br><br><br>
 <form th:action="@{'/home/cycle/' + ${cycleDtoById.getId()}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form>
 <div class="container" align="center">
-    <p class="p_pogrubienie" align="center" th:text="'Dodaj ubój dla rzutu z dnia: ' + ${cycleDtoById.getStartDay()}"></p>
+    <p class="p_pogrubienie" align="center" th:text="'Dodaj ubój dla rzutu z dnia: ' + ${#temporals.format(cycleDtoById.getStartDay(), 'dd-MM-yyyy')}"></p>
     <div class="row col-md-6 slaughter_first" align="center">
         <form  class="slaughter_first" autocomplete="off" th:action="@{'/home/cycle/slaughter/new_slaughter/' + ${cycleDtoById.getId()}}" th:object="${newSlaughter}" method="post">
             <div class="form-group"><label>Data uboju<input type="date" class="form-control" id="dateOfSlaughter" th:value="${now}" th:field="*{dateOfSlaughter}"></label></div>
@@ -42,7 +42,7 @@
             <tbody>
             <tr class="border_cycle slaughter_mini_padding" th:each="slaughter, i : ${slaughterDtos}">
                 <td class="border_cycle slaughter_mini_padding" align="center" scope="row" th:text="${i.index + 1}"></td>
-                <td class="border_cycle slaughter_mini_padding" align="center" th:text="${slaughter.getDateOfSlaughter()}">Data</td>
+                <td class="border_cycle slaughter_mini_padding" align="center" th:text="${#temporals.format(slaughter.getDateOfSlaughter(), 'dd-MM-yyyy')}">Data</td>
                 <td class="border_cycle slaughter_mini_padding" align="center" th:text="${slaughter.getFatteningDay()}">Doba tuczu</td>
                 <td class="border_cycle slaughter_mini_padding" align="center" th:text="${slaughter.getQuantityOfChickens()}">Ilość</td>
                 <td class="border_cycle slaughter_mini_padding" align="center" th:text="${slaughter.getWeightOfChickens()}">Masa żywca</td>
