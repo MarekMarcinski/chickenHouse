@@ -23,9 +23,6 @@ public class CycleController {
     private CycleService cycleService;
     private DayService dayService;
 
-    @Autowired
-    private ChickenHouseService chickenHouseService;
-
     public CycleController(CycleService cycleService, DayService dayService) {
         this.cycleService = cycleService;
         this.dayService = dayService;
