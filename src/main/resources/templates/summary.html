@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="'Podsumowanie z dnia: ' + ${cycleDto.getStartDay()}"></title>
+    <th:block th:include="partials/scripts_css" />
+</head>
+
+<body>
+<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
+<form th:action="@{/logout}" method="get"><button type="submit" class="button_logout">WYLOGUJ</button></form>
+<form th:action="@{'/home/cycle/' + ${cycleDto.getId()}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form><br>
+
+<div class="container">
+    <div class="col">
+        <h4>Koszt zakupu kurczaków:</h4>
+        <p th:text="${cycleDto.getNumberOfChickens()} + ' sztuk * ' + ${cycleDto.getPrice()} + 'zł -> ' + ${chickenPrice} + 'zł / netto'"></p>
+    </div>
+    <div class="col">
+        <h4>Koszt paszy:</h4>
+        <p th:text="${foragePrice + 'zł / netto'}"></p>
+    </div>
+    <div class="col">
+        <h4>Koszt lekarstw:</h4>
+        <p th:text="${medicinePrice + 'zł / netto'}"></p>
+    </div>
+    <div class="col">
+        <h4>Całkowity koszt:</h4>
+        <p th:text="${chickenPrice + ' + ' + foragePrice + ' + ' + medicinePrice + ' -> ' + totalCost +'zł / netto'}"></p>
+    </div>
+    <div class="col">
+        <h4>Wartość sprzedanego żywca:</h4>
+        <p th:text="${#numbers.formatDecimal(slaughterPrice, 1, 2) +'zł / netto'}"></p>
+    </div>
+    <div class="col">
+        <h4>Bilans. Nie wliczając kosztów opału, wody i prądu:</h4>
+        <p th:text="${#numbers.formatDecimal(slaughterPrice - totalCost, 1, 2) +'zł / netto'}"></p>
+    </div>
+    <div class="col">
+        <h4>Uzysk żywca:</h4>
+        <p th:text="${#numbers.formatDecimal(weightGain, 1, 2) +'kg/m^2'}"></p>
+    </div>
+
+</div>
+
+</body>
+</html>
