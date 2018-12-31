@@ -5,6 +5,42 @@
 <head>
     <title th:text="'Podsumowanie z dnia: ' + ${cycleDto.getStartDay()}"></title>
     <th:block th:include="partials/scripts_css" />
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script th:inline="javascript">
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawBackgroundColor);
+
+        function drawBackgroundColor() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'X');
+            data.addColumn('number', 'Upadki');
+
+            var dayMap = [[${deadChart}]];
+            var rows = [];
+
+            $.each(dayMap, function(index,value){
+                var row = [index, value];
+                rows.push(row);
+            });
+            data.addRows(rows);
+
+            var options = {
+                hAxis: {
+                    title: 'Dzień'
+                },
+                vAxis: {
+                    title: 'Ilość'
+                },
+                backgroundColor: '#f1f8e9'
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+
 </head>
 
 <body>
@@ -13,6 +49,9 @@
 <form th:action="@{'/home/cycle/' + ${cycleDto.getId()}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form><br>
 
 <div class="container">
+
+    <div id="chart_div"></div>
+
     <div class="col">
         <h4>Koszt zakupu kurczaków:</h4>
         <p th:text="${cycleDto.getNumberOfChickens()} + ' sztuk * ' + ${cycleDto.getPrice()} + 'zł -> ' + ${chickenPrice} + 'zł / netto'"></p>

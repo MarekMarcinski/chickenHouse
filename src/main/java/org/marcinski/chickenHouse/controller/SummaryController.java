@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.EntityNotFoundException;
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 @Controller
@@ -28,16 +30,16 @@ public class SummaryController {
     @GetMapping("/{cycleId}/summary")
     public String getSummary(@PathVariable Long cycleId,
                              Model model,
-                             Principal principal){
+                             Principal principal) {
         CycleDto cycleDto;
         try {
             cycleDto = cycleService.getDtoById(cycleId);
-        }catch (EntityNotFoundException e){
+        } catch (EntityNotFoundException e) {
 
             return "404";
         }
 
-        if (!cycleService.isUserCycle(principal, cycleDto)){
+        if (!cycleService.isUserCycle(principal, cycleDto)) {
             return "404";
         }
 
@@ -45,17 +47,20 @@ public class SummaryController {
 
         double foragePrice = 0.0;
         double medicinePrice = 0.0;
+        Map<Integer, Integer> deadChart = new HashMap<>();
+
         for (DayDto dayDto : daysDto) {
-            if(dayDto.getForageDto() != null){
+            if (dayDto.getForageDto() != null) {
                 foragePrice += dayDto.getForageDto().getPrice();
             }
-            if (dayDto.getMedicineListDto() != null){
+            if (dayDto.getMedicineListDto() != null) {
                 Set<MedicineDto> medicineDtos = dayDto.getMedicineListDto().getMedicineDtos();
                 for (MedicineDto medicineDto : medicineDtos) {
                     medicinePrice += medicineDto.getPrice();
                 }
-
             }
+            int deads = dayDto.getNaturalDowns() + dayDto.getSelectionDowns();
+            deadChart.put(dayDto.getDayNumber(), deads);
         }
 
         double chickenPrice = cycleDto.getNumberOfChickens() * cycleDto.getPrice();
@@ -79,6 +84,7 @@ public class SummaryController {
         model.addAttribute("totalCost", totalCost);
         model.addAttribute("slaughterPrice", slaughterPrice);
         model.addAttribute("weightGain", weightGain);
+        model.addAttribute("deadChart", deadChart);
 
         return "summary";
     }
