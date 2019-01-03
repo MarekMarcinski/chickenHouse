@@ -67,10 +67,10 @@
                 th:object="${dayDto}" th:method="post" th:if="${!cycle.isCompleted()}">
             <div class="form-row">
                 <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Dzień tuczu</label><br><input type="hidden" th:field="*{dayNumber}" th:value="${dayDto.getDayNumber()}"  th:text="*{dayNumber}"></p></div>
-                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Upadki<input type="number" th:field="*{naturalDowns}" class="form-control" id="naturalDowns" min="0"></label></p></div>
-                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Selekcja<input type="number" th:field="*{selectionDowns}" class="form-control" id="selectionDowns" min="0"></label></p></div>
-                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Stan licznika wody<input type="number" th:field="*{waterCounter}" class="form-control" id="waterCounter" min="0"></label></p></div>
-                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Średnia waga (g)<input type="number" th:field="*{averageWeight}" class="form-control" id="averageWeight" min="0"></label></p></div>
+                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Upadki<input type="number" placeholder="0" th:field="*{naturalDowns}" class="form-control" id="naturalDowns" min="0"></label></p></div>
+                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Selekcja<input type="number" placeholder="0" th:field="*{selectionDowns}" class="form-control" id="selectionDowns" min="0"></label></p></div>
+                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Stan licznika wody<input type="number" placeholder="0" th:field="*{waterCounter}" class="form-control" id="waterCounter" min="0"></label></p></div>
+                <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Średnia waga (g)<input type="number" placeholder="0" th:field="*{averageWeight}" class="form-control" id="averageWeight" min="0"></label></p></div>
                 <div class="form-group col-md-2"><p class="cycle_srodkowanie"><label class="not_strong">Uwagi</label><br><textarea rows="1" id="comments" th:field="*{comments}"></textarea></p></div>
             <button type="submit" class="btn btn-primary" id="button_nowy_cycle">ZATWIERDŹ</button>
 		</div></form>

@@ -16,7 +16,7 @@
 			<a class="btn btn-secondary dropdown-toggle" role="button" id="button_kurnik_home" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Utwórz nowy kurnik</a>
 			<form class="dropdown-menu p-4" autocomplete="off" about="#" th:action="@{home/new_house}" th:object="${chickenHouseDto}" method="post">
 				<div class="form-group"><label>Nazwa kurnika<input type="text"  th:field="*{name}" class="form-control" id="chickenHouseName"></label></div>
-				<div class="form-group"><label>Pole kurnika w m<sup>2</sup><input type="number" th:field="*{areaOfHouse}" class="form-control" id="chickenHouseArea"></label></div>
+				<div class="form-group"><label>Pole kurnika w m<sup>2</sup><input type="number" placeholder="0" th:field="*{areaOfHouse}" class="form-control" id="chickenHouseArea"></label></div>
 				<button type="submit" class="btn btn-primary button newDropdown_house">Utwórz</button>
 			</form>
 		</div>
