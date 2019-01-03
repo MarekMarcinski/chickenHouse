@@ -17,7 +17,7 @@ public class ChickenHouseDto {
 
     @Min(0)
     @Max(value = 2147483646, message = "Na pewno nie masz tak dużego kurnika ;)")
-    private int areaOfHouse;
+    private Integer areaOfHouse;
 
     private Set<CycleDto> cyclesDto;
 

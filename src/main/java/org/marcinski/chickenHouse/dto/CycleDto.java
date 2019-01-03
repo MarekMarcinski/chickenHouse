@@ -17,7 +17,7 @@ public class CycleDto {
     @NotNull(message = "Wprowadź liczbę kurczaków.")
     @Min(0)
     @Max(value = 2147483646, message = "Nie stać cię na tyle ;)")
-    private int numberOfChickens;
+    private Integer numberOfChickens;
 
     @NotNull(message = "Wprowadź datę!")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -28,7 +28,7 @@ public class CycleDto {
 
     @Min(0)
     @Max(2147483646)
-    private double price;
+    private Double price;
 
     private boolean completed;
 

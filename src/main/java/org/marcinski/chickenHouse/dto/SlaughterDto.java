@@ -20,13 +20,13 @@ public class SlaughterDto {
     private LocalDate dateOfSlaughter;
 
     @Min(value = 0, message = "Ilość kurczaków nie może być mniejsza niż 0.")
-    private int quantityOfChickens;
+    private Integer quantityOfChickens;
 
     @Min(value = 0, message = "Waga nie może być mniejsza niż 0.")
-    private double weightOfChickens;
+    private Double weightOfChickens;
 
     @Min(value = 0, message = "Cena nie może być mniejsza niż 0.")
-    private double sellingPrice;
+    private Double sellingPrice;
 
     @ToString.Exclude
     private CycleDto cycleDto;

@@ -22,11 +22,11 @@ public class ForageDto {
 
     @Min(0)
     @Max(2147483646)
-    private int quantity;
+    private Integer quantity;
 
     @Min(0)
     @Max(2147483646)
-    private double price;
+    private Double price;
 
     private LocalDate deliveryDate;
 

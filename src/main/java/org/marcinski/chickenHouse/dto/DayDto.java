@@ -21,19 +21,19 @@ public class DayDto {
 
     @Min(0)
     @Max(2147483646)
-    private int naturalDowns;
+    private Integer naturalDowns;
 
     @Min(0)
     @Max(2147483646)
-    private int selectionDowns;
+    private Integer selectionDowns;
 
     @Min(0)
     @Max(2147483646)
-    private long waterCounter;
+    private Long waterCounter;
 
     @Min(0)
     @Max(value = 15000, message = "Daj spokój, przecież to tylko kurczak. Na pewno tyle nie waży ;)")
-    private int averageWeight;
+    private Integer averageWeight;
 
     @Nullable
     @Size(max = 240)

@@ -21,7 +21,7 @@ public class MedicineDto {
 
     @Min(0)
     @Max(2147483646)
-    private double price;
+    private Double price;
 
     @ToString.Exclude
     private MedicineListDto medicineListDto;
