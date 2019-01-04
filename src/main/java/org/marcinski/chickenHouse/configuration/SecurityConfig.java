@@ -10,7 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
@@ -22,12 +26,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private AuthenticationFailureHandler failureLoginHandler;
 
+    private DataSource dataSource;
+
     public SecurityConfig(BCryptPasswordEncoder encoder,
                           ApplicationUserDetailService applicationUserDetailService,
-                          AuthenticationFailureHandler failureLoginHandler) {
+                          AuthenticationFailureHandler failureLoginHandler,
+                          DataSource dataSource) {
         this.encoder = encoder;
         this.applicationUserDetailService = applicationUserDetailService;
         this.failureLoginHandler = failureLoginHandler;
+        this.dataSource = dataSource;
     }
 
     @Override
@@ -43,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .rememberMe()
+                .tokenRepository(persistentTokenRepository())
                 .and().csrf().disable().formLogin()
                 .loginPage("/login")
                 .failureHandler(failureLoginHandler)
@@ -74,6 +83,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider()).userDetailsService(applicationUserDetailService);
+        auth.authenticationProvider(daoAuthenticationProvider())
+                .userDetailsService(applicationUserDetailService);
+    }
+
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository(){
+        final JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();
+        jdbcTokenRepository.setDataSource(dataSource);
+        return jdbcTokenRepository;
     }
 }
