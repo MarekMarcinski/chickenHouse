@@ -1,13 +1,11 @@
 package org.marcinski.chickenHouse.service;
 
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.marcinski.chickenHouse.dto.UserDto;
 import org.marcinski.chickenHouse.entity.Role;
 import org.marcinski.chickenHouse.entity.User;
 import org.marcinski.chickenHouse.mapper.UserMapper;
 import org.marcinski.chickenHouse.repository.RoleRepository;
 import org.marcinski.chickenHouse.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +50,24 @@ public class UserService {
         }
     }
 
+    public void authorizeUser(String uuid) {
+        User user = userRepository.findByUuid(uuid).orElseThrow(EntityNotFoundException::new);
+        user.setActive(true);
+        userRepository.save(user);
+    }
+
+    public void resetPassword(String email) {
+        UserDto userByEmail = findUserByEmail(email);
+
+        String newPass = UUID.randomUUID().toString();
+        String encodedPass = encoder.encode(newPass);
+
+        userByEmail.setPassword(encodedPass);
+        userRepository.save(userMapper.mapTo(userByEmail));
+
+        emailService.sendEmailWithResetPassword(email, newPass);
+    }
+
     private User createNewUser(UserDto userDto) {
         User user = userMapper.mapTo(userDto);
         user.setUuid(UUID.randomUUID().toString());
@@ -60,11 +76,5 @@ public class UserService {
         Role userRole = roleRepository.findByRole("USER");
         user.setRole(userRole);
         return user;
-    }
-
-    public void authorizeUser(String uuid) {
-        User user = userRepository.findByUuid(uuid).orElseThrow(EntityNotFoundException::new);
-        user.setActive(true);
-        userRepository.save(user);
     }
 }

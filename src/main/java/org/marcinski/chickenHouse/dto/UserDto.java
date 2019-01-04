@@ -27,6 +27,8 @@ public class UserDto {
 
     private boolean active;
 
+    private String uuid;
+
     private RoleDto roleDto;
 
     private Set<ChickenHouseDto> chickenHouseDtos;

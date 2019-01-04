@@ -9,6 +9,7 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
+import java.util.UUID;
 
 @Service
 public class EmailServiceImpl implements EmailService {
@@ -21,7 +22,36 @@ public class EmailServiceImpl implements EmailService {
         this.environment = environment;
     }
 
-    public String address() {
+    @Override
+    public void sendEmailWithAuthorizationLink(String to, String uuid) {
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        String host = address();
+        Integer port = environment.getProperty("server.port", Integer.class, 8080).intValue();
+        String address = host + ":" + port;
+
+        if (address.equals("46.41.138.35:443")){
+            address = "houseofwings.com.pl";
+        }
+
+        message.setTo(to);
+        message.setSubject("Aktywacja konta");
+        message.setText("Witaj, aby aktywować konto wejdź w link: " +
+                "https://" + address + "/registration/" + uuid);
+        mailSender.send(message);
+    }
+
+    @Override
+    public void sendEmailWithResetPassword(String to, String newPass) {
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setTo(to);
+        message.setSubject("Nowe hasło");
+        message.setText("Witaj, Twoje nowe hasło do serwisu: " + newPass);
+        mailSender.send(message);
+    }
+
+    private String address() {
         try {
             Enumeration<NetworkInterface> enumeration = NetworkInterface.getNetworkInterfaces();
             while (enumeration.hasMoreElements()) {
@@ -55,24 +85,5 @@ public class EmailServiceImpl implements EmailService {
             e.printStackTrace();
         }
         return "46.41.138.35";
-    }
-
-    @Override
-    public void sendEmailWithAuthorizationLink(String to, String uuid) {
-        SimpleMailMessage message = new SimpleMailMessage();
-
-        String host = address();
-        Integer port = environment.getProperty("server.port", Integer.class, 8080).intValue();
-        String address = host + ":" + port;
-
-        if (address.equals("46.41.138.35:443")){
-            address = "houseofwings.com.pl";
-        }
-
-        message.setTo(to);
-        message.setSubject("Aktywacja konta");
-        message.setText("Witaj, aby aktywować konto wejdź w link: " +
-                "https://" + address + "/registration/" + uuid);
-        mailSender.send(message);
     }
 }
