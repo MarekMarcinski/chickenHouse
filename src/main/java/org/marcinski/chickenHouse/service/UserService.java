@@ -1,6 +1,5 @@
 package org.marcinski.chickenHouse.service;
 
-import org.hibernate.validator.constraints.Length;
 import org.marcinski.chickenHouse.dto.UserDto;
 import org.marcinski.chickenHouse.entity.Role;
 import org.marcinski.chickenHouse.entity.User;
@@ -11,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import javax.validation.constraints.NotEmpty;
 import java.util.Optional;
 import java.util.UUID;
 
