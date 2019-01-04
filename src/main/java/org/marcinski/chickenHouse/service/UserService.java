@@ -1,5 +1,6 @@
 package org.marcinski.chickenHouse.service;
 
+import org.hibernate.validator.constraints.Length;
 import org.marcinski.chickenHouse.dto.UserDto;
 import org.marcinski.chickenHouse.entity.Role;
 import org.marcinski.chickenHouse.entity.User;
@@ -10,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.constraints.NotEmpty;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -66,6 +68,21 @@ public class UserService {
         userRepository.save(userMapper.mapTo(userByEmail));
 
         emailService.sendEmailWithResetPassword(email, newPass);
+    }
+
+    public String resetPassword(String email, String oldPass, String newPass) {
+        UserDto userByEmail = findUserByEmail(email);
+
+        String userPass = userByEmail.getPassword();
+        if (!encoder.matches(oldPass, userPass)){
+            return "Stare hasło jest nieprawidłowe";
+        }
+
+        String encodedPass = encoder.encode(newPass);
+
+        userByEmail.setPassword(encodedPass);
+        userRepository.save(userMapper.mapTo(userByEmail));
+        return "Hasło zostało zmienione";
     }
 
     private User createNewUser(UserDto userDto) {

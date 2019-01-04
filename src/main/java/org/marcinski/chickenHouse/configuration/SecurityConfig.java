@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login", "/login**").permitAll()
                 .antMatchers("/registration", "/registration/**").permitAll()
                 .antMatchers("/reminder", "/reminder**").permitAll()
-                .antMatchers("home", "new_house").hasAnyAuthority("USER").anyRequest()
+                .antMatchers("home", "new_house", "user_panel").hasAnyAuthority("USER").anyRequest()
                 .authenticated()
                 .and()
                 .rememberMe()

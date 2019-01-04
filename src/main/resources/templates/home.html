@@ -10,6 +10,7 @@
 <body>
 	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_home" class="button_logout">WYLOGUJ</button></form><br>
+	<form th:action="@{/user_panel}" method="get"><button type="submit" id="button_logout_home" class="button_logout">Panel użytkownika</button></form><br>
 	<p id="text_witaj_home" th:utext="${greeting}"></p>
 <!--	<div id="srodek_buttony_house">-->
 		<div class="dropdown">

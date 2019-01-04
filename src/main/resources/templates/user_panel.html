@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Chicken House - Panel użytkownika</title>
+    <th:block th:include="partials/scripts_css" />
+</head>
+
+<body>
+<img th:src="@{/images/logo.png}" id="logo_login" alt="LOGO"><br><br><br>
+<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_home" class="button_logout">WYLOGUJ</button></form><br>
+<form th:action="@{/home}" method="get"><button type="submit" id="button_logout_home" class="button_logout">STRONA GŁÓWNA</button></form><br>
+<form th:action="@{/user_panel}" method="post">
+    <label for="oldPass">
+        <input type="password" class="login" id="oldPass" name="oldPass" placeholder="Stare hasło"><br>
+    </label>
+    <label for="newPass">
+        <input type="password" class="login" id="newPass" name="newPass" placeholder="Nowe hasło"><br>
+    </label>
+    <label for="confirmPass">
+        <input type="password" class="login" id="confirmPass" name="confirmPass" placeholder="Potwierdź hasło"><br>
+    </label>
+    <button type="submit" id="button_login_login" class="button" name="submit" value="login">Resetuj hasło</button><br>
+    <div id="error_login_login" th:text="${message}"></div><br>
+</form>
+<form th:action="@{/login}" method="get"><button type="submit" id="button_register_login" class="button">Strona logowania</button></form>
+</body>
+</html>
