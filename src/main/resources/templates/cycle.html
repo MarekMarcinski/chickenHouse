@@ -27,7 +27,7 @@
 			<a class="btn btn-secondary dropdown-toggle col-md-12 editHouseDropdown" role="button" id="delete_dropdown_cycle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Zakończ</a>
         <form class="dropdown-menu p-4" autocomplete="off" th:action="@{'/home/cycle/complete/' + ${cycle.getId()}}" th:object="${cycle}" th:method="put">
             <label>Potwierdź zakończenie</label><button type="submit" class="btn btn-primary newDropdown_house">Zakończ</button></form></div></div></div><br>
- 	<div align="center"><button class="btn btn-primary" id="szczegoly_button" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">SZCZEGÓŁY cyklu</button></div>
+ 	<div align="center"><button class="btn btn-primary" id="szczegoly_button" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">SZCZEGÓŁY CYKLU</button></div>
 	<div class="collapse" id="collapseExample"><div class="card card-body">	
 	<table align="center" class="table_cycle">
 		<tr align="center"><td align="center"><p class="p_pogrubienie" th:text="'Dzień wstawienia: ' + ${#temporals.format(cycle.getStartDay(), 'dd-MM-yyyy')}"></p></td></tr>
