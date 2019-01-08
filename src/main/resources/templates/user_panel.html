@@ -6,7 +6,7 @@
     <th:block th:include="partials/scripts_css" />
 </head>
 <body>
-<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO"><br><br><br>
+<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 <form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_home" class="button_logout">WYLOGUJ</button></form><br>
 <form th:action="@{/home}" method="get"><button type="submit" id="button_glowna_panel">STRONA GŁÓWNA</button></form><br>
 <form th:action="@{/user_panel}" method="post">
