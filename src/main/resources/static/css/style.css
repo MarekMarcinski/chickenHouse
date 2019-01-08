@@ -58,12 +58,12 @@ body{
     margin-left: auto;
     margin-right: auto;
 	border-radius: 5px;
-	opacity: 0.6;
+	opacity: 1;
 	background-color: yellow;
 	font-weight: 900;
 }
 	#button_login_login:hover{
-		opacity: 1;
+		opacity: 0.7;
 	}
 
 /*login*/
@@ -76,12 +76,31 @@ body{
     margin-left: auto;
     margin-right: auto;
 	border-radius: 5px;
-	opacity: 0.6;
+	opacity: 1;
 	background-color: yellow;
 	font-weight: 900;
 }
 	#button_register_login:hover{
-		opacity: 1;
+		opacity: 0.7;
+	}
+
+/*login*/
+#button_reminder_login{
+	margin-top: 10px;
+	position: relative;
+    text-align: center;
+    display:block;
+    width: 240px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 5px;
+	opacity: 1;
+	background-color: #FF7E00;
+	font-weight: 900;
+}
+	#button_reminder_login:hover{
+		opacity: 0.7;
 	}
 
 /*registration*/
@@ -94,13 +113,13 @@ body{
     margin-left: auto;
     margin-right: auto;
 	border-radius: 15px;
-	opacity: 0.8;
+	opacity: 1;
 	background-color: #007bff;
 	font-weight: 900;
 	color: white;
 }
 	#button_register_registration:hover{
-		opacity: 1;
+		opacity: 0.7;
 	}
 
 /*registration*/
@@ -135,12 +154,48 @@ body{
     margin-left: auto;
     margin-right: auto;
 	border-radius: 15px;
-	opacity: 0.6;
+	opacity: 1;
 	background-color: yellow;
 	font-weight: 900;
 }
 	#button_back_registration:hover{
-		opacity: 1;
+		opacity: 0.7;
+	}
+
+/*reminder*/
+#button_reset_registration{
+	position: relative;
+    text-align: center;
+    display:block;
+    width: 150px;
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 15px;
+	opacity: 1;
+	background-color: #FF7E00;
+	font-weight: 900;
+}
+	#button_reset_registration:hover{
+		opacity: 0.7;
+	}
+
+/*panel*/
+#button_change_registration{
+	position: relative;
+    text-align: center;
+    display:block;
+    width: 150px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 15px;
+	opacity: 1;
+	background-color: #FF7E00;
+	font-weight: 900;
+}
+	#button_change_registration:hover{
+		opacity: 0.7;
 	}
 
 /*registration*/
@@ -167,13 +222,13 @@ body{
     margin-left: auto;
     margin-right: auto;
 	border-radius: 10px;
-	opacity: 0.8;
+	opacity: 1;
 	background-color: blue;
 	color: white;
 	font-weight: 900;
 }
 	#button_utworz_kurnik_home:hover{
-		opacity: 1;
+		opacity: 0.7;
 	}
 
 /*home*/
@@ -219,6 +274,26 @@ body{
 		opacity: 0.7;
 	}
 
+/*home*/
+.button_panel{
+	position: relative;
+    text-align: center;
+    display: block;
+    width: 160px;
+    height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: -70px;
+	border-radius: 15px;
+	opacity: 1;
+	background-color: #00FF8F;
+	font-weight: 900;
+	z-index: 999;
+}
+	.button_panel:hover{
+		opacity: 0.7;
+	}
+
 /*house, cycle*/
 #editHouseDropdown,#deleteDropdown,#dropdownMenuLink,#editDropdownCycle,#delete_dropdown_cycle{
 	display: block;
@@ -234,7 +309,7 @@ body{
 	border-radius: 10px;	
 }
 	#editHouseDropdown:hover,#deleteDropdown:hover,#dropdownMenuLink:hover,#editDropdownCycle:hover,#delete_dropdown_cycle:hover{
-		opacity: 0.8;
+		opacity: 0.7;
 	}
 
 /*cycle*/
@@ -258,7 +333,7 @@ body{
 	font-size: 10px
 }
 	#forageDropdown:hover,#medicineDropdown:hover,#dayDropdown:hover{
-		opacity: 0.8;
+		opacity: 0.7;
 	}
 
 /*house, cycle*/
@@ -274,7 +349,7 @@ body{
 	width: 200px;
 }
 	.newDropdown_house:hover{
-		opacity: 0.8;
+		opacity: 0.7;
 	}
 
 /*house*/
@@ -313,7 +388,7 @@ body{
 	border-radius: 10px;
 }	
 	#button_kurnik_home:hover{
-		opacity: 0.8;
+		opacity: 0.7;
 	}
 
 /*house*/
@@ -351,10 +426,43 @@ body{
 		opacity: 0.7;
 	}
 
+/*panel*/
+#button_glowna_panel{ 
+	position: relative;
+    text-align: center;
+    display:block;
+    width: 120px;
+    height: 60px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 35px;
+	border-radius: 15px;
+	opacity: 1;
+	background-color: yellowgreen;
+	font-weight: 900;
+	z-index: 999;
+}
+	#button_glowna_panel:hover{
+		opacity: 0.7;
+	}
+
 /*cycle*/
 #button_uboj_house{
 	background-color: blueviolet;
 	color: white;
+}
+
+/*cycle*/
+#button_podsumowanie_house{
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #941464;
+	color: white;
+	width: 200px;
+	height: 50px;
 }
 
 /*cycle*/
@@ -393,7 +501,7 @@ ul,li{
 	border-radius: 10px;
 }	
 	#button_nowy_cycle:hover{
-		opacity: 0.8;
+		opacity: 0.7;
 	}
 
 /*cycle*/
@@ -527,7 +635,7 @@ ul{
 	background-color: transparent;
 }
 	#button_cycle_rozwin:hover{
-		opacity: 0.5;
+		opacity: 0.7;
 		color: black;
 	}
 
@@ -546,6 +654,20 @@ ul{
 .uwagi_cycle{
 	height: 30px;
 }
+
+/*summary*/
+.pogrubienie_summary{
+	font-weight: 900;
+	font-size: 18px;
+}
+
+/*summary*/
+#chart_div{
+	margin-top: 180px;
+}
+
+
+
 
 /*end normal-view*/
 
@@ -582,6 +704,18 @@ ul{
 		top: -15px;
 		font-size: 8px;
 	}
+/*home*/
+	.button_panel{
+		position: relative;
+		display: block;
+		width: 100px;
+		height: 30px;
+		border-radius: 5px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 5px;
+		font-size: 8px;
+	}
 
 /*all*/
 	.button_back{
@@ -597,6 +731,14 @@ ul{
 /*house*/
 	#button_uboj_house{
 		top: 35px;
+	}
+
+/*house*/
+	#button_podsumowanie_house{
+		top: 15px;
+		width: 120px;
+		height: 30px;
+		border-radius: 15px;
 	}
 	
 /*home*/
@@ -709,7 +851,11 @@ ul{
 	.button_slaughter_edit{
 		width: 80px !important;
 	}
-
+	
+/*summary*/
+	#chart_div{
+		margin-top: 0px;
+	}
 
 	
 /*end @media max727px*/	

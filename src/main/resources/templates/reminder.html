@@ -8,14 +8,12 @@
 </head>
 
 <body>
-<img th:src="@{/images/logo.png}" id="logo_login" alt="LOGO"><br><br><br>
-<form th:action="@{/reminder}" method="post">
-    <label for="email">
-        <input type="email" class="login" id="email" name="email" placeholder="E-MAIL"><br>
-    </label>
-    <button type="submit" id="button_login_login" class="button" name="submit" value="login">Resetuj hasło</button><br>
-    <div id="error_login_login" th:text="${message}"></div><br>
-</form>
-<form th:action="@{/login}" method="get"><button type="submit" id="button_register_login" class="button">Strona logowania</button></form>
+	<img th:src="@{/images/logo.png}" id="logo_login" alt="LOGO"><br><br><br>
+	<form th:action="@{/reminder}" method="post">
+		<input type="email" class="login" id="email" name="email" placeholder="E-MAIL"><br>
+		<button type="submit" id="button_reset_registration" class="button" name="submit" value="login">RESETUJ HASŁO</button><br>
+		<div id="error_login_login" th:text="${message}"></div>
+	</form><br>
+	<form th:action="@{/login}" method="get"><button type="submit" id="button_back_registration" class="button">WRÓĆ DO LOGOWANIA</button></form>
 </body>
 </html>

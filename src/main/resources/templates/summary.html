@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <title th:text="'Podsumowanie z dnia: ' + ${cycleDto.getStartDay()}"></title>
     <th:block th:include="partials/scripts_css" />
-
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
     <script th:inline="javascript">
         google.charts.load('current', {packages: ['corechart', 'line']});
         google.charts.setOnLoadCallback(drawBackgroundColor);
-
         function drawBackgroundColor() {
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'X');
             data.addColumn('number', 'Upadki');
-
             var dayMap = [[${deadChart}]];
             var rows = [];
-
             $.each(dayMap, function(index,value){
                 var row = [index, value];
                 rows.push(row);
             });
             data.addRows(rows);
-
             var options = {
                 hAxis: {
                     title: 'Dzień'
@@ -35,53 +28,22 @@
                 },
                 backgroundColor: '#f1f8e9'
             };
-
             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
+            chart.draw(data, options);}
     </script>
-
 </head>
-
 <body>
-<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
-<form th:action="@{/logout}" method="get"><button type="submit" class="button_logout">WYLOGUJ</button></form>
-<form th:action="@{'/home/cycle/' + ${cycleDto.getId()}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form><br>
-
-<div class="container">
-
-    <div id="chart_div"></div>
-
-    <div class="col">
-        <h4>Koszt zakupu kurczaków:</h4>
-        <p th:text="${cycleDto.getNumberOfChickens()} + ' sztuk * ' + ${cycleDto.getPrice()} + 'zł -> ' + ${chickenPrice} + 'zł / netto'"></p>
-    </div>
-    <div class="col">
-        <h4>Koszt paszy:</h4>
-        <p th:text="${foragePrice + 'zł / netto'}"></p>
-    </div>
-    <div class="col">
-        <h4>Koszt lekarstw:</h4>
-        <p th:text="${medicinePrice + 'zł / netto'}"></p>
-    </div>
-    <div class="col">
-        <h4>Całkowity koszt:</h4>
-        <p th:text="${chickenPrice + ' + ' + foragePrice + ' + ' + medicinePrice + ' -> ' + totalCost +'zł / netto'}"></p>
-    </div>
-    <div class="col">
-        <h4>Wartość sprzedanego żywca:</h4>
-        <p th:text="${#numbers.formatDecimal(slaughterPrice, 1, 2) +'zł / netto'}"></p>
-    </div>
-    <div class="col">
-        <h4>Bilans. Nie wliczając kosztów opału, wody i prądu:</h4>
-        <p th:text="${#numbers.formatDecimal(slaughterPrice - totalCost, 1, 2) +'zł / netto'}"></p>
-    </div>
-    <div class="col">
-        <h4>Uzysk żywca:</h4>
-        <p th:text="${#numbers.formatDecimal(weightGain, 1, 2) +'kg/m^2'}"></p>
-    </div>
-
-</div>
-
+	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
+	<form th:action="@{/logout}" method="get"><button type="submit" class="button_logout">WYLOGUJ</button></form>
+	<form th:action="@{'/home/cycle/' + ${cycleDto.getId()}}" method="get"><button type="submit" id="button_back_house" class="button_back">WRÓĆ</button></form><br>
+	<div class="container">
+		<div id="chart_div"></div><br><br>
+		<div align="center" class="col"><a class="pogrubienie_summary">Koszt zakupu kurczaków:</a><p th:text="${cycleDto.getNumberOfChickens()} + ' sztuk * ' + ${cycleDto.getPrice()} + 'zł -> ' + ${chickenPrice} + 'zł / netto'"></p></div>
+		<div align="center" class="col"><a class="pogrubienie_summary">Koszt paszy:</a><p th:text="${foragePrice + 'zł / netto'}"></p></div>
+		<div align="center" class="col"><a class="pogrubienie_summary">Koszt lekarstw:</a><p th:text="${medicinePrice + 'zł / netto'}"></p></div>
+		<div align="center" class="col"><a class="pogrubienie_summary">Całkowity koszt:</a><p th:text="${chickenPrice + ' + ' + foragePrice + ' + ' + medicinePrice + ' -> ' + totalCost +'zł / netto'}"></p></div>
+		<div align="center" class="col"><a class="pogrubienie_summary">Wartość sprzedanego żywca:</a><p th:text="${#numbers.formatDecimal(slaughterPrice, 1, 2) +'zł / netto'}"></p></div>
+		<div align="center" class="col"><a class="pogrubienie_summary">Bilans. Nie wliczając kosztów opału, wody i prądu:</a><p th:text="${#numbers.formatDecimal(slaughterPrice - totalCost, 1, 2) +'zł / netto'}"></p></div>
+		<div align="center" class="col"><a class="pogrubienie_summary">Uzysk żywca:</a><p th:text="${#numbers.formatDecimal(weightGain, 1, 2) +'kg/m^2'}"></p></div></div>
 </body>
 </html>
