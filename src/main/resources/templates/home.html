@@ -7,7 +7,7 @@
     <th:block th:include="partials/scripts_css" />
 </head>
 
-<body>
+<body class="eupopup eupopup-bottomright">
 	<img th:src="@{/images/logo.png}" class="logo_all" alt="LOGO">
 	<form th:action="@{/logout}" method="get"><button type="submit" id="button_logout_home" class="button_logout">WYLOGUJ</button></form><br>
 	<form th:action="@{/user_panel}" method="get"><button type="submit" id="button_panel_home" class="button_panel">PANEL UŻYTKOWNIKA</button></form><br>
